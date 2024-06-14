@@ -3,9 +3,29 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 import { BackendURL } from "./component/backendURL";
 
-import { Home } from "./pages/home";
-import { Demo } from "./pages/demo";
-import { Single } from "./pages/single";
+import {LogIn} from "./pages/LogIn"
+import { SigUp } from "./pages/SigUp";
+
+import { HomeACUA } from "./pages/HomeACUA";
+import { HomeAdmin } from "./pages/HomeAdmin";
+import { HomeProfessor } from "./pages/HomeProfessor";
+import { HomeStudent } from "./pages/HomeStudent";
+
+import { InfoAdmin } from "./pages/InfoAdmin";
+import { InfoProfessor } from "./pages/InfoProfessor";
+import { InfoStudent } from "./pages/InfoStudent";
+
+import { NavbarAdmin } from "./pages/NavbarAdmin";
+import { NavbarProfessor } from "./pages/NavbarProfessor";
+import { NavbarStudent } from "./pages/NavbarStudent";
+
+import { ProfessorPayment } from "./pages/ProfessorPayment";
+import { StudentPayment } from "./pages/StudentPayment";
+
+import { Course } from "./pages/Course";
+import { ElectronicInvoice } from "./pages/ElectronicInvoice";
+import { Modality } from "./pages/Modality";
+import { NewCourse } from "./pages/NewCourse";
 import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
@@ -25,7 +45,22 @@ const Layout = () => {
                 <ScrollToTop>
                     <Navbar />
                     <Routes>
-                        <Route element={<Home />} path="/" />
+                        <Route element={<HomeACUA />} path="/" />
+                        <Route element={<HomeACUA />} path="/" />
+                        <Route element={<HomeACUA />} path="/" />
+                        <Route element={<HomeACUA />} path="/" />
+                        <Route element={<HomeACUA />} path="/" />
+                        <Route element={<HomeACUA />} path="/" />
+                        <Route element={<HomeACUA />} path="/" />
+                        <Route element={<HomeACUA />} path="/" />
+                        <Route element={<HomeACUA />} path="/" />
+                        <Route element={<HomeACUA />} path="/" />
+                        <Route element={<HomeACUA />} path="/" />
+                        <Route element={<HomeACUA />} path="/" />
+                        <Route element={<HomeACUA />} path="/" />
+                        <Route element={<HomeACUA />} path="/" />
+                        <Route element={<HomeACUA />} path="/" />
+                        <Route element={<HomeACUA />} path="/" />
                         <Route element={<Demo />} path="/demo" />
                         <Route element={<Single />} path="/single/:theid" />
                         <Route element={<h1>Not found!</h1>} />
