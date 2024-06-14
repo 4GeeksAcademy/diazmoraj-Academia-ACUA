@@ -3,6 +3,11 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 import { BackendURL } from "./component/backendURL";
 
+import { NavbarACUA } from "./component/NavbarACUA";
+import { NavbarAdmin } from "./pages/NavbarAdmin";
+import { NavbarProfessor } from "./pages/NavbarProfessor";
+import { NavbarStudent } from "./pages/NavbarStudent";
+
 import {LogIn} from "./pages/LogIn"
 import { SigUp } from "./pages/SigUp";
 
@@ -15,10 +20,6 @@ import { InfoAdmin } from "./pages/InfoAdmin";
 import { InfoProfessor } from "./pages/InfoProfessor";
 import { InfoStudent } from "./pages/InfoStudent";
 
-import { NavbarAdmin } from "./pages/NavbarAdmin";
-import { NavbarProfessor } from "./pages/NavbarProfessor";
-import { NavbarStudent } from "./pages/NavbarStudent";
-
 import { ProfessorPayment } from "./pages/ProfessorPayment";
 import { StudentPayment } from "./pages/StudentPayment";
 
@@ -28,8 +29,7 @@ import { Modality } from "./pages/Modality";
 import { NewCourse } from "./pages/NewCourse";
 import injectContext from "./store/appContext";
 
-import { Navbar } from "./component/navbar";
-import { Footer } from "./component/footer";
+import { Footer } from "./component/Footer";
 
 //create your first component
 const Layout = () => {
@@ -45,25 +45,34 @@ const Layout = () => {
                 <ScrollToTop>
                     <Navbar />
                     <Routes>
-                        <Route element={<HomeACUA />} path="/" />
-                        <Route element={<HomeACUA />} path="/" />
-                        <Route element={<HomeACUA />} path="/" />
-                        <Route element={<HomeACUA />} path="/" />
-                        <Route element={<HomeACUA />} path="/" />
-                        <Route element={<HomeACUA />} path="/" />
-                        <Route element={<HomeACUA />} path="/" />
-                        <Route element={<HomeACUA />} path="/" />
-                        <Route element={<HomeACUA />} path="/" />
-                        <Route element={<HomeACUA />} path="/" />
-                        <Route element={<HomeACUA />} path="/" />
-                        <Route element={<HomeACUA />} path="/" />
-                        <Route element={<HomeACUA />} path="/" />
-                        <Route element={<HomeACUA />} path="/" />
-                        <Route element={<HomeACUA />} path="/" />
-                        <Route element={<HomeACUA />} path="/" />
-                        <Route element={<Demo />} path="/demo" />
-                        <Route element={<Single />} path="/single/:theid" />
+
+                        <Route element={<NavbarACUA />} path="/NavbarACUA"/>
+                        <Route element={<NavbarAdmin />} path="/NavbarAdmin"/>
+                        <Route element={<NavbarProfessor />} path="/NavbarProfessor"/>
+                        <Route element={<NavbarStudent />} path="/NavbarStudent"/>
+
+                        <Route element={<LogIn />} path="/LogIn"/>
+                        <Route element={<SigUp />} path="/SigUp"/>
+
+                        <Route element={<HomeACUA />} path="/"/>
+                        <Route element={<HomeAdmin />} path="/"/>
+                        <Route element={<HomeProfessor />} path="/"/>
+                        <Route element={<HomeStudent />} path="/"/>
+
+                        <Route element={<InfoAdmin />} path="/InfoAdmin"/>
+                        <Route element={<InfoProfessor />} path="/InfoProfessor"/>
+                        <Route element={<InfoStudent />} path="/InfoStudent"/>
+
+                        <Route element={<ProfessorPayment />} path="/ProfessorPayment"/>
+                        <Route element={<StudentPayment />} path="/StudentPayment"/>
+
+                        <Route element={<Course />} path="/Course" />
+                        <Route element={<ElectronicInvoice />} path="/ElectronicInvoice" />
+                        <Route element={<Modality />} path="/Modality" />
+                        <Route element={<NewCourse />} path="/NewCourse" />
+
                         <Route element={<h1>Not found!</h1>} />
+                        
                     </Routes>
                     <Footer />
                 </ScrollToTop>
