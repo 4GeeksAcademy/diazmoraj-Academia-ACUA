@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import { Context } from "../store/appContext";
 
-export const Demo = () => {
+export const HomeStudent = () => {
 	const { store, actions } = useContext(Context);
 
 	return (
