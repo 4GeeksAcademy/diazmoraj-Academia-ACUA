@@ -10,6 +10,15 @@ from api.models import db
 from api.routes import api
 from api.admin import setup_admin
 from api.commands import setup_commands
+from models import db, Administrator
+from models import db, Professor
+from models import db, Student
+from models import db, ProfessorPayment
+from models import db, StudentPayment
+from models import db, ElectronicInvoice
+from models import db, Course
+from models import db, Modality
+from models import db, NewCourse
 
 # from models import Person
 
@@ -66,6 +75,94 @@ def serve_any_other_file(path):
     response = send_from_directory(static_file_dir, path)
     response.cache_control.max_age = 0  # avoid cache memory
     return response
+
+#--------------------------------------#
+#App Route para los metodos GET
+
+@app.route('api/administrator', methods=['GET'])
+def get_all_administrator():
+    all_admins = Administrator.query.all()
+    admins_serialized = []
+    for admin in all_admins:
+        admins_serialized.append(admin.serialize())
+        print(admins_serialized)
+    return jsonify({"data": "all_admin"}), 200
+
+@app.route('api/professor', methods=['GET'])
+def get_all_professor():
+    all_profes = Professor.query.all()
+    profes_serialized = []
+    for profe in all_profes:
+        profes_serialized.append(profe.serialize())
+        print(profes_serialized)
+    return jsonify({"data": "all_profe"}), 200
+
+@app.route('api/student', methods=['GET'])
+def get_all_student():
+    all_studs = Student.query.all()
+    studs_serialized = []
+    for stud in all_studs:
+        studs_serialized.append(stud.serialize())
+        print(studs_serialized)
+    return jsonify({"data": "all_profe"}), 200
+
+@app.route('api/professorpayment', methods=['GET'])
+def get_all_profpay():
+    all_profpays = ProfessorPayment.query.all()
+    profpays_serialized = []
+    for profpay in all_profpays:
+        profpays_serialized.append(profpay.serialize())
+        print(profpays_serialized)
+    return jsonify({"data": "all_profpay"}), 200
+
+@app.route('api/studentpayment', methods=['GET'])
+def get_all_studpay():
+    all_studpays = StudentPayment.query.all()
+    studpays_serialized = []
+    for studpay in all_studpays:
+        studpays_serialized.append(studpay.serialize())
+        print(studpays_serialized)
+    return jsonify({"data": "all_studpay"}), 200
+
+@app.route('api/electronicinvoice', methods=['GET'])
+def get_all_electinv():
+    all_electinvs = ElectronicInvoice.query.all()
+    electinvs_serialized = []
+    for electinv in all_electinvs:
+        electinvs_serialized.append(electinv.serialize())
+        print(electinvs_serialized)
+    return jsonify({"data": "all_electinv"}), 200
+
+@app.route('api/course', methods=['GET'])
+def get_all_course():
+    all_courses = Course.query.all()
+    courses_serialized = []
+    for course in all_courses:
+        courses_serialized.append(course.serialize())
+        print(courses_serialized)
+    return jsonify({"data": "all_course"}), 200
+
+@app.route('api/modality', methods=['GET'])
+def get_all_modality():
+    all_modalities = Modality.query.all()
+    modalities_serialized = []
+    for modality in all_modalities:
+        modalities_serialized.append(modality.serialize())
+        print(modalities_serialized)
+    return jsonify({"data": "all_modality"}), 200
+
+@app.route('api/newcourses', methods=['GET'])
+def get_all_newcourses():
+    all_newcourses = NewCourse.query.all()
+    newcourses_serialized = []
+    for newcourse in all_newcourses:
+        newcourses_serialized.append(newcourse.serialize())
+        print(newcourses_serialized)
+    return jsonify({"data": "all_newcourse"}), 200
+
+#----------------------------------------------#
+#App Route para los metodos GETID
+
 
 
 # this only runs if `$ python src/main.py` is executed
