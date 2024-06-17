@@ -229,7 +229,35 @@ def get_single_newcourse(id):
 #------------------------------------------#
 #App Route para los metodos POST
 
+@app.route('/administrator', methods=["POST"])
+def new_admin():
+    body = request.get_json(silent=True)
+    if body is None:
+        return jsonify({"msg": "Debes completar toda la informacion para continuar"}), 400
+    #if "name" not in body:
+      #  return jsonify({"msg": "El campo nombre es obligatorio"}), 400
+    #if "email" not in body:
+       # return jsonify({"msg": "El campo email es obligatorio"}), 400
+   # if "password" not in body:
+       # return jsonify({"msg": "El campo password es obligatorio"}), 400
+    
+    new_admin = Administrator()
+    new_admin.name = body["name"]
+    new_admin.last_name = body["last_name"]
+    new_admin.photo = body["photo"]
+    new_admin.carID_type = body["carID_type"]
+    new_admin.number_carID = body["number_carID"]
+    new_admin.birthday = body["birthday"]
+    new_admin.email = body["email"]
+    new_admin.phone_number = body["phone_number"]
+    new_admin.province = body["province"]
+    new_admin.canton = body["canton"]
+    new_admin.distric = body["distric"]
+    new_admin.password = body["password"]
+    db.session.add(new_admin)
+    db.session.commit()
 
+    return jsonify({"msg": "OK"}), 200
 
 # this only runs if `$ python src/main.py` is executed
 if __name__ == '__main__':
