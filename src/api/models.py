@@ -169,7 +169,9 @@ class ElectronicInvoice(db.Model):
     number_carID = db.Column(db.Integer, unique=True, nullable=False)
     email = db.Column(db.String(50), unique=True, nullable=False)
     phone_number = db.Column(db.Integer, unique=True, nullable=False)
-    address = db.Column(db.String(250), unique=False, nullable=False)
+    province = db.Column(db.String(50), nullable=False)
+    canton = db.Column(db.String(50), nullable=False)
+    distric = db.Column(db.String(50), nullable=False)
     student_id = db.Column(db.Integer, db.ForeignKey('student.id'))
     student_id_relationship = db.relationship("Student", back_populates="electronic_invoice")
 
@@ -181,7 +183,9 @@ class ElectronicInvoice(db.Model):
             "number_carID": self.number_carID,
             "email": self.email,
             "phone_number": self.phone_number,
-            "address": self.address,
+            "province": self.province,
+            "canton": self.canton,
+            "distric":self.distric,
             "student_id": self.student_id
         }
 
