@@ -181,47 +181,47 @@ def get_single_stud(id):
         return jsonify({"msg": "El estudiante con el ID: {} no existe".format(id)}), 400
     return jsonify({"data": single_stud.serialize()}), 200
 
-# @app.route("/professorpayment/<int:id>", methods=['GET'])
-# def get_single_profpay(id):
-#     single_profpay = ProfessorPayment.query.get(id)
-#     if single_profpay is None:
-#         return jsonify({"msg": "La informacion de pago con el ID: {} no existe".format(id)}), 400
-#     return jsonify({"data": single_profpay.serialize()}), 200
+@app.route("/professorpayment/<int:id>", methods=['GET'])
+def get_single_profpay(id):
+    single_profpay = ProfessorPayment.query.get(id)
+    if single_profpay is None:
+        return jsonify({"msg": "La informacion de pago con el ID: {} no existe".format(id)}), 400
+    return jsonify({"data": single_profpay.serialize()}), 200
 
-# @app.route("/studentpayment/<int:id>", methods=['GET'])
-# def get_single_studpay(id):
-#     single_studpay = StudentPayment.query.get(id)
-#     if single_studpay is None:
-#         return jsonify({"msg": "La informacion de pago con el ID: {} no existe".format(id)}), 400
-#     return jsonify({"data": single_studpay.serialize()}), 200
+@app.route("/studentpayment/<int:id>", methods=['GET'])
+def get_single_studpay(id):
+    single_studpay = StudentPayment.query.get(id)
+    if single_studpay is None:
+        return jsonify({"msg": "La informacion de pago con el ID: {} no existe".format(id)}), 400
+    return jsonify({"data": single_studpay.serialize()}), 200
 
-# @app.route("/electronicinvoice/<int:id>", methods=['GET'])
-# def get_single_electinv(id):
-#     single_electinv = ElectronicInvoice.query.get(id)
-#     if single_electinv is None:
-#         return jsonify({"msg": "La informacion de la factura electronica con el ID: {} no existe".format(id)}), 400
-#     return jsonify({"data": single_electinv.serialize()}), 200
+@app.route("/electronicinvoice/<int:id>", methods=['GET'])
+def get_single_electinv(id):
+    single_electinv = ElectronicInvoice.query.get(id)
+    if single_electinv is None:
+        return jsonify({"msg": "La informacion de la factura electronica con el ID: {} no existe".format(id)}), 400
+    return jsonify({"data": single_electinv.serialize()}), 200
 
-# @app.route("/course/<int:id>", methods=['GET'])
-# def get_single_course(id):
-#     single_course = Course.query.get(id)
-#     if single_course is None:
-#         return jsonify({"msg": "El curso con el ID: {} no existe".format(id)}), 400
-#     return jsonify({"data": single_course.serialize()}), 200
+@app.route("/course/<int:id>", methods=['GET'])
+def get_single_course(id):
+    single_course = Course.query.get(id)
+    if single_course is None:
+        return jsonify({"msg": "El curso con el ID: {} no existe".format(id)}), 400
+    return jsonify({"data": single_course.serialize()}), 200
 
-# @app.route("/modality/<int:id>", methods=['GET'])
-# def get_single_modality(id):
-#     single_modality = Modality.query.get(id)
-#     if setup_commands is None:
-#         return jsonify({"msg": "La modalidad con el ID: {} no existe".format(id)}), 400
-#     return jsonify({"data": single_modality.serialize()}), 200
+@app.route("/modality/<int:id>", methods=['GET'])
+def get_single_modality(id):
+    single_modality = Modality.query.get(id)
+    if setup_commands is None:
+        return jsonify({"msg": "La modalidad con el ID: {} no existe".format(id)}), 400
+    return jsonify({"data": single_modality.serialize()}), 200
 
-# @app.route("/newcourse/<int:id>", methods=['GET'])
-# def get_single_newcourse(id):
-#     single_newcourse = NewCourse.query.get(id)
-#     if single_newcourse is None:
-#         return jsonify({"msg": "El curso registrado con el ID: {} no existe".format(id)}), 400
-#     return jsonify({"data": single_newcourse.serialize()}), 200
+@app.route("/newcourse/<int:id>", methods=['GET'])
+def get_single_newcourse(id):
+    single_newcourse = NewCourse.query.get(id)
+    if single_newcourse is None:
+        return jsonify({"msg": "El curso registrado con el ID: {} no existe".format(id)}), 400
+    return jsonify({"data": single_newcourse.serialize()}), 200
 
 #------------------------------------------#
 #App Route para los metodos POST
@@ -324,8 +324,11 @@ def new_profe():
     new_profe.password = body["password"]
     new_profe.professor_payment =body["pofessor_payment"]
     new_profe.new_course_professor = body["new_course_professor"]
-    db.session.add(new_profe)
-    db.session.commit()
+    try:
+        db.session.add(new_profe)
+        db.session.commit()
+    except Exception as error:
+        return jsonify({"msg": error.args[0]}), 500
 
     return jsonify({"msg": "OK"}), 200
 
@@ -381,8 +384,11 @@ def new_stud():
     new_stud.student_payment = body["student_payment"]
     new_stud.electronic_invoice = body["electronic_invoice"]
     new_stud.new_course_student = body["new_course_student"]
-    db.session.add(new_stud)
-    db.session.commit()
+    try:
+        db.session.add(new_stud)
+        db.session.commit()
+    except Exception as error:
+        return jsonify({"msg": error.args[0]}), 500
 
     return jsonify({"msg": "OK"}), 200
 
@@ -405,8 +411,11 @@ def new_profpay():
     new_profpay.phone_number = body["phone_number"]
     new_profpay.iban_account = body["iban_account"]
     new_profpay.professor_id = body["professor_id"]
-    db.session.add(new_profpay)
-    db.session.commit()
+    try:
+        db.session.add(new_profpay)
+        db.session.commit()
+    except Exception as error:
+        return jsonify({"msg": error.args[0]}), 500
 
     return jsonify({"msg": "OK"}), 200
 
@@ -426,8 +435,11 @@ def new_studpay():
     new_studpay.date = body["date"]
     new_studpay.mount = body["mount"]
     new_studpay.student_id = body["student_id"]
-    db.session.add(new_studpay)
-    db.session.commit()
+    try:
+        db.session.add(new_studpay)
+        db.session.commit()
+    except Exception as error:
+        return jsonify({"msg": error.args[0]}), 500
 
     return jsonify({"msg": "OK"}), 200
 
@@ -465,8 +477,11 @@ def new_electinv():
     new_electinv.canton = body["canton"]
     new_electinv = body["distric"]
     new_electinv.student_id = body["student_id"]
-    db.session.add(new_electinv)
-    db.session.commit()
+    try:
+        db.session.add(new_electinv)
+        db.session.commit()
+    except Exception as error:
+        return jsonify({"msg": error.args[0]}), 500
 
     return jsonify({"msg": "OK"}), 200
 
@@ -483,8 +498,11 @@ def new_course():
     new_course = Course()
     new_course.name = body["name"]
     new_course.new_course = body["new_course"]
-    db.session.add(new_course)
-    db.session.commit()
+    try:
+        db.session.add(new_course)
+        db.session.commit()
+    except Exception as error:
+        return jsonify({"msg": error.args[0]}), 500
 
     return jsonify({"msg": "OK"}), 200
 
@@ -501,8 +519,11 @@ def new_modality():
     new_modality = Modality()
     new_modality.name = body["name"]
     new_modality.new_course_modality = body["new_course_modality"]
-    db.session.add(new_modality)
-    db.session.commit()
+    try:
+        db.session.add(new_modality)
+        db.session.commit()
+    except Exception as error:
+        return jsonify({"msg": error.args[0]}), 500
 
     return jsonify({"msg": "OK"}), 200
 
@@ -525,8 +546,11 @@ def new_newcourse():
     new_newcourse.student_id = body["student_id"]
     new_newcourse.modality_id = body["modality_id"]
     new_newcourse.course_id = body["course_id"]
-    db.session.add(new_newcourse)
-    db.session.commit()
+    try:
+        db.session.add(new_newcourse)
+        db.session.commit()
+    except Exception as error:
+        return jsonify({"msg": error.args[0]}), 500
 
     return jsonify({"msg": "OK"}), 200
 
@@ -564,8 +588,11 @@ def update_admin(id):
     update_admin.province = body["province"]
     update_admin.canton = body["canton"]
     update_admin.distric = body["distric"]
-    db.session.add(update_admin)
-    db.session.commit()
+    try:
+        db.session.add(update_admin)
+        db.session.commit()
+    except Exception as error:
+        return jsonify({"msg": error.args[0]}), 500
 
     return jsonify({"msg": "OK"}), 200
 
@@ -591,7 +618,7 @@ def update_profe(id):
     if "dstrict" not in body:
         return jsonify({"msg": "Debes escribir un distrito"}), 400
     
-    update_profe = Professor(id)
+    update_profe = Professor.query.get(id)
     update_profe.name = body["name"]
     update_profe.last_name = body["last_name"]
     update_profe.photo = body["photo"]
@@ -600,8 +627,11 @@ def update_profe(id):
     update_profe.province = body["province"]
     update_profe.canton = body["canton"]
     update_profe.distric = body["distric"]
-    db.session.add(update_profe)
-    db.session.commit()
+    try:
+        db.session.add(update_profe)
+        db.session.commit()
+    except Exception as error:
+        return jsonify({"msg": error.args[0]}), 500
 
     return jsonify({"msg": "OK"}), 200
 
@@ -627,7 +657,7 @@ def update_stud(id):
     if "dstrict" not in body:
         return jsonify({"msg": "Debes escribir un distrito"}), 400
     
-    update_stud = Student(id)
+    update_stud = Student.query.get(id)
     update_stud.name = body["name"]
     update_stud.last_name = body["last_name"]
     update_stud.photo = body["photo"]
@@ -636,8 +666,11 @@ def update_stud(id):
     update_stud.province = body["province"]
     update_stud.canton = body["canton"]
     update_stud.distric = body["distric"]
-    db.session.add(update_stud)
-    db.session.commit()
+    try:
+        db.session.add(update_stud)
+        db.session.commit()
+    except Exception as error:
+        return jsonify({"msg": error.args[0]}), 500
 
     return jsonify({"msg": "OK"}), 200
 
@@ -653,12 +686,15 @@ def update_profpay(id):
     if "iban_account" not in body:
         return jsonify({"msg": "Debes registrar una cuenta IBAN"}), 400
     
-    update_profpay = ProfessorPayment(id)
+    update_profpay = ProfessorPayment.query.get(id)
     update_profpay.payment_method = body["payment_method"]
     update_profpay.phone_number = body["phone_number"]
     update_profpay.iban_account = body["iban_account"]
-    db.session.add(update_profpay)
-    db.session.commit()
+    try:
+        db.session.add(update_profpay)
+        db.session.commit()
+    except Exception as error:
+        return jsonify({"msg": error.args[0]}), 500
 
     return jsonify({"msg": "OK"}), 200
 
@@ -672,11 +708,14 @@ def update_studpay(id):
     if "mount" not in body:
         return jsonify({"msg": "Debes registrar un monto a pagar"}), 400
     
-    update_studpay = StudentPayment(id)
+    update_studpay = StudentPayment.query.get(id)
     update_studpay.date = body["date"]
     update_studpay.mount = body["mount"]
-    db.session.add(update_studpay)
-    db.session.commit()
+    try:
+        db.session.add(update_studpay)
+        db.session.commit()
+    except Exception as error:
+        return jsonify({"msg": error.args[0]}), 500
 
     return jsonify({"msg": "OK"}), 200
 
@@ -702,7 +741,7 @@ def update_electinv(id):
     if "dstrict" not in body:
         return jsonify({"msg": "Debes escribir un distrito"}), 400
     
-    update_electinv = ElectronicInvoice(id)
+    update_electinv = ElectronicInvoice.query.get(id)
     update_electinv.name = body["name"]
     update_electinv.cardID_type = body["cardID_type"]
     update_electinv.number_cardID = body["number_cardID"]
@@ -711,8 +750,11 @@ def update_electinv(id):
     update_electinv.province = body["province"]
     update_electinv.canton = body["canton"]
     update_electinv = body["distric"]
-    db.session.add(update_electinv)
-    db.session.commit()
+    try:
+        db.session.add(update_electinv)
+        db.session.commit()
+    except Exception as error:
+        return jsonify({"msg": error.args[0]}), 500
 
     return jsonify({"msg": "OK"}), 200
 
@@ -724,10 +766,13 @@ def update_course(id):
     if "name" not in body:
         return jsonify({"msg": "Debes escribir un nombre"}), 400
     
-    update_course = Course(id)
+    update_course = Course.query.get(id)
     update_course.name = body["name"]
-    db.session.add(update_course)
-    db.session.commit()
+    try:
+        db.session.add(update_course)
+        db.session.commit()
+    except Exception as error:
+        return jsonify({"msg": error.args[0]}), 500
 
     return jsonify({"msg": "OK"}), 200
 
@@ -741,11 +786,14 @@ def update_modality(id):
     if "new_course_modality" not in body:
         return jsonify({"msg": "Debes seleccionar una modalidad del curso"}), 400
     
-    update_modality = Modality(id)
+    update_modality = Modality.query.get(id)
     update_modality.name = body["name"]
     update_modality.new_course_modality = body["new_course_modality"]
-    db.session.add(update_modality)
-    db.session.commit()
+    try:
+        db.session.add(update_modality)
+        db.session.commit()
+    except Exception as error:
+        return jsonify({"msg": error.args[0]}), 500
 
     return jsonify({"msg": "OK"}), 200
 
@@ -759,11 +807,14 @@ def update_newcourse(id):
     if "modality_id" not in body:
         return jsonify({"msg": "Debes seleccionar una modalidad del curso"}), 400
     
-    update_newcourse = NewCourse(id)
+    update_newcourse = NewCourse.query.get(id)
     update_newcourse.professor_id = body["professor_id"]
     update_newcourse.modality_id = body["modality_id"]
-    db.session.add(update_newcourse)
-    db.session.commit()
+    try:
+        db.session.add(update_newcourse)
+        db.session.commit()
+    except Exception as error:
+        return jsonify({"msg": error.args[0]}), 500
 
     return jsonify({"msg": "OK"}), 200
 
