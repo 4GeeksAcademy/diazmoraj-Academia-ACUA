@@ -51,13 +51,11 @@ app.register_blueprint(api, url_prefix='/api')
 
 # Handle/serialize errors like a JSON object
 
-
 @app.errorhandler(APIException)
 def handle_invalid_usage(error):
     return jsonify(error.to_dict()), error.status_code
 
 # generate sitemap with all your endpoints
-
 
 @app.route('/')
 def sitemap():
@@ -66,7 +64,6 @@ def sitemap():
     return send_from_directory(static_file_dir, 'index.html')
 
 # any other endpoint will try to serve it like a static file
-
 
 @app.route('/<path:path>', methods=['GET'])
 def serve_any_other_file(path):
@@ -86,7 +83,7 @@ def get_all_administrator():
     for admin in all_admins:
         admins_serialized.append(admin.serialize())
         print(admins_serialized)
-    return jsonify({"data": "all_admin"}), 200
+    return jsonify({"data": admins_serialized}), 200
 
 @app.route('api/professor', methods=['GET'])
 def get_all_professor():
@@ -95,7 +92,7 @@ def get_all_professor():
     for profe in all_profes:
         profes_serialized.append(profe.serialize())
         print(profes_serialized)
-    return jsonify({"data": "all_profe"}), 200
+    return jsonify({"data": profes_serialized}), 200
 
 @app.route('api/student', methods=['GET'])
 def get_all_student():
@@ -104,7 +101,7 @@ def get_all_student():
     for stud in all_studs:
         studs_serialized.append(stud.serialize())
         print(studs_serialized)
-    return jsonify({"data": "all_profe"}), 200
+    return jsonify({"data": studs_serialized}), 200
 
 @app.route('api/professorpayment', methods=['GET'])
 def get_all_profpay():
@@ -163,11 +160,11 @@ def get_all_newcourses():
 #----------------------------------------------#
 #App Route para los metodos GET ID
 
-@app.route("/administrator/<int:id>", methods=['GET'])
-def get_single_admin(id):
-    single_admin = Administrator.query.get(id)
+@app.route("/administrator/<int:number_cardID>", methods=['GET'])
+def get_single_admin(number_cardID):
+    single_admin = Administrator.query.filter_by(number_cardID = number_cardID).first()
     if single_admin is None:
-        return jsonify({"msg": "El administrador con el ID: {} no existe".format(id)}), 400
+        return jsonify({"msg": "El administrador con el ID: {} no existe".format(number_cardID)}), 400
     return jsonify({"data": single_admin.serialize()}), 200
 
 @app.route("/professor/<int:id>", methods=['GET'])
@@ -184,47 +181,47 @@ def get_single_stud(id):
         return jsonify({"msg": "El estudiante con el ID: {} no existe".format(id)}), 400
     return jsonify({"data": single_stud.serialize()}), 200
 
-@app.route("/professorpayment/<int:id>", methods=['GET'])
-def get_single_profpay(id):
-    single_profpay = ProfessorPayment.query.get(id)
-    if single_profpay is None:
-        return jsonify({"msg": "La informacion de pago con el ID: {} no existe".format(id)}), 400
-    return jsonify({"data": single_profpay.serialize()}), 200
+# @app.route("/professorpayment/<int:id>", methods=['GET'])
+# def get_single_profpay(id):
+#     single_profpay = ProfessorPayment.query.get(id)
+#     if single_profpay is None:
+#         return jsonify({"msg": "La informacion de pago con el ID: {} no existe".format(id)}), 400
+#     return jsonify({"data": single_profpay.serialize()}), 200
 
-@app.route("/studentpayment/<int:id>", methods=['GET'])
-def get_single_studpay(id):
-    single_studpay = StudentPayment.query.get(id)
-    if single_studpay is None:
-        return jsonify({"msg": "La informacion de pago con el ID: {} no existe".format(id)}), 400
-    return jsonify({"data": single_studpay.serialize()}), 200
+# @app.route("/studentpayment/<int:id>", methods=['GET'])
+# def get_single_studpay(id):
+#     single_studpay = StudentPayment.query.get(id)
+#     if single_studpay is None:
+#         return jsonify({"msg": "La informacion de pago con el ID: {} no existe".format(id)}), 400
+#     return jsonify({"data": single_studpay.serialize()}), 200
 
-@app.route("/electronicinvoice/<int:id>", methods=['GET'])
-def get_single_electinv(id):
-    single_electinv = ElectronicInvoice.query.get(id)
-    if single_electinv is None:
-        return jsonify({"msg": "La informacion de la factura electronica con el ID: {} no existe".format(id)}), 400
-    return jsonify({"data": single_electinv.serialize()}), 200
+# @app.route("/electronicinvoice/<int:id>", methods=['GET'])
+# def get_single_electinv(id):
+#     single_electinv = ElectronicInvoice.query.get(id)
+#     if single_electinv is None:
+#         return jsonify({"msg": "La informacion de la factura electronica con el ID: {} no existe".format(id)}), 400
+#     return jsonify({"data": single_electinv.serialize()}), 200
 
-@app.route("/course/<int:id>", methods=['GET'])
-def get_single_course(id):
-    single_course = Course.query.get(id)
-    if single_course is None:
-        return jsonify({"msg": "El curso con el ID: {} no existe".format(id)}), 400
-    return jsonify({"data": single_course.serialize()}), 200
+# @app.route("/course/<int:id>", methods=['GET'])
+# def get_single_course(id):
+#     single_course = Course.query.get(id)
+#     if single_course is None:
+#         return jsonify({"msg": "El curso con el ID: {} no existe".format(id)}), 400
+#     return jsonify({"data": single_course.serialize()}), 200
 
-@app.route("/modality/<int:id>", methods=['GET'])
-def get_single_modality(id):
-    single_modality = Modality.query.get(id)
-    if setup_commands is None:
-        return jsonify({"msg": "La modalidad con el ID: {} no existe".format(id)}), 400
-    return jsonify({"data": single_modality.serialize()}), 200
+# @app.route("/modality/<int:id>", methods=['GET'])
+# def get_single_modality(id):
+#     single_modality = Modality.query.get(id)
+#     if setup_commands is None:
+#         return jsonify({"msg": "La modalidad con el ID: {} no existe".format(id)}), 400
+#     return jsonify({"data": single_modality.serialize()}), 200
 
-@app.route("/newcourse/<int:id>", methods=['GET'])
-def get_single_newcourse(id):
-    single_newcourse = NewCourse.query.get(id)
-    if single_newcourse is None:
-        return jsonify({"msg": "El curso registrado con el ID: {} no existe".format(id)}), 400
-    return jsonify({"data": single_newcourse.serialize()}), 200
+# @app.route("/newcourse/<int:id>", methods=['GET'])
+# def get_single_newcourse(id):
+#     single_newcourse = NewCourse.query.get(id)
+#     if single_newcourse is None:
+#         return jsonify({"msg": "El curso registrado con el ID: {} no existe".format(id)}), 400
+#     return jsonify({"data": single_newcourse.serialize()}), 200
 
 #------------------------------------------#
 #App Route para los metodos POST
@@ -238,12 +235,10 @@ def new_admin():
         return jsonify({"msg": "Debes escribir un nombre"}), 400
     if "last_name" not in body:
         return jsonify({"msg": "Debes escribir un apellido"}), 400
-    if "photo" not in body:
-        return jsonify({"msg": "Debes agregar una photo"}), 400
-    if "carID_type" not in body:
+    if "cardID_type" not in body:
         return jsonify({"msg": "Debes seleccionar un tipo de identificacion"}), 400
-    if "number_carID" not in body:
-        return jsonify({"msg": "Debes escribir un numero de identidicacion"}), 400
+    if "number_cardID" not in body:
+        return jsonify({"msg": "Debes escribir un numero de identificacion"}), 400
     if "birthday" not in body:
         return jsonify({"msg": "Debes registrar su nacimiento"}), 400
     if "email" not in body:
@@ -263,8 +258,8 @@ def new_admin():
     new_admin.name = body["name"]
     new_admin.last_name = body["last_name"]
     new_admin.photo = body["photo"]
-    new_admin.carID_type = body["carID_type"]
-    new_admin.number_carID = body["number_carID"]
+    new_admin.cardID_type = body["cardID_type"]
+    new_admin.number_cardID = body["number_cardID"]
     new_admin.birthday = body["birthday"]
     new_admin.email = body["email"]
     new_admin.phone_number = body["phone_number"]
@@ -272,8 +267,11 @@ def new_admin():
     new_admin.canton = body["canton"]
     new_admin.distric = body["distric"]
     new_admin.password = body["password"]
-    db.session.add(new_admin)
-    db.session.commit()
+    try:
+        db.session.add(new_admin)
+        db.session.commit()
+    except Exception as error:
+        return jsonify({"msg": error.args[0]}), 500
 
     return jsonify({"msg": "OK"}), 200
 
@@ -288,10 +286,10 @@ def new_profe():
         return jsonify({"msg": "Debes escribir un apellido"}), 400
     if "photo" not in body:
         return jsonify({"msg": "Debes agregar una photo"}), 400
-    if "carID_type" not in body:
+    if "cardID_type" not in body:
         return jsonify({"msg": "Debes seleccionar un tipo de identificacion"}), 400
-    if "number_carID" not in body:
-        return jsonify({"msg": "Debes escribir un numero de identidicacion"}), 400
+    if "number_cardID" not in body:
+        return jsonify({"msg": "Debes escribir un numero de identificacion"}), 400
     if "birthday" not in body:
         return jsonify({"msg": "Debes registrar su nacimiento"}), 400
     if "email" not in body:
@@ -315,8 +313,8 @@ def new_profe():
     new_profe.name = body["name"]
     new_profe.last_name = body["last_name"]
     new_profe.photo = body["photo"]
-    new_profe.carID_type = body["carID_type"]
-    new_profe.number_carID = body["number_carID"]
+    new_profe.cardID_type = body["cardID_type"]
+    new_profe.number_cardID = body["number_cardID"]
     new_profe.birthday = body["birthday"]
     new_profe.email = body["email"]
     new_profe.phone_number = body["phone_number"]
@@ -342,10 +340,10 @@ def new_stud():
         return jsonify({"msg": "Debes escribir un apellido"}), 400
     if "photo" not in body:
         return jsonify({"msg": "Debes agregar una photo"}), 400
-    if "carID_type" not in body:
+    if "cardID_type" not in body:
         return jsonify({"msg": "Debes seleccionar un tipo de identificacion"}), 400
-    if "number_carID" not in body:
-        return jsonify({"msg": "Debes escribir un numero de identidicacion"}), 400
+    if "number_cardID" not in body:
+        return jsonify({"msg": "Debes escribir un numero de identificacion"}), 400
     if "birthday" not in body:
         return jsonify({"msg": "Debes registrar su nacimiento"}), 400
     if "email" not in body:
@@ -371,8 +369,8 @@ def new_stud():
     new_stud.name = body["name"]
     new_stud.last_name = body["last_name"]
     new_stud.photo = body["photo"]
-    new_stud.carID_type = body["carID_type"]
-    new_stud.number_carID = body["number_carID"]
+    new_stud.cardID_type = body["cardID_type"]
+    new_stud.number_cardID = body["number_cardID"]
     new_stud.birthday = body["birthday"]
     new_stud.email = body["email"]
     new_stud.phone_number = body["phone_number"]
@@ -440,12 +438,12 @@ def new_electinv():
         return jsonify({"msg": "Debes completar toda la informacion para continuar"}), 400
     if "name" not in body:
         return jsonify({"msg": "Debes escribir un nombre"}), 400
-    if "carID_type" not in body:
+    if "cardID_type" not in body:
         return jsonify({"msg": "Debes seleccionar un tipo de identificacion"}), 400
-    if "number_carID" not in body:
-        return jsonify({"msg": "Debes escribir un numero de identidicacion"}), 400
+    if "number_cardID" not in body:
+        return jsonify({"msg": "Debes escribir un numero de identificacion"}), 400
     if "email" not in body:
-        return jsonify({"msg": "El campo email es obligatorio"}), 400
+        return jsonify({"msg": "Debes registrar un correo"}), 400
     if "phone_number" not in body:
         return jsonify({"msg": "Debes registrar un telefono"}), 400
     if "province" not in body:
@@ -459,15 +457,15 @@ def new_electinv():
     
     new_electinv = ElectronicInvoice()
     new_electinv.name = body["name"]
-    new_electinv.carID_type = body["carID_type"]
-    new_electinv.number_carID = body["number_carID"]
+    new_electinv.cardID_type = body["cardID_type"]
+    new_electinv.number_cardID = body["number_cardID"]
     new_electinv = body["email"]
     new_electinv.phone_number = body["phone_number"]
     new_electinv.province = body["province"]
     new_electinv.canton = body["canton"]
     new_electinv = body["distric"]
     new_electinv.student_id = body["student_id"]
-    db.session.add(new_studpay)
+    db.session.add(new_electinv)
     db.session.commit()
 
     return jsonify({"msg": "OK"}), 200
@@ -557,7 +555,7 @@ def update_admin(id):
     if "dstrict" not in body:
         return jsonify({"msg": "Debes escribir un distrito"}), 400
     
-    update_admin = Administrator(id)
+    update_admin = Administrator.query.get(id)
     update_admin.name = body["name"]
     update_admin.last_name = body["last_name"]
     update_admin.photo = body["photo"]
@@ -629,7 +627,7 @@ def update_stud(id):
     if "dstrict" not in body:
         return jsonify({"msg": "Debes escribir un distrito"}), 400
     
-    update_stud = Student()
+    update_stud = Student(id)
     update_stud.name = body["name"]
     update_stud.last_name = body["last_name"]
     update_stud.photo = body["photo"]
@@ -689,9 +687,9 @@ def update_electinv(id):
         return jsonify({"msg": "Debes completar toda la informacion para continuar"}), 400
     if "name" not in body:
         return jsonify({"msg": "Debes escribir un nombre"}), 400
-    if "carID_type" not in body:
+    if "cardID_type" not in body:
         return jsonify({"msg": "Debes seleccionar un tipo de identificacion"}), 400
-    if "number_carID" not in body:
+    if "number_cardID" not in body:
         return jsonify({"msg": "Debes escribir un numero de identidicacion"}), 400
     if "email" not in body:
         return jsonify({"msg": "El campo email es obligatorio"}), 400
@@ -706,8 +704,8 @@ def update_electinv(id):
     
     update_electinv = ElectronicInvoice(id)
     update_electinv.name = body["name"]
-    update_electinv.carID_type = body["carID_type"]
-    update_electinv.number_carID = body["number_carID"]
+    update_electinv.cardID_type = body["cardID_type"]
+    update_electinv.number_cardID = body["number_cardID"]
     update_electinv.email = body["email"]
     update_electinv.phone_number = body["phone_number"]
     update_electinv.province = body["province"]
@@ -761,7 +759,7 @@ def update_newcourse(id):
     if "modality_id" not in body:
         return jsonify({"msg": "Debes seleccionar una modalidad del curso"}), 400
     
-    update_newcourse = NewCourse()
+    update_newcourse = NewCourse(id)
     update_newcourse.professor_id = body["professor_id"]
     update_newcourse.modality_id = body["modality_id"]
     db.session.add(update_newcourse)
