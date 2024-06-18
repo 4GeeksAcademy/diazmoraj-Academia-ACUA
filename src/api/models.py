@@ -10,9 +10,9 @@ class Administrator(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50), nullable=False)
     last_name = db.Column(db.String(50), nullable=False)
-    photo = db.Column(db.String(50), nullable=False)
-    carID_type = db.Column(db.String(50), nullable=False)
-    number_carID = db.Column(db.Integer, unique=True, nullable=False)
+    photo = db.Column(db.String(100), nullable=False)
+    cardID_type = db.Column(db.String(50), nullable=False)
+    number_cardID = db.Column(db.Integer, unique=True, nullable=False)
     birthday = db.Column(db.Date, nullable=False)
     email = db.Column(db.String(50), unique=True, nullable=False)
     phone_number = db.Column(db.Integer, nullable=False)
@@ -31,8 +31,8 @@ class Administrator(db.Model):
             "name": self.name,
             "last_name": self.last_name,
             "photo": self.photo,
-            "carid_type": self.carID_type,
-            "number_carID": self.number_carID,
+            "cardID_type": self.cardID_type,
+            "number_cardID": self.number_cardID,
             "birthday": self.birthday,
             "email": self.email,
             "phone_number": self.phone_number,
@@ -48,9 +48,9 @@ class Professor(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50), nullable=False)
     last_name = db.Column(db.String(50), nullable=False)
-    photo = db.Column(db.String(50), nullable=False)
-    carID_type = db.Column(db.String(50), nullable=False)
-    number_carID = db.Column(db.Integer, unique=True, nullable=False)
+    photo = db.Column(db.String(100), nullable=False)
+    cardID_type = db.Column(db.String(50), nullable=False)
+    number_cardID = db.Column(db.Integer, unique=True, nullable=False)
     birthday = db.Column(db.Date, nullable=False)
     email = db.Column(db.String(50), unique=True, nullable=False)
     phone_number = db.Column(db.Integer, nullable=False)
@@ -71,8 +71,8 @@ class Professor(db.Model):
             "name": self.name,
             "last_name": self.last_name,
             "photo": self.photo,
-            "carid_type": self.carID_type,
-            "number_carID": self.number_carID,
+            "cardID_type": self.cardID_type,
+            "number_cardID": self.number_cardID,
             "birthday": self.birthday,
             "email": self.email,
             "phone_number": self.phone_number,
@@ -88,9 +88,9 @@ class Student(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50), nullable=False)
     last_name = db.Column(db.String(50), nullable=False)
-    photo = db.Column(db.String(50), nullable=False)
-    carID_type = db.Column(db.String(50), nullable=False)
-    number_carID = db.Column(db.Integer, unique=True, nullable=False)
+    photo = db.Column(db.String(100), nullable=False)
+    cardID_type = db.Column(db.String(50), nullable=False)
+    number_cardID = db.Column(db.Integer, unique=True, nullable=False)
     birthday = db.Column(db.Date, nullable=False)
     email = db.Column(db.String(50), unique=True, nullable=False)
     phone_number = db.Column(db.Integer, nullable=False)
@@ -112,8 +112,8 @@ class Student(db.Model):
             "name": self.name,
             "last_name": self.last_name,
             "photo": self.photo,
-            "carid_type": self.carID_type,
-            "number_carID": self.number_carID,
+            "cardID_type": self.cardID_type,
+            "number_cardID": self.number_cardID,
             "birthday": self.birthday,
             "email": self.email,
             "phone_number": self.phone_number,
@@ -165,11 +165,13 @@ class ElectronicInvoice(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50), unique=False, nullable=False)
-    carID_type = db.Column(db.String(50), unique=False, nullable=False)
-    number_carID = db.Column(db.Integer, unique=True, nullable=False)
+    cardID_type = db.Column(db.String(50), unique=False, nullable=False)
+    number_cardID = db.Column(db.Integer, unique=True, nullable=False)
     email = db.Column(db.String(50), unique=True, nullable=False)
     phone_number = db.Column(db.Integer, unique=True, nullable=False)
-    address = db.Column(db.String(250), unique=False, nullable=False)
+    province = db.Column(db.String(50), nullable=False)
+    canton = db.Column(db.String(50), nullable=False)
+    distric = db.Column(db.String(50), nullable=False)
     student_id = db.Column(db.Integer, db.ForeignKey('student.id'))
     student_id_relationship = db.relationship("Student", back_populates="electronic_invoice")
 
@@ -177,11 +179,13 @@ class ElectronicInvoice(db.Model):
         return {
             "id": self.id,
             "name": self.name,
-            "carid_type": self.carID_type,
-            "number_carID": self.number_carID,
+            "cardID_type": self.cardID_type,
+            "number_cardID": self.number_cardID,
             "email": self.email,
             "phone_number": self.phone_number,
-            "address": self.address,
+            "province": self.province,
+            "canton": self.canton,
+            "distric":self.distric,
             "student_id": self.student_id
         }
 
