@@ -535,7 +535,239 @@ def new_newcourse():
 #------------------------------------------------------#
 #App Route para los metodos PUT
 
+@app.route("/administrator/<int:id>", methods=["PUT"])
+def update_admin(id):
+    body = request.get_json(silent=True)
+    if body is None:
+        return jsonify({"msg": "Debes completar toda la informacion para continuar"}), 400
+    if "name" not in body:
+        return jsonify({"msg": "Debes escribir un nombre"}), 400
+    if "last_name" not in body:
+        return jsonify({"msg": "Debes escribir un apellido"}), 400
+    if "photo" not in body:
+        return jsonify({"msg": "Debes agregar una photo"}), 400
+    if "birthday" not in body:
+        return jsonify({"msg": "Debes registrar su nacimiento"}), 400
+    if "phone_number" not in body:
+        return jsonify({"msg": "Debes registrar un telefono"}), 400
+    if "province" not in body:
+        return jsonify({"msg": "Debes escribir una provincia"}), 400
+    if "canton" not in body:
+        return jsonify({"msg": "Debes escribir un canton"}), 400
+    if "dstrict" not in body:
+        return jsonify({"msg": "Debes escribir un distrito"}), 400
+    
+    update_admin = Administrator(id)
+    update_admin.name = body["name"]
+    update_admin.last_name = body["last_name"]
+    update_admin.photo = body["photo"]
+    update_admin.birthday = body["birthday"]
+    update_admin.phone_number = body["phone_number"]
+    update_admin.province = body["province"]
+    update_admin.canton = body["canton"]
+    update_admin.distric = body["distric"]
+    db.session.add(update_admin)
+    db.session.commit()
 
+    return jsonify({"msg": "OK"}), 200
+
+@app.route("/professor/<int:id>", methods=["PUT"])
+def update_profe(id):
+    body = request.get_json(silent=True)
+    if body is None:
+        return jsonify({"msg": "Debes completar toda la informacion para continuar"}), 400
+    if "name" not in body:
+        return jsonify({"msg": "Debes escribir un nombre"}), 400
+    if "last_name" not in body:
+        return jsonify({"msg": "Debes escribir un apellido"}), 400
+    if "photo" not in body:
+        return jsonify({"msg": "Debes agregar una photo"}), 400
+    if "birthday" not in body:
+        return jsonify({"msg": "Debes registrar su nacimiento"}), 400
+    if "phone_number" not in body:
+        return jsonify({"msg": "Debes registrar un telefono"}), 400
+    if "province" not in body:
+        return jsonify({"msg": "Debes escribir una provincia"}), 400
+    if "canton" not in body:
+        return jsonify({"msg": "Debes escribir un canton"}), 400
+    if "dstrict" not in body:
+        return jsonify({"msg": "Debes escribir un distrito"}), 400
+    
+    update_profe = Professor(id)
+    update_profe.name = body["name"]
+    update_profe.last_name = body["last_name"]
+    update_profe.photo = body["photo"]
+    update_profe.birthday = body["birthday"]
+    update_profe.phone_number = body["phone_number"]
+    update_profe.province = body["province"]
+    update_profe.canton = body["canton"]
+    update_profe.distric = body["distric"]
+    db.session.add(update_profe)
+    db.session.commit()
+
+    return jsonify({"msg": "OK"}), 200
+
+@app.route("/student/<int:id>", methods=["PUT"])
+def update_stud(id):
+    body = request.get_json(silent=True)
+    if body is None:
+        return jsonify({"msg": "Debes completar toda la informacion para continuar"}), 400
+    if "name" not in body:
+        return jsonify({"msg": "Debes escribir un nombre"}), 400
+    if "last_name" not in body:
+        return jsonify({"msg": "Debes escribir un apellido"}), 400
+    if "photo" not in body:
+        return jsonify({"msg": "Debes agregar una photo"}), 400
+    if "birthday" not in body:
+        return jsonify({"msg": "Debes registrar su nacimiento"}), 400
+    if "phone_number" not in body:
+        return jsonify({"msg": "Debes registrar un telefono"}), 400
+    if "province" not in body:
+        return jsonify({"msg": "Debes escribir una provincia"}), 400
+    if "canton" not in body:
+        return jsonify({"msg": "Debes escribir un canton"}), 400
+    if "dstrict" not in body:
+        return jsonify({"msg": "Debes escribir un distrito"}), 400
+    
+    update_stud = Student()
+    update_stud.name = body["name"]
+    update_stud.last_name = body["last_name"]
+    update_stud.photo = body["photo"]
+    update_stud.birthday = body["birthday"]
+    update_stud.phone_number = body["phone_number"]
+    update_stud.province = body["province"]
+    update_stud.canton = body["canton"]
+    update_stud.distric = body["distric"]
+    db.session.add(update_stud)
+    db.session.commit()
+
+    return jsonify({"msg": "OK"}), 200
+
+@app.route("/professorpayment/<int:id>", methods=["PUT"])
+def update_profpay(id):
+    body = request.get_json(silent=True)
+    if body is None:
+        return jsonify({"msg": "Debes completar toda la informacion para continuar"}), 400
+    if "payment_method" not in body:
+        return jsonify({"msg": "Debes seleccionar un tipo de pago"}), 400
+    if "phone_number" not in body:
+        return jsonify({"msg": "Debes registrar un telefono"}), 400
+    if "iban_account" not in body:
+        return jsonify({"msg": "Debes registrar una cuenta IBAN"}), 400
+    
+    update_profpay = ProfessorPayment(id)
+    update_profpay.payment_method = body["payment_method"]
+    update_profpay.phone_number = body["phone_number"]
+    update_profpay.iban_account = body["iban_account"]
+    db.session.add(update_profpay)
+    db.session.commit()
+
+    return jsonify({"msg": "OK"}), 200
+
+@app.route("/studentpayment/<int:id>", methods=["PUT"])
+def update_studpay(id):
+    body = request.get_json(silent=True)
+    if body is None:
+        return jsonify({"msg": "Debes completar toda la informacion para continuar"}), 400
+    if "date" not in body:
+        return jsonify({"msg": "Debes registrar una fecha de pago"}), 400
+    if "mount" not in body:
+        return jsonify({"msg": "Debes registrar un monto a pagar"}), 400
+    
+    update_studpay = StudentPayment(id)
+    update_studpay.date = body["date"]
+    update_studpay.mount = body["mount"]
+    db.session.add(update_studpay)
+    db.session.commit()
+
+    return jsonify({"msg": "OK"}), 200
+
+@app.route("/electronicinvoice/<int:id>", methods=["PUT"])
+def update_electinv(id):
+    body = request.get_json(silent=True)
+    if body is None:
+        return jsonify({"msg": "Debes completar toda la informacion para continuar"}), 400
+    if "name" not in body:
+        return jsonify({"msg": "Debes escribir un nombre"}), 400
+    if "carID_type" not in body:
+        return jsonify({"msg": "Debes seleccionar un tipo de identificacion"}), 400
+    if "number_carID" not in body:
+        return jsonify({"msg": "Debes escribir un numero de identidicacion"}), 400
+    if "email" not in body:
+        return jsonify({"msg": "El campo email es obligatorio"}), 400
+    if "phone_number" not in body:
+        return jsonify({"msg": "Debes registrar un telefono"}), 400
+    if "province" not in body:
+        return jsonify({"msg": "Debes escribir una provincia"}), 400
+    if "canton" not in body:
+        return jsonify({"msg": "Debes escribir un canton"}), 400
+    if "dstrict" not in body:
+        return jsonify({"msg": "Debes escribir un distrito"}), 400
+    
+    update_electinv = ElectronicInvoice(id)
+    update_electinv.name = body["name"]
+    update_electinv.carID_type = body["carID_type"]
+    update_electinv.number_carID = body["number_carID"]
+    update_electinv.email = body["email"]
+    update_electinv.phone_number = body["phone_number"]
+    update_electinv.province = body["province"]
+    update_electinv.canton = body["canton"]
+    update_electinv = body["distric"]
+    db.session.add(update_electinv)
+    db.session.commit()
+
+    return jsonify({"msg": "OK"}), 200
+
+@app.route("/course/<int:id>", methods=["PUT"])
+def update_course(id):
+    body = request.get_json(silent=True)
+    if body is None:
+        return jsonify({"msg": "Debes completar toda la informacion para continuar"}), 400
+    if "name" not in body:
+        return jsonify({"msg": "Debes escribir un nombre"}), 400
+    
+    update_course = Course(id)
+    update_course.name = body["name"]
+    db.session.add(update_course)
+    db.session.commit()
+
+    return jsonify({"msg": "OK"}), 200
+
+@app.route("/modality/<int:id>", methods=["PUT"])
+def update_modality(id):
+    body = request.get_json(silent=True)
+    if body is None:
+        return jsonify({"msg": "Debes completar toda la informacion para continuar"}), 400
+    if "name" not in body:
+        return jsonify({"msg": "Debes escribir un nombre"}), 400
+    if "new_course_modality" not in body:
+        return jsonify({"msg": "Debes seleccionar una modalidad del curso"}), 400
+    
+    update_modality = Modality(id)
+    update_modality.name = body["name"]
+    update_modality.new_course_modality = body["new_course_modality"]
+    db.session.add(update_modality)
+    db.session.commit()
+
+    return jsonify({"msg": "OK"}), 200
+
+@app.route("/newcourse/<int:id>", methods=["PUT"])
+def update_newcourse(id):
+    body = request.get_json(silent=True)
+    if body is None:
+        return jsonify({"msg": "Debes completar toda la informacion para continuar"}), 400
+    if "professor_id" not in body:
+        return jsonify({"msg": "Debes seleccionar un profesor"}), 400
+    if "modality_id" not in body:
+        return jsonify({"msg": "Debes seleccionar una modalidad del curso"}), 400
+    
+    update_newcourse = NewCourse()
+    update_newcourse.professor_id = body["professor_id"]
+    update_newcourse.modality_id = body["modality_id"]
+    db.session.add(update_newcourse)
+    db.session.commit()
+
+    return jsonify({"msg": "OK"}), 200
 
 # this only runs if `$ python src/main.py` is executed
 if __name__ == '__main__':
