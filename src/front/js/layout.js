@@ -9,7 +9,7 @@ import { NavbarProfessor } from "./pages/NavbarProfessor";
 import { NavbarStudent } from "./pages/NavbarStudent";
 
 import { LogIn } from "./pages/LogIn"
-import { SigUp } from "./pages/SigUp";
+import { SignUp } from "./pages/SignUp";
 
 import { HomeACUA } from "./pages/HomeACUA";
 import { HomeAdmin } from "./pages/HomeAdmin";
@@ -55,7 +55,7 @@ const Layout = () => {
                         <Route element={<NavbarStudent />} path="/NavbarStudent"/>
 
                         <Route element={<LogIn />} path="/LogIn"/>
-                        <Route element={<SigUp />} path="/SigUp"/>
+                        <Route element={<SignUp />} path="/SigUp"/>
 
                         <Route element={<HomeACUA />} path="/"/>
                         <Route element={<HomeAdmin />} path="/"/>
