@@ -5,16 +5,9 @@ export const CardStudentProfessor = () => {
     return (
         <div className="card" style={{ width: '20rem' }}>
             <div className="container card-header fw-bold">
-                <div className="row">
-                    <div className="col">
-                        <span className="fs-4">Roberto Antillón</span>
-                    </div>
-                    <div className="col">
-                        <button type="button" className="btn btn-small btn-warning fs-5 fw-lighter text-dark text-start rounded-pill">Ver más<i className="ms-2 fa-solid fa-angles-right"></i></button>
-                    </div>
-                </div>
+                <span className="fs-4">Greiza García</span>
             </div>
-            <img src="https://i.imgur.com/mJV2l8W.jpeg" className="card-img-top" />
+            <img src="https://cdn3.iconfinder.com/data/icons/books-and-reading/512/Artboard_2_copy_3-512.png" className="card-img-top" />
             <div className="card-body">
                 <table className="table table-borderless">
                     <tr>
