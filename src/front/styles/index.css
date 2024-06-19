@@ -1,3 +1,16 @@
-/* 
-    General Styles used on every website (Don't Repeat Yourself)
-*/
+.jumbo {
+    background-image: url("https://i.imgur.com/a5WaDgo.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100px;
+}
+
+.logo {
+    width: 150px;
+    height: 70px;
+}
+
+.footer {
+    height: 100px;
+}
