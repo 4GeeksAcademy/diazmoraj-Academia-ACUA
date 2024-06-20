@@ -492,12 +492,11 @@ def new_course():
         return jsonify({"msg": "Debes completar toda la informacion para continuar"}), 400
     if "name" not in body:
         return jsonify({"msg": "Debes escribir un nombre"}), 400
-    if "new_course" not in body:
-        return jsonify({"msg": "Debes seleccionar un nuevo curso"}), 400
+
     
     new_course = Course()
     new_course.name = body["name"]
-    new_course.new_course = body["new_course"]
+
     try:
         db.session.add(new_course)
         db.session.commit()
@@ -513,12 +512,10 @@ def new_modality():
         return jsonify({"msg": "Debes completar toda la informacion para continuar"}), 400
     if "name" not in body:
         return jsonify({"msg": "Debes escribir un nombre"}), 400
-    if "new_course_modality" not in body:
-        return jsonify({"msg": "Debes seleccionar una modalidad del curso"}), 400
     
     new_modality = Modality()
     new_modality.name = body["name"]
-    new_modality.new_course_modality = body["new_course_modality"]
+
     try:
         db.session.add(new_modality)
         db.session.commit()
@@ -783,12 +780,9 @@ def update_modality(id):
         return jsonify({"msg": "Debes completar toda la informacion para continuar"}), 400
     if "name" not in body:
         return jsonify({"msg": "Debes escribir un nombre"}), 400
-    if "new_course_modality" not in body:
-        return jsonify({"msg": "Debes seleccionar una modalidad del curso"}), 400
     
     update_modality = Modality.query.get(id)
     update_modality.name = body["name"]
-    update_modality.new_course_modality = body["new_course_modality"]
     try:
         db.session.add(update_modality)
         db.session.commit()
