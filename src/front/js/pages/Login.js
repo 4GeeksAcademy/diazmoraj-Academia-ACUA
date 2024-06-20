@@ -6,22 +6,22 @@ const Login = () => {
     return (
 
         <div className="contenedor">
-            <div>
-                <div>
-                    <div>
-                        <h1>Ingresar</h1>
+            <div className="central">
+                <div className="login">
+                    <div className="titulo">
+                        <h3>Ingresar</h3>
                     </div>
                     <div>
-                        <label>Usuario</label>
+                        <label>Usuario</label><br></br>
                         <input></input>
                         <label>Contraseña</label>
                         <input></input>
                     </div>
-                    <div>
-                        <button className="btn btn-success">Ingresar</button>
+                    <div className="boton">
+                        <button className="btn btn-warning">Ingresar</button>
                     </div>
-                    <div>
-                        <h6><a href="https://www.freecodecamp.org/">Olvidar Contraseña</a></h6>
+                    <div className="link">
+                        <h6><a href="https://www.google.com/">¿Olvidaste la Contraseña?</a></h6>
                     </div>
                 </div>
             </div>
