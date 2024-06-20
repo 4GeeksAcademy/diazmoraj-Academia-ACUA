@@ -7,7 +7,7 @@
 }
 
 .logo {
-    height: 100px;
+    height: 80px;
 }
 
 .footer {
@@ -25,12 +25,19 @@ body{
 
 #loginButton{
     border-radius: 40px;
-    padding: 5px;
+    padding-top: 7px;
     width: 100px;
     height: 40px;
     background-color: #ffc224;
     border: 2px solid #d0a42e;
     text-align: center;
+}
+
+#loginButton:hover{
+    cursor: pointer;
+    border: 2px solid #5751e1;
+    color:#5751e1;
+    transition: ease-out 0.2s;
 }
 
 .nav-link{
@@ -56,6 +63,6 @@ body{
         display: none;
     }
     .navbar-nav{
-        gap: 55px;
+        gap: 60px;
     }
 }
