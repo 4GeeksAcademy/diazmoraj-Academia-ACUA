@@ -1,6 +1,7 @@
 import React from 'react'
 import { NavbarACUA } from '../component/NavbarACUA'
 import { CircleIcon } from '../component/CircleIcon'
+import { MultiButton } from '../component/MultiButton'
 
 const HomeACUA = () => {
 
@@ -13,8 +14,9 @@ const HomeACUA = () => {
             <div className="boxPoints">
               <img className='pointsUpper' src="https://i.imgur.com/hJ1Q7yE.png" alt="" />
             </div>
-            <h1 className='actuaTitle' id='bannerTitle'>ACUA</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam nobis nesciunt alias consequuntur debitis hic excepturi id rem aut, expedit</p>
+            <h1 className='acuaTitle' id='bannerTitle'>ACUA</h1>
+            <p className='acuaShortResume'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam nobis nesciunt alias consequuntur debitis hic excepturi id rem aut, expedit</p>
+            <MultiButton color='purple' text='Suscribete!' width='160' />
           </div>
         </div>
         <div className="imageBox">
@@ -31,14 +33,16 @@ const HomeACUA = () => {
             </div>
           </div>
           <div className="cardFollowers p-2" id='secondCard'>
-            <div className="firstUser">
+            <div className="firstUser d-flex flex-row align-items-center justify-content-around pe-2">
               <CircleIcon imageURL="https://i.imgur.com/z1ePcdj.png" height='45' padding='2' />
+              <p className='mediumWeight pt-1'>Queen Latifah</p>
             </div>
-            <div className="secondUser">
+            <div className="secondUser d-flex flex-row align-items-center justify-content-around pe-2">
               <CircleIcon imageURL="https://i.imgur.com/yAnz4w2.png" height='45' padding='2' />
+              <p className='mediumWeight pt-1'>Michel Jones</p>
             </div>
           </div>
-
+          <img className='arrowPng' src="https://i.imgur.com/DBQCFkR.png" alt="" />
           <img className='bannerImage bannerImageSize' src="https://i.imgur.com/pOowMpC.png" alt="acua-member-with-guitar" />
         </div>
       </div>

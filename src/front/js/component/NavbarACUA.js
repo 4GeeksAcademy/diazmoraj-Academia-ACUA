@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 
 export const NavbarACUA = () => {
 	return (
-		<nav className="navbar navbar-expand-lg bg-white">
+		<nav className="navbar navbar-expand-lg bg-white pt-3">
 			<div className="container-fluid">
 				<span className="navbar-brand ps-4" href="#">
 					<img src="https://i.imgur.com/RPBpym9.png" alt="Bootstrap" className="logo" />

@@ -23,7 +23,17 @@ body{
     font-weight: 600;
 }
 
+#multiButton{
+    border-radius: 40px;
+    padding-top: 9px;
+    height: 40px;
+    text-align: center;
+}
 
+#multiButton:hover{
+    transition: ease-in 0.3s;
+    transform: translateY(-3px);
+}
 
 #loginButton{
     border-radius: 40px;
@@ -65,13 +75,18 @@ body{
         display: none;
     }
     #bannerTitle{
-        font-size: 85px;
+        font-size: 100px;
+        margin: auto;
     }
     .pointsUpper{
         position: absolute;
         top: -60px;
         left: 195px;
         height: 80px;
+    }
+    .portraitBox{
+        margin-right: 30px;
+        padding-right: 30px;
     }
 }
 
@@ -198,8 +213,17 @@ body{
     background: #FFFFFF;
     box-shadow: 9px 10px 0px rgba(0, 0, 0, 0.2);
     border-radius: 6px;
+    z-index: 3;
 }
 
+.arrowPng{
+    z-index: 2;
+    position: absolute;
+    height: 80px;
+    left: 220px;
+    top: 100px;
+    transform: rotate(200deg);
+}
 
 .mediumWeight{
     font-weight: 600;
