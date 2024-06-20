@@ -9,7 +9,7 @@ import { NavbarProfessor } from "./pages/NavbarProfessor";
 import { NavbarStudent } from "./pages/NavbarStudent";
 
 import { LogIn } from "./pages/LogIn"
-import { SignUp } from "./pages/SignUp";
+import SignUp from "./pages/SignUp";
 
 import { HomeACUA } from "./pages/HomeACUA";
 import { HomeAdmin } from "./pages/HomeAdmin";
@@ -28,6 +28,7 @@ import { ElectronicInvoice } from "./pages/ElectronicInvoice";
 import { Modality } from "./pages/Modality";
 import { NewCourse } from "./pages/NewCourse";
 import injectContext from "./store/appContext";
+import FormProfessor from "./pages/FormProfessor";
 
 import { Footer } from "./component/Footer";
 
@@ -47,7 +48,9 @@ const Layout = () => {
                     <Routes>
 
                         <Route path="/" element={<HomeStudent />} />
+                        <Route element={<SignUp />} path="/signup"/>
                         <Route path="*" element={<h1>Not found!</h1>} />
+                        <Route element={<FormProfessor />} path="/formprofessor"/>
 
                         {/* <Route element={<NavbarACUA />} path="/NavbarACUA"/>
                         <Route element={<NavbarAdmin />} path="/NavbarAdmin"/>
@@ -55,7 +58,7 @@ const Layout = () => {
                         <Route element={<NavbarStudent />} path="/NavbarStudent"/>
 
                         <Route element={<LogIn />} path="/LogIn"/>
-                        <Route element={<SignUp />} path="/SigUp"/>
+                  
 
                         <Route element={<HomeACUA />} path="/"/>
                         <Route element={<HomeAdmin />} path="/"/>
