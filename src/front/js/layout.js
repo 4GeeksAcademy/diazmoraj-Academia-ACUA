@@ -11,7 +11,6 @@ import { NavbarStudent } from "./pages/NavbarStudent";
 import  Login  from "./pages/Login"
 import { SignUp } from "./pages/SignUp";
 
-
 import  HomeACUA  from "./pages/HomeACUA";
 import { HomeAdmin } from "./pages/HomeAdmin";
 import { HomeProfessor } from "./pages/HomeProfessor";
@@ -45,6 +44,7 @@ const Layout = () => {
         <div>
             <BrowserRouter basename={basename}>
                 <ScrollToTop>
+
                     <NavbarStudent />
                     <NavbarProfessor />
                     <Routes>
@@ -84,7 +84,9 @@ const Layout = () => {
                         <Route element={<h1>Not found!</h1>} />
                          */}
                     </Routes>
-                    <Footer />
+                    {
+                        //<Footer />
+                    }
                 </ScrollToTop>
             </BrowserRouter>
         </div>
