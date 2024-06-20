@@ -193,6 +193,9 @@ class Course(db.Model):
     name = db.Column(db.String(50), nullable=False)
     new_course = db.relationship("NewCourse", back_populates="course_id_relationship")
 
+    def __repr__(self):
+        return 'Curso: {}'.format(self.name)
+
     def serialize(self):
         return {
             "id": self.id,
@@ -205,6 +208,9 @@ class Modality(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50), nullable=False)
     new_course_modality = db.relationship("NewCourse", back_populates="modality_id_relationship")
+
+    def __repr__(self):
+        return 'Modalidad: {}'.format(self.name)
 
     def serialize(self):
         return {
@@ -225,11 +231,14 @@ class NewCourse(db.Model):
     course_id = db.Column(db.Integer, db.ForeignKey('course.id'))
     course_id_relationship = db.relationship("Course", back_populates="new_course")
 
+    def __repr__(self):
+        return f"Estudiante: {self.student_id} -> Inscrito a nuevo curso de {self.course_id} con profesor {self.professor_id}"
+
     def serialize(self):
         return {
             "id": self.id,
             "professor_id": self.professor_id,
-            "studentid": self.student_id,
+            "student_id": self.student_id,
             "modality_id": self.modality_id,
             "course_id": self.course_id
         }
