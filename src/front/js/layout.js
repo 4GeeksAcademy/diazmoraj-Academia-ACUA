@@ -8,7 +8,7 @@ import { NavbarAdmin } from "./pages/NavbarAdmin";
 import { NavbarProfessor } from "./pages/NavbarProfessor";
 import { NavbarStudent } from "./pages/NavbarStudent";
 
-import { LogIn } from "./pages/LogIn"
+import  Login  from "./pages/Login"
 import { SignUp } from "./pages/SignUp";
 
 import { HomeACUA } from "./pages/HomeACUA";
@@ -47,6 +47,7 @@ const Layout = () => {
                     <Routes>
 
                         <Route path="/" element={<HomeStudent />} />
+                        <Route element={<Login />} path="/Login"/>
                         <Route path="*" element={<h1>Not found!</h1>} />
 
                         {/* <Route element={<NavbarACUA />} path="/NavbarACUA"/>
@@ -54,7 +55,6 @@ const Layout = () => {
                         <Route element={<NavbarProfessor />} path="/NavbarProfessor"/>
                         <Route element={<NavbarStudent />} path="/NavbarStudent"/>
 
-                        <Route element={<LogIn />} path="/LogIn"/>
                         <Route element={<SignUp />} path="/SigUp"/>
 
                         <Route element={<HomeACUA />} path="/"/>
