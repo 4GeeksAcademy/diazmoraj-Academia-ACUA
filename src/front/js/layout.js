@@ -11,7 +11,7 @@ import { NavbarStudent } from "./pages/NavbarStudent";
 import  Login  from "./pages/Login"
 import { SignUp } from "./pages/SignUp";
 
-import { HomeACUA } from "./pages/HomeACUA";
+import  HomeACUA  from "./pages/HomeACUA";
 import { HomeAdmin } from "./pages/HomeAdmin";
 import { HomeProfessor } from "./pages/HomeProfessor";
 import { HomeStudent } from "./pages/HomeStudent";
@@ -43,12 +43,15 @@ const Layout = () => {
         <div>
             <BrowserRouter basename={basename}>
                 <ScrollToTop>
-                    <NavbarStudent />
+                    {
+                    //<NavbarStudent />
+                    }
                     <Routes>
 
                         <Route path="/" element={<HomeStudent />} />
                         <Route element={<Login />} path="/Login"/>
                         <Route path="*" element={<h1>Not found!</h1>} />
+                        <Route path="/homeacua" element={<HomeACUA />} />
 
                         {/* <Route element={<NavbarACUA />} path="/NavbarACUA"/>
                         <Route element={<NavbarAdmin />} path="/NavbarAdmin"/>
