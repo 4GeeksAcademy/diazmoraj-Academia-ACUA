@@ -3,13 +3,33 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 import { BackendURL } from "./component/backendURL";
 
-import { Home } from "./pages/home";
-import { Demo } from "./pages/demo";
-import { Single } from "./pages/single";
+import { NavbarACUA } from "./component/NavbarACUA";
+import { NavbarAdmin } from "./pages/NavbarAdmin";
+import { NavbarProfessor } from "./pages/NavbarProfessor";
+import { NavbarStudent } from "./pages/NavbarStudent";
+
+import { LogIn } from "./pages/LogIn"
+import { SignUp } from "./pages/SignUp";
+
+import { HomeACUA } from "./pages/HomeACUA";
+import { HomeAdmin } from "./pages/HomeAdmin";
+import { HomeProfessor } from "./pages/HomeProfessor";
+import { HomeStudent } from "./pages/HomeStudent";
+
+import { InfoAdmin } from "./pages/InfoAdmin";
+import { InfoProfessor } from "./pages/InfoProfessor";
+import { InfoStudent } from "./pages/InfoStudent";
+
+import { ProfessorPayment } from "./pages/ProfessorPayment";
+import { StudentPayment } from "./pages/StudentPayment";
+
+import { Course } from "./pages/Course";
+import { ElectronicInvoice } from "./pages/ElectronicInvoice";
+import { Modality } from "./pages/Modality";
+import { NewCourse } from "./pages/NewCourse";
 import injectContext from "./store/appContext";
 
-import { Navbar } from "./component/navbar";
-import { Footer } from "./component/footer";
+import { Footer } from "./component/Footer";
 
 //create your first component
 const Layout = () => {
@@ -17,18 +37,45 @@ const Layout = () => {
     // you can set the basename on the .env file located at the root of this project, E.g: BASENAME=/react-hello-webapp/
     const basename = process.env.BASENAME || "";
 
-    if(!process.env.BACKEND_URL || process.env.BACKEND_URL == "") return <BackendURL/ >;
+    if (!process.env.BACKEND_URL || process.env.BACKEND_URL == "") return <BackendURL />;
 
     return (
         <div>
             <BrowserRouter basename={basename}>
                 <ScrollToTop>
-                    <Navbar />
+                    <NavbarStudent />
                     <Routes>
-                        <Route element={<Home />} path="/" />
-                        <Route element={<Demo />} path="/demo" />
-                        <Route element={<Single />} path="/single/:theid" />
+
+                        <Route path="/" element={<HomeStudent />} />
+                        <Route path="*" element={<h1>Not found!</h1>} />
+
+                        {/* <Route element={<NavbarACUA />} path="/NavbarACUA"/>
+                        <Route element={<NavbarAdmin />} path="/NavbarAdmin"/>
+                        <Route element={<NavbarProfessor />} path="/NavbarProfessor"/>
+                        <Route element={<NavbarStudent />} path="/NavbarStudent"/>
+
+                        <Route element={<LogIn />} path="/LogIn"/>
+                        <Route element={<SignUp />} path="/SigUp"/>
+
+                        <Route element={<HomeACUA />} path="/"/>
+                        <Route element={<HomeAdmin />} path="/"/>
+                        <Route element={<HomeProfessor />} path="/"/>
+                        <Route element={<HomeStudent />} path="/"/>
+
+                        <Route element={<InfoAdmin />} path="/InfoAdmin"/>
+                        <Route element={<InfoProfessor />} path="/InfoProfessor"/>
+                        <Route element={<InfoStudent />} path="/InfoStudent"/>
+
+                        <Route element={<ProfessorPayment />} path="/ProfessorPayment"/>
+                        <Route element={<StudentPayment />} path="/StudentPayment"/>
+
+                        <Route element={<Course />} path="/Course" />
+                        <Route element={<ElectronicInvoice />} path="/ElectronicInvoice" />
+                        <Route element={<Modality />} path="/Modality" />
+                        <Route element={<NewCourse />} path="/NewCourse" />
+
                         <Route element={<h1>Not found!</h1>} />
+                         */}
                     </Routes>
                     <Footer />
                 </ScrollToTop>
