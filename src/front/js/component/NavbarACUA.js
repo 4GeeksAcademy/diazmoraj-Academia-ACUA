@@ -11,7 +11,7 @@ export const NavbarACUA = () => {
 				<span className="navbar-brand ps-4" href="#">
 					<img src="https://i.imgur.com/RPBpym9.png" alt="Bootstrap" className="logo" />
 				</span>
-				<div className="button me-4">
+				<div className="button me-5">
 					<button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" onChange={(e) => { console.log(e) }}>
 						<i className="fa-solid fa-bars" style={{ fontSize: '35px' }}></i>
 					</button>
@@ -32,10 +32,10 @@ export const NavbarACUA = () => {
 						<li className="nav-item">
 							<p className="nav-link" href="#">Contacto</p>
 						</li>
-						<li className="nav-item showButton"> <LogButton text="Login" /> </li>
+						<li className="nav-item liLoginButton"> <LogButton text="Login" /> </li>
 					</ul>
 				</div>
-				<div className=" hiddeButton me-5">
+				<div className=" externalLoginButton me-5">
 					<LogButton text="Login" />
 				</div>
 			</div>

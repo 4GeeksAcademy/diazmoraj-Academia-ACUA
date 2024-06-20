@@ -15,13 +15,15 @@
 }
 
 body{
-    font-family: 'Roboto', Sans-serif;
+    font-family: 'Poppins', Sans-serif;
 }
 
 .navbar{
-    font-family: 'Roboto', Sans-serif;
+    font-family: 'Poppins', Sans-serif;
     font-weight: 600;
 }
+
+
 
 #loginButton{
     border-radius: 40px;
@@ -49,20 +51,85 @@ body{
     color: #5751e1
 }
 
-@media screen and (max-width: 990px) {
-    .hiddeButton{
+@media screen and (max-width: 1280px) {
+    .externalLoginButton{
         display: none;
     }
     .navbar-nav{
-        gap: 10px;
+        gap: 20px;
+    }
+    .bannerImageSize{
+        display: none;
     }
 }
 
-@media screen and (min-width: 990px){
-    .showButton{
+@media screen and (min-width: 1280px){
+    .liLoginButton{
         display: none;
     }
     .navbar-nav{
         gap: 60px;
     }
+    
+    .bannerImageSize{
+        height: 420px;
+        /*
+        bottom: 145px;
+        left: 37%;
+        */
+    }
+}
+
+@media screen and (min-width: 2048px){
+    .liLoginButton{
+        display: none;
+    }
+    .navbar-nav{
+        gap: 60px;
+    }
+    
+    .bannerImageSize{
+        height: 500px;
+        /*
+        bottom: 50px;
+        left: 45%;
+        */
+    }
+    
+}
+
+
+.bannerAcua{
+    background-color: red;
+    height: 450px;
+    margin-top: 30px;
+    gap: 180px;
+    /*
+    position: absolute;
+    */
+    z-index: 2;
+}
+
+.bannerImage{
+    /*
+    position: relative;
+    */
+    z-index: 1;
+}
+
+.portraitBox{
+    max-width: 420px;
+    padding-bottom: 105px;
+    margin-left: 40px;
+    padding-left: 30px;
+}
+
+#bannerTitle{
+    font-size: 140px;
+    font-family: 'poppins', sans-serif;
+    font-weight: 700;
+}
+
+.portraitPrimaryColor{
+    color: #161439;
 }
