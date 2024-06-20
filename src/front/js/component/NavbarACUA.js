@@ -19,7 +19,7 @@ export const NavbarACUA = () => {
 				<div className="collapse navbar-collapse justify-content-center" id="navbarNav" style={{
 					paddingRight: '75px'
 				}}>
-					<ul className="navbar-nav fw-semibold fs-6 flex-wrap-reverse justify-content-center mt-3">
+					<ul className="navbar-nav fw-semibold fs-6 flex-wrap-reverse justify-content-center mt-3 portraitPrimaryColor">
 						<li className="nav-item">
 							<p className="nav-link" aria-current="page" href="#">Inicio</p>
 						</li>
