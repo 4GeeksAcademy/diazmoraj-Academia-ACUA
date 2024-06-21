@@ -2,6 +2,7 @@ import React from 'react'
 import { NavbarACUA } from '../component/NavbarACUA'
 import { CircleIcon } from '../component/CircleIcon'
 import { MultiButton } from '../component/MultiButton'
+import { Carousel } from '../component/Carousel'
 
 const HomeACUA = () => {
 
@@ -15,7 +16,7 @@ const HomeACUA = () => {
               <img className='pointsUpper' src="https://i.imgur.com/hJ1Q7yE.png" alt="" />
             </div>
             <h1 className='acuaTitle' id='bannerTitle'>ACUA</h1>
-            <p className='acuaShortResume'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam nobis nesciunt alias consequuntur debitis hic excepturi id rem aut, expedit</p>
+            <p className='acuaShortResume mb-4'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam nobis nesciunt alias consequuntur debitis hic excepturi id rem aut, expedit</p>
             <MultiButton color='purple' text='Suscribete!' width='160' />
           </div>
         </div>
@@ -46,6 +47,15 @@ const HomeACUA = () => {
           <img className='bannerImage bannerImageSize' src="https://i.imgur.com/pOowMpC.png" alt="acua-member-with-guitar" />
         </div>
       </div>
+      <section className="ourProfessors" style={{ marginTop: '70px' }}>
+        <div className="professorsTitleBox d-flex flex-column align-items-center">
+          <h2 className='portraitPrimaryColor bigWeight fs-1'>Nuestros Profesores</h2>
+          <p className='text-secondary mt-0'>¡Conoce quien esta detras de nuestra formacion!</p>
+        </div>
+        <div className="carousel container pb-3 mt-3">
+          <Carousel />
+        </div>
+      </section>
     </React.Fragment>
   )
 }

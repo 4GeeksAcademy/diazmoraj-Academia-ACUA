@@ -81,11 +81,11 @@ body{
     .pointsUpper{
         position: absolute;
         top: -60px;
-        left: 195px;
+        left: 230px;
         height: 80px;
     }
     .portraitBox{
-        margin-right: 30px;
+        margin-right: 40px;
         padding-right: 30px;
     }
 }
@@ -106,14 +106,18 @@ body{
         */
     }
     #bannerTitle{
-        font-size: 140px;
+        font-size: 130px;
     }
 
     .pointsUpper{
         position: absolute;
-        top: -55px;
-        left: 360px;
-        height: 100px;
+        top: -40px;
+        left: 320px;
+        height: 90px;
+    }
+    .portraitBox{
+        padding-left: 200px;
+        
     }
 }
 
@@ -148,9 +152,9 @@ body{
 .bannerAcua{
     background: rgb(231,229,237);
     background: linear-gradient(90deg, rgba(231,229,237,1) 0%, rgba(246,235,249,1) 23%, rgba(251,251,255,1) 49%, rgba(246,235,249,1) 79%, rgba(215,210,226,1) 100%);
-    height: 450px;
+    height: 480px;
     margin-top: 30px;
-    gap: 180px;
+    gap: 170px;
     /*
     position: absolute;
     */
@@ -227,4 +231,24 @@ body{
 
 .mediumWeight{
     font-weight: 600;
+}
+
+.bigWeight{
+    font-weight: 700;
+}
+
+.swiper {
+    width: 80vw;
+    height: 60%;
+}
+
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    border-radius: 20px;
+    padding: 10px;
+}
+
+.cardProff{
+    box-shadow: rgba(14, 63, 126, 0.06) 0px 0px 0px 1px, rgba(42, 51, 70, 0.03) 0px 1px 1px -0.5px, rgba(42, 51, 70, 0.04) 0px 2px 2px -1px, rgba(42, 51, 70, 0.04) 0px 3px 3px -1.5px, rgba(42, 51, 70, 0.03) 0px 5px 5px -2.5px, rgba(42, 51, 70, 0.03) 0px 10px 10px -5px, rgba(42, 51, 70, 0.03) 0px 24px 24px -8px;
 }
