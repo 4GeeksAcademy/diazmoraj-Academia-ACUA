@@ -51,6 +51,9 @@ const Layout = () => {
                     <Routes>
 
                         <Route path="/" element={<HomeStudent />} />
+                        <Route path="/" element={<HomeProfessor />} />
+                        <Route path="/" element={<HomeAdmin />} />
+                        <Route element={<Login />} path="/Login" />
                         <Route element={<SignUp />} path="/signup" />
                         <Route path="*" element={<h1>Not found!</h1>} />
                         <Route element={<FormProfessor />} path="/formprofessor" />
