@@ -7,10 +7,55 @@
 }
 
 .logo {
-    width: 150px;
-    height: 70px;
+    height: 100px;
 }
 
 .footer {
     height: 100px;
+}
+
+body{
+    font-family: 'Roboto', Sans-serif;
+}
+
+.navbar{
+    font-family: 'Roboto', Sans-serif;
+    font-weight: 600;
+}
+
+#loginButton{
+    border-radius: 40px;
+    padding: 5px;
+    width: 100px;
+    height: 40px;
+    background-color: #ffc224;
+    border: 2px solid #d0a42e;
+    text-align: center;
+}
+
+.nav-link{
+    color: black;
+}
+
+.nav-link:hover{
+    cursor: pointer;
+    color: #5751e1
+}
+
+@media screen and (max-width: 990px) {
+    .hiddeButton{
+        display: none;
+    }
+    .navbar-nav{
+        gap: 10px;
+    }
+}
+
+@media screen and (min-width: 990px){
+    .showButton{
+        display: none;
+    }
+    .navbar-nav{
+        gap: 55px;
+    }
 }

@@ -6,21 +6,21 @@ export const HomeStudent = () => (
 	<div className="container-fluid">
 		<div className="d-flex align-content-center justify-content-center mb-3 mt-3 py-4 jumbo rounded-3">
 			<div className="container-fluid align-content-center">
-				<h4 className="py-2 ps-5 ms-5 fs-2 fw-bold">Mis Cursos</h4>
+				<h4 className="py-2 ps-5 ms-5 fs-3 fw-bold">Mis Cursos</h4>
 			</div>
 		</div>
 		<div className="continer-fluid d-flex ps-5 ms-5">
 			<div>
 				<div className="card" style={{ width: '20rem' }}>
-					<div className="card-header fs-4 fw-bold">
+					<div className="card-header fs-5 fw-bold">
 						Guitarra Eléctrica
 					</div>
-					<img src="https://th.bing.com/th/id/OIP.nyAhZ9G7WJaZiFMpeW5GMQHaHV?rs=1&pid=ImgDetMain" className="card-img-top" />
+					<img src="https://images-na.ssl-images-amazon.com/images/I/71Oo2ZKroFL._AC_SL1500_.jpg" className="card-img-top" />
 					<div className="card-body">
 						<table className="table table-borderless">
 							<tr>
-								<td className="text-secondary fs-4 fw-semibold">Profesor</td>
-								<td className="fw-lighter fs-4">Roberto Antillón</td>
+								<td className="text-secondary fs-5 fw-semibold">Profesor</td>
+								<td className="fw-lighter fs-5">Roberto Antillón</td>
 							</tr>
 						</table>
 					</div>
@@ -32,7 +32,7 @@ export const HomeStudent = () => (
 		</div>
 		<div className="d-flex align-content-center justify-content-center mb-3 mt-3 py-4 jumbo rounded-3">
 			<div className="container-fluid align-content-center">
-				<h4 className="py-2 ps-5 ms-5 fs-2 fw-bold">Mis Profesores</h4>
+				<h4 className="py-2 ps-5 ms-5 fs-3 fw-bold">Mis Profesores</h4>
 			</div>
 		</div>
 		<div className="continer-fluid d-flex ps-5 ms-5">
@@ -40,10 +40,10 @@ export const HomeStudent = () => (
 				<div className="container card-header fw-bold">
 					<div className="row">
 						<div className="col">
-							<span className="fs-4">Roberto Antillón</span>
+							<span className="fs-5">Roberto Antillón</span>
 						</div>
 						<div className="col">
-							<button type="button" className="btn btn-small btn-warning fs-5 fw-lighter text-dark text-start rounded-pill">Ver más<i className="ms-2 fa-solid fa-angles-right"></i></button>
+							<button type="button" className="btn btn-small btn-warning fs-6 fw-lighter text-dark text-start rounded-pill">Ver más<i className="ms-2 fa-solid fa-angles-right"></i></button>
 						</div>
 					</div>
 				</div>
@@ -51,8 +51,8 @@ export const HomeStudent = () => (
 				<div className="card-body">
 					<table className="table table-borderless">
 						<tr>
-							<td className="text-secondary fs-4 fw-semibold">Curso</td>
-							<td className="fw-lighter fs-4">Guitarra Eléctrica</td>
+							<td className="text-secondary fs-5 fw-semibold">Curso</td>
+							<td className="fw-lighter fs-5">Guitarra Eléctrica</td>
 						</tr>
 					</table>
 				</div>
@@ -60,10 +60,10 @@ export const HomeStudent = () => (
 		</div>
 		<div className="d-flex align-content-center justify-content-center mb-3 mt-3 py-4 jumbo rounded-3">
 			<div className="container-fluid align-content-center">
-				<h4 className="py-2 ps-5 ms-5 fs-2 fw-bold">Mi próximo pago</h4>
+				<h4 className="py-2 ps-5 ms-5 fs-3 fw-bold">Mi próximo pago</h4>
 			</div>
 		</div>
-		<div className="continer-fluid d-flex ps-5 ms-5">
+		<div className="continer-fluid d-flex ps-5 my-5">
 			<div className="card" style={{ width: '28rem' }}>
 				<div className="container d-flex card-body">
 					<table className="table table-borderless">
