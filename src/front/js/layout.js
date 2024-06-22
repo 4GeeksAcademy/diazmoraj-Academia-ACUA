@@ -28,6 +28,7 @@ import { ElectronicInvoice } from "./pages/ElectronicInvoice";
 import { Modality } from "./pages/Modality";
 import { NewCourse } from "./pages/NewCourse";
 import injectContext from "./store/appContext";
+import FormProfessor from "./pages/FormProfessor";
 
 import { Footer } from "./component/Footer";
 
@@ -43,6 +44,7 @@ const Layout = () => {
         <div>
             <BrowserRouter basename={basename}>
                 <ScrollToTop>
+
                     <NavbarStudent />
                     <NavbarProfessor />
                     <NavbarAdmin />
@@ -52,8 +54,13 @@ const Layout = () => {
                         <Route path="/" element={<HomeProfessor />} />
                         <Route path="/" element={<HomeAdmin />} />
                         <Route element={<Login />} path="/Login" />
+                        <Route element={<SignUp />} path="/signup" />
                         <Route path="*" element={<h1>Not found!</h1>} />
+                        <Route element={<FormProfessor />} path="/formprofessor" />
+                        <Route element={<Login />} path="/Login" />
                         <Route path="/homeacua" element={<HomeACUA />} />
+                        <Route element={<ElectronicInvoice />} path="/ElectronicInvoice" />
+
 
                         {/* <Route element={<NavbarACUA />} path="/NavbarACUA"/>
                         <Route element={<NavbarAdmin />} path="/NavbarAdmin"/>
@@ -82,7 +89,9 @@ const Layout = () => {
                         <Route element={<h1>Not found!</h1>} />
                          */}
                     </Routes>
-                    <Footer />
+                    {
+                        //<Footer />
+                    }
                 </ScrollToTop>
             </BrowserRouter>
         </div>
