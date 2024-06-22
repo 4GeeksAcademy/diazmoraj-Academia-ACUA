@@ -9,7 +9,7 @@ import { NavbarProfessor } from "./pages/NavbarProfessor";
 import { NavbarStudent } from "./pages/NavbarStudent";
 
 import Login from "./pages/Login"
-import { SignUp } from "./pages/SignUp";
+import SignUp from "./pages/SignUp";
 
 import HomeACUA from "./pages/HomeACUA";
 import { HomeAdmin } from "./pages/HomeAdmin";
@@ -44,6 +44,7 @@ const Layout = () => {
         <div>
             <BrowserRouter basename={basename}>
                 <ScrollToTop>
+
                     <Routes>
 
                         <Route path="/homestudent" element={<HomeStudent />} />
@@ -57,6 +58,8 @@ const Layout = () => {
                         <Route path="/homeacua" element={<HomeACUA />} />
                         <Route path="/newcourse" element={<NewCourse />} />
                         <Route path="/newmodality" element={<NewModality />} />
+                        <Route element={<ElectronicInvoice />} path="/ElectronicInvoice" />
+                        <Route element={<HomeACUA />} path="/homeacua" />
 
 
                         {/* <Route element={<NavbarACUA />} path="/NavbarACUA"/>
