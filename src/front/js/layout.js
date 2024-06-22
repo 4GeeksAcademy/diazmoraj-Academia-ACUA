@@ -25,7 +25,7 @@ import { StudentPayment } from "./pages/StudentPayment";
 
 import { Course } from "./pages/Course";
 import { ElectronicInvoice } from "./pages/ElectronicInvoice";
-import { Modality } from "./pages/Modality";
+import { Modality, NewModality } from "./pages/NewModality";
 import { NewCourse } from "./pages/NewCourse";
 import injectContext from "./store/appContext";
 import FormProfessor from "./pages/FormProfessor";
@@ -44,21 +44,20 @@ const Layout = () => {
         <div>
             <BrowserRouter basename={basename}>
                 <ScrollToTop>
-                    {
-                        // <NavbarStudent />
-                        //<NavbarProfessor />
-                    }
 
                     <Routes>
 
-                        <Route path="/" element={<HomeStudent />} />
-                        <Route path="/" element={<HomeProfessor />} />
-                        <Route path="/" element={<HomeAdmin />} />               
+                        <Route path="/homestudent" element={<HomeStudent />} />
+                        <Route path="/homeprofessor" element={<HomeProfessor />} />
+                        <Route path="/homeadmin" element={<HomeAdmin />} />
+                        <Route element={<Login />} path="/Login" />
                         <Route element={<SignUp />} path="/signup" />
                         <Route path="*" element={<h1>Not found!</h1>} />
                         <Route element={<FormProfessor />} path="/formprofessor" />
                         <Route element={<Login />} path="/Login" />
                         <Route path="/homeacua" element={<HomeACUA />} />
+                        <Route path="/newcourse" element={<NewCourse />} />
+                        <Route path="/newmodality" element={<NewModality />} />
                         <Route element={<ElectronicInvoice />} path="/ElectronicInvoice" />
                         <Route element={<HomeACUA />} path="/homeacua" />
 
