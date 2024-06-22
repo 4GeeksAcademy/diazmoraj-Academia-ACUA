@@ -44,15 +44,11 @@ const Layout = () => {
         <div>
             <BrowserRouter basename={basename}>
                 <ScrollToTop>
-
-                    <NavbarStudent />
-                    <NavbarProfessor />
-                    <NavbarAdmin />
                     <Routes>
 
-                        <Route path="/" element={<HomeStudent />} />
-                        <Route path="/" element={<HomeProfessor />} />
-                        <Route path="/" element={<HomeAdmin />} />
+                        <Route path="/homestudent" element={<HomeStudent />} />
+                        <Route path="/homeprofessor" element={<HomeProfessor />} />
+                        <Route path="/homeadmin" element={<HomeAdmin />} />
                         <Route element={<Login />} path="/Login" />
                         <Route element={<SignUp />} path="/signup" />
                         <Route path="*" element={<h1>Not found!</h1>} />
