@@ -25,7 +25,7 @@ import { StudentPayment } from "./pages/StudentPayment";
 
 import { Course } from "./pages/Course";
 import { ElectronicInvoice } from "./pages/ElectronicInvoice";
-import { Modality } from "./pages/Modality";
+import { Modality, NewModality } from "./pages/NewModality";
 import { NewCourse } from "./pages/NewCourse";
 import injectContext from "./store/appContext";
 import FormProfessor from "./pages/FormProfessor";
@@ -55,6 +55,8 @@ const Layout = () => {
                         <Route element={<FormProfessor />} path="/formprofessor" />
                         <Route element={<Login />} path="/Login" />
                         <Route path="/homeacua" element={<HomeACUA />} />
+                        <Route path="/newcourse" element={<NewCourse />} />
+                        <Route path="/newmodality" element={<NewModality />} />
 
 
                         {/* <Route element={<NavbarACUA />} path="/NavbarACUA"/>
