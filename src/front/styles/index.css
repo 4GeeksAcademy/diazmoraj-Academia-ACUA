@@ -268,4 +268,14 @@ body{
     border-radius: 15px;
 }
 
+.add-button:hover{
+    cursor: pointer;
+    border: 2px solid #5751e1;
+    color:#5751e1;
+    transition: ease-out 0.2s;
+}
 
+.table-row:hover{
+    cursor: pointer;
+    background-color: #e1cbee
+}
