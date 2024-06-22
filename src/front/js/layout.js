@@ -62,6 +62,7 @@ const Layout = () => {
                         <Route path="/homeacua" element={<HomeACUA />} />
                         <Route element={<FormStudent />} path="/formstudent" />
                         <Route element={<InfoProfessor />} path="/infoprofessor"/>
+                        <Route element={<ElectronicInvoice />} path="/ElectronicInvoice" />
 
 
                         {/* <Route element={<NavbarACUA />} path="/NavbarACUA"/>
