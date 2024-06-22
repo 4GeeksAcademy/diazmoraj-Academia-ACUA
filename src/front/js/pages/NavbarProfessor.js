@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import LogButton from "../component/LogButton";
 
 export const NavbarProfessor = () => {
     return (
@@ -7,25 +8,29 @@ export const NavbarProfessor = () => {
             <div className="container-fluid d-flex justify-content-between align-items-baseline">
                 <div>
                     <img className="logo" src="https://i.imgur.com/fkBV2BP.png" />
-                    <span className="ms-2 fs-4">Roberto Antillón</span>
+                    <span className="ms-2 fs-6">Roberto Antillón</span>
                 </div>
                 <div>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
                         <i className="fa-solid fa-bars"></i>
                     </button>
                     <div className="collapse navbar-collapse" id="navbarScroll">
-                        <ul className="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll">
-                            <li className="nav-item">
-                                <span className="me-4 fs-4">Inicio</span>
+                        <ul className="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll fs-6">
+                            <li className="nav-link">
+                                <Link to="/homeacua" className="text-decoration-none">
+                                    <span className="me-4">Inicio</span>
+                                </Link>
                             </li>
-                            <li className="nav-item">
-                                <span className="me-4 fs-4">Información personal</span>
+                            <li className="nav-link">
+                                <Link to="/formprofessor" className="text-decoration-none">
+                                    <span className="me-4">Información personal</span>
+                                </Link>
                             </li>
-                            <li className="nav-item">
-                                <span className="me-4 fs-4">Estudios</span>
+                            <li className="nav-link">
+                                <span className="me-4">Estudios</span>
                             </li>
                         </ul>
-                        <button className="btn btn-warning rounded-pill fs-4">Salir</button>
+                        <LogButton text="Salir" />
                     </div>
                 </div>
             </div>
