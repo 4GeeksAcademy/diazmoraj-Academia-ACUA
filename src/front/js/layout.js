@@ -9,7 +9,7 @@ import { NavbarProfessor } from "./pages/NavbarProfessor";
 import { NavbarStudent } from "./pages/NavbarStudent";
 
 import Login from "./pages/Login"
-import { SignUp } from "./pages/SignUp";
+import SignUp from "./pages/SignUp";
 
 import HomeACUA from "./pages/HomeACUA";
 import { HomeAdmin } from "./pages/HomeAdmin";
@@ -44,21 +44,22 @@ const Layout = () => {
         <div>
             <BrowserRouter basename={basename}>
                 <ScrollToTop>
+                    {
+                        // <NavbarStudent />
+                        //<NavbarProfessor />
+                    }
 
-                    <NavbarStudent />
-                    <NavbarProfessor />
-                    <NavbarAdmin />
                     <Routes>
 
                         <Route path="/" element={<HomeStudent />} />
                         <Route path="/" element={<HomeProfessor />} />
-                        <Route path="/" element={<HomeAdmin />} />
-                        <Route element={<Login />} path="/Login" />
+                        <Route path="/" element={<HomeAdmin />} />               
                         <Route element={<SignUp />} path="/signup" />
                         <Route path="*" element={<h1>Not found!</h1>} />
                         <Route element={<FormProfessor />} path="/formprofessor" />
                         <Route element={<Login />} path="/Login" />
-                        <Route path="/homeacua" element={<HomeACUA />} />
+                        <Route element={<HomeACUA />} path="/homeacua" />
+
 
 
                         {/* <Route element={<NavbarACUA />} path="/NavbarACUA"/>
