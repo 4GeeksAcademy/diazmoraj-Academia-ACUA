@@ -17,7 +17,7 @@ import { HomeProfessor } from "./pages/HomeProfessor";
 import { HomeStudent } from "./pages/HomeStudent";
 
 import { InfoAdmin } from "./pages/InfoAdmin";
-import { InfoProfessor } from "./pages/InfoProfessor";
+import InfoProfessor from "./pages/InfoProfessor";
 import { InfoStudent } from "./pages/InfoStudent";
 
 import { ProfessorPayment } from "./pages/ProfessorPayment";
@@ -29,6 +29,7 @@ import { Modality, NewModality } from "./pages/NewModality";
 import { NewCourse } from "./pages/NewCourse";
 import injectContext from "./store/appContext";
 import FormProfessor from "./pages/FormProfessor";
+import FormStudent from "./pages/FormStudent";
 
 import { Footer } from "./component/Footer";
 
@@ -56,6 +57,8 @@ const Layout = () => {
                         <Route element={<FormProfessor />} path="/formprofessor" />
                         <Route element={<Login />} path="/Login" />
                         <Route path="/homeacua" element={<HomeACUA />} />
+                        <Route element={<FormStudent />} path="/formstudent" />
+                        <Route element={<InfoProfessor />} path="/infoprofessor"/>
                         <Route path="/newcourse" element={<NewCourse />} />
                         <Route path="/newmodality" element={<NewModality />} />
                         <Route element={<ElectronicInvoice />} path="/ElectronicInvoice" />
@@ -75,7 +78,6 @@ const Layout = () => {
                         <Route element={<HomeStudent />} path="/"/>
 
                         <Route element={<InfoAdmin />} path="/InfoAdmin"/>
-                        <Route element={<InfoProfessor />} path="/InfoProfessor"/>
                         <Route element={<InfoStudent />} path="/InfoStudent"/>
 
                         <Route element={<ProfessorPayment />} path="/ProfessorPayment"/>
