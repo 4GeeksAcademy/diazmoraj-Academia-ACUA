@@ -1,4 +1,4 @@
- import React from "react";
+import React from "react";
 import rigoImage from "../../img/rigo-baby.jpg";
 import "../../styles/home.css";
 
@@ -15,7 +15,7 @@ export const HomeStudent = () => (
 					<div className="card-header fs-5 fw-bold">
 						Guitarra Eléctrica
 					</div>
-					<img src="https://th.bing.com/th/id/OIP.nyAhZ9G7WJaZiFMpeW5GMQHaHV?rs=1&pid=ImgDetMain" className="card-img-top" />
+					<img src="https://images-na.ssl-images-amazon.com/images/I/71Oo2ZKroFL._AC_SL1500_.jpg" className="card-img-top" />
 					<div className="card-body">
 						<table className="table table-borderless">
 							<tr>
