@@ -3,6 +3,7 @@ import rigoImage from "../../img/rigo-baby.jpg";
 import "../../styles/home.css";
 import { NavbarAdmin } from "./NavbarAdmin";
 import { MultiButton } from "../component/MultiButton";
+import { Link } from "react-router-dom";
 
 export const HomeAdmin = () => {
 	return (
@@ -30,7 +31,9 @@ export const HomeAdmin = () => {
 						</div>
 					</div>
 					<div className="mt-auto ms-3">
-						<MultiButton color='purple' text='Agregar nuevo profesor' width='200' />
+						<Link to="/formprofessor" className="text-decoration-none">
+							<MultiButton color='purple' text='Agregar nuevo profesor' width='200' />
+						</Link>
 					</div>
 				</div>
 				<div className="d-flex align-content-center justify-content-center mb-3 mt-3 py-4 jumbo rounded-3">
@@ -64,7 +67,9 @@ export const HomeAdmin = () => {
 						</table>
 					</div>
 					<div className="mt-auto ms-3">
-						<MultiButton color='purple' text='Agregar nuevo curso' width='200' />
+						<Link to="/formprofessor" className="text-decoration-none">
+							<MultiButton color='purple' text='Agregar nuevo curso' width='200' />
+						</Link>
 					</div>
 				</div>
 				<div className="d-flex align-content-center justify-content-center mb-3 mt-3 py-4 jumbo rounded-3">
@@ -85,7 +90,10 @@ export const HomeAdmin = () => {
 						</div>
 					</div>
 					<div className="mt-auto ms-3">
-						<MultiButton color='purple' text='Agregar nuevo estudiante' width='210' />
+						<Link to="/formstudent" className="text-decoration-none">
+							<MultiButton color='purple' text='Agregar nuevo estudiante' width='210' />
+						</Link>
+
 					</div>
 				</div>
 			</div>

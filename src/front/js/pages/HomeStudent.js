@@ -2,6 +2,7 @@ import React from "react";
 import { NavbarStudent } from "./NavbarStudent"
 import "../../styles/home.css";
 import { MultiButton } from "../component/MultiButton";
+import { Link } from "react-router-dom";
 
 export const HomeStudent = () => {
 	return (
@@ -32,7 +33,9 @@ export const HomeStudent = () => {
 						</div>
 					</div>
 					<div className="mt-auto ms-3">
-						<MultiButton color='purple' text='Solicitar inscribir nuevo curso' width='240' />
+						<Link to="/newcourse" className="text-decoration-none">
+							<MultiButton color='purple' text='Solicitar inscribir nuevo curso' width='240' />
+						</Link>
 					</div>
 				</div>
 				<div className="d-flex align-content-center justify-content-center mb-3 mt-3 py-4 jumbo rounded-3">

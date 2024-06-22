@@ -17,10 +17,14 @@ export const NavbarProfessor = () => {
                     <div className="collapse navbar-collapse" id="navbarScroll">
                         <ul className="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll fs-6">
                             <li className="nav-link">
-                                <span className="me-4">Inicio</span>
+                                <Link to="/homeacua" className="text-decoration-none">
+                                    <span className="me-4">Inicio</span>
+                                </Link>
                             </li>
                             <li className="nav-link">
-                                <span className="me-4">Información personal</span>
+                                <Link to="/formprofessor" className="text-decoration-none">
+                                    <span className="me-4">Información personal</span>
+                                </Link>
                             </li>
                             <li className="nav-link">
                                 <span className="me-4">Estudios</span>

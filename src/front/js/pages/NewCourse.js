@@ -1,5 +1,6 @@
 import React from "react";
 import LogButton from "../component/LogButton";
+import { Link } from "react-router-dom";
 
 export const NewCourse = () => {
     return (
@@ -27,7 +28,9 @@ export const NewCourse = () => {
                         </div>
                     </div>
                     <div className="d-flex justify-content-between">
-                        <LogButton text="Volver" />
+                        <Link to="/homestudent" className="text-decoration-none">
+                            <LogButton text="Volver" />
+                        </Link>
                         <LogButton text="Registrar" />
                     </div>
                 </form>
