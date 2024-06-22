@@ -8,6 +8,10 @@ import { CardProfessorHome } from './Card/CardProfessorHome';
 export const Carousel = () => {
 
     const swiper = new Swiper('.swiper', {
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
         modules: [Navigation],
         loop: true,
         scrollbar: {
@@ -39,6 +43,8 @@ export const Carousel = () => {
                 </div>
                 <div className="swiper-pagination"></div>
                 <div className="swiper-scrollbar"></div>
+                <div className="swiper-button-next" style={{ paddingRight: '20px' }}></div>
+                <div className="swiper-button-prev" style={{ paddingLeft: '10px' }}></div>
             </div>
         </React.Fragment >
     )

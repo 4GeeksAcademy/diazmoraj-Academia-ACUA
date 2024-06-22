@@ -3,6 +3,7 @@ import { NavbarACUA } from '../component/NavbarACUA'
 import { CircleIcon } from '../component/CircleIcon'
 import { MultiButton } from '../component/MultiButton'
 import { Carousel } from '../component/Carousel'
+import { CardGoals } from '../component/Card/CardGoals'
 
 const HomeACUA = () => {
 
@@ -47,13 +48,28 @@ const HomeACUA = () => {
           <img className='bannerImage bannerImageSize' src="https://i.imgur.com/pOowMpC.png" alt="acua-member-with-guitar" />
         </div>
       </div>
-      <section className="ourProfessors" style={{ marginTop: '70px' }}>
+      <section className="ourProfessors" style={{ marginTop: '100px' }}>
         <div className="professorsTitleBox d-flex flex-column align-items-center">
           <h2 className='portraitPrimaryColor bigWeight fs-1'>Nuestros Profesores</h2>
           <p className='text-secondary mt-0'>¡Conoce quien esta detras de nuestra formacion!</p>
         </div>
-        <div className="carousel container pb-3 mt-3">
+        <div className="carousel container pb-3 mt-3 mb-3">
           <Carousel />
+        </div>
+      </section>
+      <section className="reachGoalsSection" style={{ marginTop: '100px' }}>
+        <div className="goalsBox">
+          <div className="goalsTitleBox d-flex flex-column align-items-center">
+            <h2 className='portraitPrimaryColor bigWeight fs-1'>¡Alcanza Tus Objetivos!</h2>
+            <p className='text-secondary mt-0'>¡Nuestra academia brinda el seguimiento y soporte necesario para llevar a cabo el aprendizaje que necesitass!</p>
+          </div>
+          <div className="cardGoalContainerBox container pb-3 mt-3 mb-3">
+            <div className="container d-flex flex-row justinfy-content-center gap-4 flex-wrap">
+              <CardGoals color="purple" iconName="fa-solid fa-book" iconColor="white" iconBackgroundColor='#5751e1' />
+              <CardGoals color="yellow" iconName="fa-solid fa-certificate" iconColor="white" iconBackgroundColor='#ffc224' />
+              <CardGoals color="blue" iconName="fa-solid fa-graduation-cap" iconColor="white" iconBackgroundColor='#1bcbe3' />
+            </div>
+          </div>
         </div>
       </section>
     </React.Fragment>
