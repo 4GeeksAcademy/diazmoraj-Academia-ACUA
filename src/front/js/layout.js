@@ -16,9 +16,9 @@ import { HomeAdmin } from "./pages/HomeAdmin";
 import { HomeProfessor } from "./pages/HomeProfessor";
 import { HomeStudent } from "./pages/HomeStudent";
 
-import { InfoAdmin } from "./pages/InfoAdmin";
+import InfoAdmin from "./pages/InfoAdmin";
 import InfoProfessor from "./pages/InfoProfessor";
-import { InfoStudent } from "./pages/InfoStudent";
+import InfoStudent from "./pages/InfoStudent";
 
 import { ProfessorPayment } from "./pages/ProfessorPayment";
 import { StudentPayment } from "./pages/StudentPayment";
@@ -53,17 +53,18 @@ const Layout = () => {
                         <Route path="/homeadmin" element={<HomeAdmin />} />
                         <Route element={<SignUp />} path="/signup" />
                         <Route path="*" element={<h1>Not found!</h1>} />
-                        <Route element={<FormProfessor />} path="/formprofessor" />
                         <Route element={<Login />} path="/login" />
                         <Route path="/homeacua" element={<HomeACUA />} />
                         <Route path="/formstudent" element={<FormStudent />} />
-                        <Route path="/infoprofessor" element={<InfoProfessor />} />
                         <Route path="/newcourse" element={<NewCourse />} />
                         <Route path="/newmodality" element={<NewModality />} />
                         <Route path="/electronicinvoice" element={<ElectronicInvoice />} />
                         <Route path="/homeacua" element={<HomeACUA />} />
                         <Route path="/professorpayment" element={<ProfessorPayment />} />
                         <Route path="*" element={<h1>Not found!</h1>} />
+                        <Route element={<InfoProfessor />} path="/infoprofessor" />
+                        <Route element={<InfoAdmin />} path="/infoadmin" />
+                        <Route element={<InfoStudent />} path="/infostudent" />
 
                     </Routes>
 
