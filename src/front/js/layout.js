@@ -51,20 +51,33 @@ const Layout = () => {
                         <Route path="/homestudent" element={<HomeStudent />} />
                         <Route path="/homeprofessor" element={<HomeProfessor />} />
                         <Route path="/homeadmin" element={<HomeAdmin />} />
-                        <Route element={<SignUp />} path="/signup" />
+                        <Route path="/signup" element={<SignUp />}  />
                         <Route path="*" element={<h1>Not found!</h1>} />
-                        <Route element={<Login />} path="/login" />
-                        <Route path="/homeacua" element={<HomeACUA />} />
-                        <Route path="/formstudent" element={<FormStudent />} />
+                        <Route path="/login" element={<Login />}  />
+                        <Route path="/" element={<HomeACUA />} />
+                        <Route path="/formstudent" element={<FormStudent />}  />
+                        <Route path="/infoprofessor"  element={<InfoProfessor />} />
                         <Route path="/newcourse" element={<NewCourse />} />
                         <Route path="/newmodality" element={<NewModality />} />
                         <Route path="/electronicinvoice" element={<ElectronicInvoice />} />
-                        <Route path="/homeacua" element={<HomeACUA />} />
-                        <Route path="/professorpayment" element={<ProfessorPayment />} />
-                        <Route path="*" element={<h1>Not found!</h1>} />
-                        <Route element={<InfoProfessor />} path="/infoprofessor" />
+
+
+                        /* <Route element={<NavbarACUA />} path="/NavbarACUA"/>
+                        <Route element={<NavbarAdmin />} path="/NavbarAdmin"/>
+                        <Route element={<NavbarProfessor />} path="/NavbarProfessor"/>
+                        <Route element={<NavbarStudent />} path="/NavbarStudent"/>
+                        <Route element={<InfoAdmin />} path="/InfoAdmin"/>
+                        <Route element={<InfoStudent />} path="/InfoStudent"/>
+                        <Route element={<ProfessorPayment />} path="/ProfessorPayment"/>
+                        <Route element={<StudentPayment />} path="/StudentPayment"/>
+                        <Route element={<Course />} path="/Course" />
+                        <Route element={<ElectronicInvoice />} path="/ElectronicInvoice" />
+                        <Route element={<Modality />} path="/Modality" />
+                        <Route element={<NewCourse />} path="/NewCourse" />          
+                        <Route path="/newmodality" element={<NewModality />} />  
                         <Route element={<InfoAdmin />} path="/infoadmin" />
                         <Route element={<InfoStudent />} path="/infostudent" />
+                        */
 
                     </Routes>
 
