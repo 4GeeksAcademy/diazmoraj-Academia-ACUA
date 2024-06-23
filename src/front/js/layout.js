@@ -25,8 +25,8 @@ import { StudentPayment } from "./pages/StudentPayment";
 
 import { Course } from "./pages/Course";
 import { ElectronicInvoice } from "./pages/ElectronicInvoice";
-import { Modality, NewModality } from "./pages/NewModality";
 import { NewCourse } from "./pages/NewCourse";
+import { NewModality } from "./pages/NewModality";
 import injectContext from "./store/appContext";
 import FormProfessor from "./pages/FormProfessor";
 import FormStudent from "./pages/FormStudent";
@@ -51,33 +51,15 @@ const Layout = () => {
                         <Route path="/homestudent" element={<HomeStudent />} />
                         <Route path="/homeprofessor" element={<HomeProfessor />} />
                         <Route path="/homeadmin" element={<HomeAdmin />} />
-                        <Route path="/signup" element={<SignUp />}  />
+                        <Route path="/signup" element={<SignUp />} />
                         <Route path="*" element={<h1>Not found!</h1>} />
-                        <Route path="/login" element={<Login />}  />
+                        <Route path="/login" element={<Login />} />
                         <Route path="/" element={<HomeACUA />} />
-                        <Route path="/formstudent" element={<FormStudent />}  />
-                        <Route path="/infoprofessor"  element={<InfoProfessor />} />
+                        <Route path="/formstudent" element={<FormStudent />} />
+                        <Route path="/infoprofessor" element={<InfoProfessor />} />
                         <Route path="/newcourse" element={<NewCourse />} />
                         <Route path="/newmodality" element={<NewModality />} />
                         <Route path="/electronicinvoice" element={<ElectronicInvoice />} />
-
-
-                        /* <Route element={<NavbarACUA />} path="/NavbarACUA"/>
-                        <Route element={<NavbarAdmin />} path="/NavbarAdmin"/>
-                        <Route element={<NavbarProfessor />} path="/NavbarProfessor"/>
-                        <Route element={<NavbarStudent />} path="/NavbarStudent"/>
-                        <Route element={<InfoAdmin />} path="/InfoAdmin"/>
-                        <Route element={<InfoStudent />} path="/InfoStudent"/>
-                        <Route element={<ProfessorPayment />} path="/ProfessorPayment"/>
-                        <Route element={<StudentPayment />} path="/StudentPayment"/>
-                        <Route element={<Course />} path="/Course" />
-                        <Route element={<ElectronicInvoice />} path="/ElectronicInvoice" />
-                        <Route element={<Modality />} path="/Modality" />
-                        <Route element={<NewCourse />} path="/NewCourse" />          
-                        <Route path="/newmodality" element={<NewModality />} />  
-                        <Route element={<InfoAdmin />} path="/infoadmin" />
-                        <Route element={<InfoStudent />} path="/infostudent" />
-                        */
 
                     </Routes>
 
