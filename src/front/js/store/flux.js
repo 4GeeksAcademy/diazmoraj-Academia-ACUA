@@ -52,7 +52,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			// Todos los administradores
 			getAdmins: () => {
-				fetch("https://zany-goldfish-g46p7q46pjvfw9vj-3001.app.github.dev/api/administrators")
+				fetch(process.env.BACKEND_URL + "/api/administrators")
 					.then(response => {
 						console.log(response);
 						return response.json();
@@ -69,7 +69,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			// Todos los profesores
 			getProfessors: () => {
-				fetch("https://zany-goldfish-g46p7q46pjvfw9vj-3001.app.github.dev/api/professors")
+				fetch(process.env.BACKEND_URL + "/api/professors")
 					.then(response => {
 						console.log(response);
 						return response.json();
@@ -78,7 +78,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 						console.log("Data: ", data)
 						console.log(data)
 						setStore({ professors: data })
-						console.log({ "professors:": professors })
 					})
 					.catch((error) => {
 						console.log(error)
@@ -87,15 +86,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			// Todos los estudiantes
 			getStudents: () => {
-				fetch("https://zany-goldfish-g46p7q46pjvfw9vj-3001.app.github.dev/api/professors")
+				fetch(process.env.BACKEND_URL + "/api/students")
 					.then(response => {
 						console.log(response);
 						return response.json();
 					})
 					.then((data) => {
 						console.log("Data: ", data)
-						console.log(data.data)
-						setStore({ students: data.data })
+						console.log(data)
+						setStore({ students: data })
 					})
 					.catch((error) => {
 						console.log(error)
@@ -104,7 +103,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			// Todos los cursos
 			getCourses: () => {
-				fetch("https://zany-goldfish-g46p7q46pjvfw9vj-3001.app.github.dev/api/courses")
+				fetch(process.env.BACKEND_URL + "/api/courses")
 					.then(response => {
 						console.log(response);
 						return response.json();
