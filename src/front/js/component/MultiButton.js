@@ -1,6 +1,8 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
-export const MultiButton = ({ color, text, width }) => {
+export const MultiButton = ({ color, text, width, link }) => {
     /*
     background-color: #ffc224;
     border: 2px solid #d0a42e;
@@ -8,6 +10,8 @@ export const MultiButton = ({ color, text, width }) => {
     box-shadow: 4px 6px 0px #050071;
     border-radius: 50px;
     */
+    const navigate = useNavigate();
+
     let purple = {
         backgroundColor: '#5751e1',
         boxShadow: '4px 6px 0px #050071',
@@ -39,7 +43,7 @@ export const MultiButton = ({ color, text, width }) => {
 
     return (
         <React.Fragment>
-            <div id='multiButton' style={colorComparator(color)}>
+            <div id='multiButton' style={colorComparator(color)} onClick={(e) => { console.log(navigate(`${link}`)) }}>
                 {text}
             </div>
         </React.Fragment>

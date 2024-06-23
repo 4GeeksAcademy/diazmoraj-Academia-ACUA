@@ -9,7 +9,7 @@ import { NavbarProfessor } from "./pages/NavbarProfessor";
 import { NavbarStudent } from "./pages/NavbarStudent";
 
 import Login from "./pages/Login"
-import SignUp from "./pages/SignUp";
+import { SignUp } from "./pages/SignUp";
 
 import HomeACUA from "./pages/HomeACUA";
 import { HomeAdmin } from "./pages/HomeAdmin";
@@ -53,7 +53,7 @@ const Layout = () => {
 
                         <Route path="/" element={<HomeStudent />} />
                         <Route path="/" element={<HomeProfessor />} />
-                        <Route path="/" element={<HomeAdmin />} />               
+                        <Route path="/" element={<HomeAdmin />} />
                         <Route element={<SignUp />} path="/signup" />
                         <Route path="*" element={<h1>Not found!</h1>} />
                         <Route element={<FormProfessor />} path="/formprofessor" />
