@@ -6,6 +6,8 @@ import { Carousel } from '../component/Carousel'
 import { CardGoals } from '../component/Card/CardGoals'
 import { CardPlan } from '../component/Card/CardPlan'
 import { Link } from 'react-router-dom'
+import { ContactCardInfo } from '../component/Card/ContactCardInfo'
+import { ContactForm } from '../component/ContactForm'
 
 const HomeACUA = () => {
 
@@ -120,10 +122,10 @@ const HomeACUA = () => {
         </div>
       </section>
       <div className="plansTitleBox container-fluid mt-3 mb-3 d-flex justify-content-center align-items-center"></div>
-      <section className="aboutUs container" style={{ marginTop: '100px', paddingTop: '50px', paddingBottom: '40px', marginBottom: '80px' }}>
+      <section className="aboutUs container" style={{ marginTop: '100px', paddingTop: '50px', paddingBottom: '40px', marginBottom: '120px' }}>
         <div className="sectionAboutUs container d-flex flex-row flex-wrap justify-content-around align-items-center" style={{ paddingLeft: '30px', paddingRight: '30px' }}>
           <div className="textUs" style={{ width: '500px' }}>
-            <h2 className='portraitPrimaryColor bigWeight fs-1 text-center text-white' style={{ zIndex: '3', paddingBottom: '55px' }}> Sobre <strong style={{ backgroundColor: '#ffc224', borderRadius: '15px', padding: '4px', fontWeight: '600' }}> Nosotros </strong></h2>
+            <h2 className='portraitPrimaryColor bigWeight fs-1 text-center text-white' style={{ zIndex: '3', paddingBottom: '55px' }}> Quienes <strong style={{ backgroundColor: '#ffc224', borderRadius: '15px', padding: '4px', fontWeight: '600' }}> Somos </strong></h2>
             <p className='text-white mt-0 text-left'>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Temporibus laudantium accusantium magni? Minus laboriosam, sequi temporibus animi ratione, blanditiis illum quidem perferendis quae exercitationem quibusdam aliquam nisi nostrum nihil aliquid?</p>
             <p className='text-white mt-0 text-left'>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Temporibus laudantium accusantium magni? Minus laboriosam, sequi temporibus animi ratione</p>
             <Link to='/signup'>
@@ -136,10 +138,37 @@ const HomeACUA = () => {
         </div>
       </section>
       <section className="contactSection">
-
+        <div className="contactBox container-fluid" style={{ padding: '20px 20px' }}>
+          <div className="textContact" style={{ marginTop: "30px", marginBottom: "50px" }}>
+            <h2 className='bigWeight fs-1 text-center text-white'>Contacta con nosotros!</h2>
+            <p className='text-light mt-0 text-center'>Envia un mensaje y nuestro equipo se pondrá en contacto contigo</p>
+          </div>
+          <div className="container" style={{ padding: '50px' }}>
+            <div className="row justify-content-center">
+              <div className="col-xl-5 col-sm-11">
+                <div className="topInfo d-flex flex-column mt-2 gap-2">
+                  <ContactCardInfo
+                    icon="fa-location-dot"
+                    title="Direccion"
+                    description="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Asperiores, aliquid perspiciatis non obcaecati " />
+                  <ContactCardInfo
+                    icon="fa-phone-volume"
+                    title="Teléfono"
+                    description="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Asperiores, aliquid perspiciatis non obcaecati " />
+                  <ContactCardInfo
+                    icon="fa-envelope"
+                    title="E-mail"
+                    description="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Asperiores, aliquid perspiciatis non obcaecati " />
+                </div>
+              </div>
+              <div className="rightInfo col-xl-7 col-sm-11 mt-2">
+                <ContactForm />
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
     </React.Fragment >
   )
 }
-
 export default HomeACUA

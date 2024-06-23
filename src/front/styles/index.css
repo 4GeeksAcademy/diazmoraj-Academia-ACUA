@@ -145,7 +145,7 @@ body{
 
     .aboutUs{
         background-color: #5751e1;
-        width: 80vw;
+        width: 70vw;
         margin: auto;
         padding: 20px;
         border-radius: 20px;
@@ -189,7 +189,7 @@ body{
 
     .aboutUs{
         background-color: #5751e1;
-        width: 80vw;
+        width: 45vw;
         margin: auto;
         padding: 20px;
         border-radius: 20px;
@@ -342,4 +342,24 @@ body{
 .table-row:hover{
     cursor: pointer;
     background-color: #e1cbee
+}
+
+.contactBox{
+    background-color: #5751e1;
+}
+
+.contactCardInfo{
+    background-color: white;
+    border-radius: 15px;
+}
+
+.contactForm{
+    background-color: white;
+    height: 100%;
+    border-radius: 15px;
+}
+
+.textAreaContact{
+    width: 70%;
+    min-height: 300px;
 }
