@@ -66,9 +66,21 @@ const HomeACUA = () => {
           </div>
           <div className="cardGoalContainerBox container pb-3 mt-3 mb-3">
             <div className="container d-flex flex-row justify-content-center gap-4 flex-wrap">
-              <CardGoals color="purple" iconName="fa-solid fa-book" iconColor="white" iconBackgroundColor='#5751e1' />
-              <CardGoals color="yellow" iconName="fa-solid fa-certificate" iconColor="white" iconBackgroundColor='#ffc224' />
-              <CardGoals color="blue" iconName="fa-solid fa-graduation-cap" iconColor="white" iconBackgroundColor='#1bcbe3' />
+              <CardGoals
+                color="purple"
+                iconName="fa-solid fa-book"
+                iconColor="white"
+                iconBackgroundColor='#5751e1' />
+              <CardGoals
+                color="yellow"
+                iconName="fa-solid fa-certificate"
+                iconColor="white"
+                iconBackgroundColor='#ffc224' />
+              <CardGoals
+                color="blue"
+                iconName="fa-solid fa-graduation-cap"
+                iconColor="white"
+                iconBackgroundColor='#1bcbe3' />
             </div>
           </div>
         </div>
@@ -79,9 +91,36 @@ const HomeACUA = () => {
           <h2 className='portraitPrimaryColor bigWeight fs-1 text-center text-white ms-3 textPlanes' style={{ backgroundColor: '#ffc224', borderRadius: '15px', padding: '4px' }}>Planes</h2>
         </div>
         <div className="planCardBox container d-flex flex-row justify-content-center flex-wrap" style={{ marginTop: '100px', padding: '20px', gap: '30px' }}>
-          <CardPlan />
-          <CardPlan />
-          <CardPlan />
+          <CardPlan
+            planType='Plan 1 presencial - Virtual'
+            price='¢65000' fontSz='50'
+            planModality='por mes'
+            firstFeature='Clases de 1 hora'
+            secondFeature='1 vez por semana'
+            thirdFeature='Instrumentos a disposicion' />
+          <CardPlan
+            planType='Domicilio'
+            price='¢75000'
+            fontSz='50'
+            planModality='por mes'
+            firstFeature='Clases de 1 hora'
+            secondFeature='1 vez por semana'
+            thirdFeature='Instrumentos a disposicion' />
+          <CardPlan
+            planType='Personalizado'
+            price='Contacta con nosotros'
+            fontSz='40'
+            firstFeature='Clases de 1 hora'
+            secondFeature='1 vez por semana'
+            thirdFeature='Instrumentos a disposicion' />
+        </div>
+        <div className="plansTitleBox" style={{ marginTop: '100px' }}></div>
+      </section>
+      <section className="aboutUs" style={{ marginTop: '100px' }}>
+        <div className="aboutUsBox">
+          <div className="textBox">
+            <h2 className='portraitPrimaryColor bigWeight fs-1 text-white'>Sobre nosotros</h2>
+          </div>
         </div>
       </section>
     </React.Fragment >
