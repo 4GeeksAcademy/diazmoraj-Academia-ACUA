@@ -2,6 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { MultiButton } from "../component/MultiButton";
 
+
+
 export const SignUp = () => {
   return (
     <div className="d-flex flex-column justify-content-center align-items-center"
@@ -83,9 +85,11 @@ export const SignUp = () => {
         <div className="mb-3">
           <button type="submit" className="btn btn-warning w-100"
             style={{ borderRadius: '20px', boxShadow: '0px 4px 8px' }}>Sign up →</button>
-        </div>
         <MultiButton color="purple" text="Back to Home" link="/homeacua" />
         <p>¿Ya tienes un usuario? Inicia sesión aquí</p>
+        </div> 
+        <Link to={`/Login`} className="mt-3">
+      ¿Ya tienes un usuario? Inicia sesión aquí</Link>
       </form>
     </div>
   );

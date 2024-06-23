@@ -302,8 +302,21 @@ body{
     margin: auto;
     border-radius: 20px;
 }
+.add-button:hover{
+    cursor: pointer;
+    border: 2px solid #5751e1;
+    color:#5751e1;
+    transition: ease-out 0.2s;
+}
+
+
+<<<<<<< HEAD
 
 
 
-
-
+=======
+.table-row:hover{
+    cursor: pointer;
+    background-color: #e1cbee
+}
+>>>>>>> 26541d659d5b1a26b8306459bbf830d8f8c75451

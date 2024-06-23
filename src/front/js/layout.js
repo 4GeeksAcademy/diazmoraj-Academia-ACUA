@@ -17,7 +17,7 @@ import { HomeProfessor } from "./pages/HomeProfessor";
 import { HomeStudent } from "./pages/HomeStudent";
 
 import { InfoAdmin } from "./pages/InfoAdmin";
-import { InfoProfessor } from "./pages/InfoProfessor";
+import InfoProfessor from "./pages/InfoProfessor";
 import { InfoStudent } from "./pages/InfoStudent";
 
 import { ProfessorPayment } from "./pages/ProfessorPayment";
@@ -25,10 +25,11 @@ import { StudentPayment } from "./pages/StudentPayment";
 
 import { Course } from "./pages/Course";
 import { ElectronicInvoice } from "./pages/ElectronicInvoice";
-import { Modality } from "./pages/Modality";
+import { Modality, NewModality } from "./pages/NewModality";
 import { NewCourse } from "./pages/NewCourse";
 import injectContext from "./store/appContext";
 import FormProfessor from "./pages/FormProfessor";
+import FormStudent from "./pages/FormStudent";
 
 import { Footer } from "./component/Footer";
 
@@ -44,22 +45,23 @@ const Layout = () => {
         <div>
             <BrowserRouter basename={basename}>
                 <ScrollToTop>
-                    {
-                        // <NavbarStudent />
-                        //<NavbarProfessor />
-                    }
 
                     <Routes>
 
-                        <Route path="/" element={<HomeStudent />} />
-                        <Route path="/" element={<HomeProfessor />} />
-                        <Route path="/" element={<HomeAdmin />} />
+                        <Route path="/homestudent" element={<HomeStudent />} />
+                        <Route path="/homeprofessor" element={<HomeProfessor />} />
+                        <Route path="/homeadmin" element={<HomeAdmin />} />
                         <Route element={<SignUp />} path="/signup" />
                         <Route path="*" element={<h1>Not found!</h1>} />
                         <Route element={<FormProfessor />} path="/formprofessor" />
-                        <Route element={<Login />} path="/Login" />
+                        <Route element={<Login />} path="/login" />
+                        <Route path="/homeacua" element={<HomeACUA />} />
+                        <Route element={<FormStudent />} path="/formstudent" />
+                        <Route element={<InfoProfessor />} path="/infoprofessor" />
+                        <Route path="/newcourse" element={<NewCourse />} />
+                        <Route path="/newmodality" element={<NewModality />} />
+                        <Route element={<ElectronicInvoice />} path="/electronicinvoice" />
                         <Route element={<HomeACUA />} path="/homeacua" />
-
 
 
                         {/* <Route element={<NavbarACUA />} path="/NavbarACUA"/>
@@ -75,7 +77,6 @@ const Layout = () => {
                         <Route element={<HomeStudent />} path="/"/>
 
                         <Route element={<InfoAdmin />} path="/InfoAdmin"/>
-                        <Route element={<InfoProfessor />} path="/InfoProfessor"/>
                         <Route element={<InfoStudent />} path="/InfoStudent"/>
 
                         <Route element={<ProfessorPayment />} path="/ProfessorPayment"/>
@@ -89,9 +90,9 @@ const Layout = () => {
                         <Route element={<h1>Not found!</h1>} />
                          */}
                     </Routes>
-                    {
-                        //<Footer />
-                    }
+
+                    <Footer />
+
                 </ScrollToTop>
             </BrowserRouter>
         </div>
