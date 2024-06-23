@@ -51,45 +51,20 @@ const Layout = () => {
                         <Route path="/homestudent" element={<HomeStudent />} />
                         <Route path="/homeprofessor" element={<HomeProfessor />} />
                         <Route path="/homeadmin" element={<HomeAdmin />} />
-                        <Route element={<Login />} path="/Login" />
-                        <Route element={<SignUp />} path="/signup" />
-                        <Route path="*" element={<h1>Not found!</h1>} />
-                        <Route element={<FormProfessor />} path="/formprofessor" />
-                        <Route element={<Login />} path="/login" />
+                        <Route path="/Login" element={<Login />} />
+                        <Route path="/signup" element={<SignUp />} />
+                        <Route path="/formprofessor" element={<FormProfessor />} />
+                        <Route path="/login" element={<Login />} />
                         <Route path="/homeacua" element={<HomeACUA />} />
-                        <Route element={<FormStudent />} path="/formstudent" />
-                        <Route element={<InfoProfessor />} path="/infoprofessor" />
+                        <Route path="/formstudent" element={<FormStudent />} />
+                        <Route path="/infoprofessor" element={<InfoProfessor />} />
                         <Route path="/newcourse" element={<NewCourse />} />
                         <Route path="/newmodality" element={<NewModality />} />
-                        <Route element={<ElectronicInvoice />} path="/electronicinvoice" />
-                        <Route element={<HomeACUA />} path="/homeacua" />
+                        <Route path="/electronicinvoice" element={<ElectronicInvoice />} />
+                        <Route path="/homeacua" element={<HomeACUA />} />
+                        <Route path="/professorpayment" element={<ProfessorPayment />} />
+                        <Route path="*" element={<h1>Not found!</h1>} />
 
-
-                        {/* <Route element={<NavbarACUA />} path="/NavbarACUA"/>
-                        <Route element={<NavbarAdmin />} path="/NavbarAdmin"/>
-                        <Route element={<NavbarProfessor />} path="/NavbarProfessor"/>
-                        <Route element={<NavbarStudent />} path="/NavbarStudent"/>
-
-                        <Route element={<SignUp />} path="/SigUp"/>
-
-                        <Route element={<HomeACUA />} path="/"/>
-                        <Route element={<HomeAdmin />} path="/"/>
-                        <Route element={<HomeProfessor />} path="/"/>
-                        <Route element={<HomeStudent />} path="/"/>
-
-                        <Route element={<InfoAdmin />} path="/InfoAdmin"/>
-                        <Route element={<InfoStudent />} path="/InfoStudent"/>
-
-                        <Route element={<ProfessorPayment />} path="/ProfessorPayment"/>
-                        <Route element={<StudentPayment />} path="/StudentPayment"/>
-
-                        <Route element={<Course />} path="/Course" />
-                        <Route element={<ElectronicInvoice />} path="/ElectronicInvoice" />
-                        <Route element={<Modality />} path="/Modality" />
-                        <Route element={<NewCourse />} path="/NewCourse" />
-
-                        <Route element={<h1>Not found!</h1>} />
-                         */}
                     </Routes>
 
                     <Footer />

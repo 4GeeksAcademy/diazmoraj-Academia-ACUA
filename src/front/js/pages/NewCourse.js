@@ -1,5 +1,6 @@
 import React from "react";
 import LogButton from "../component/LogButton";
+import { MultiButton } from "../component/MultiButton";
 import { Link } from "react-router-dom";
 
 export const NewCourse = () => {
@@ -23,15 +24,15 @@ export const NewCourse = () => {
                 <form className="mt-5 p-5 rounded shadow mb-5" style={{ backgroundColor: '#e9ecef' }}>
                     <div className="d-flex mb-3">
                         <div className="me-2 flex-fill">
-                            <label className="form-label fs-3 mb-3" style={{ color: '#5751e1' }}>Introduzca nombre del nuevo curso</label>
+                            <label className="form-label fs-4 mb-3" style={{ color: '#5751e1' }}>Introduzca nombre del nuevo curso</label>
                             <input className="form-control mb-3" placeholder="Nombre nuevo curso" />
                         </div>
                     </div>
                     <div className="d-flex justify-content-between">
                         <Link to="/homestudent" className="text-decoration-none">
-                            <LogButton text="Volver" />
+                            <MultiButton color='purple' text='Volver' width='100' />
                         </Link>
-                        <LogButton text="Registrar" />
+                        <MultiButton color='purple' text='Guardar' width='100' />
                     </div>
                 </form>
             </div>
