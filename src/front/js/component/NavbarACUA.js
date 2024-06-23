@@ -36,7 +36,7 @@ export const NavbarACUA = () => {
 					</ul>
 				</div>
 				<div className=" externalLoginButton me-5">
-					<Link to="/login" className="text-decoration-none">
+					<Link to="/login" className="text-decoration-none text-dark">
 						<LogButton text="Login" />
 					</Link>
 				</div>

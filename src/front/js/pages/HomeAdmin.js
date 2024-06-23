@@ -1,11 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import rigoImage from "../../img/rigo-baby.jpg";
 import "../../styles/home.css";
 import { NavbarAdmin } from "./NavbarAdmin";
 import { MultiButton } from "../component/MultiButton";
 import { Link } from "react-router-dom";
+import { CardAdminProfessor } from "../component/Card/CardAdminProfessor";
+import { ListAdminCourse } from "../component/Card/ListAdminCourse";
+import { CardAdminStudent } from "../component/Card/CardAdminStudent";
+import { Context } from "../store/appContext";
 
 export const HomeAdmin = () => {
+	const { store, actions } = useContext(Context);
+
 	return (
 		<React.Fragment>
 			<NavbarAdmin />
@@ -16,20 +22,11 @@ export const HomeAdmin = () => {
 					</div>
 				</div>
 				<div className="continer-fluid d-flex ps-5 ms-5">
-					<div className="cardProfessor" style={{ width: '20rem' }}>
-						<div className="card cardProff" style={{ borderRadius: '20px' }}>
-							<div className="container d-flex justify-content-end mt-2">
-								<MultiButton color='purple' text='Ver más' width='100' />
-							</div>
-							<img src="https://i.imgur.com/qTL6olW.png" className="card-img-top" alt="..." style={{ height: 'auto', padding: '30px' }} />
-							<div className="card-body">
-								<p className="card-title fs-5 mediumWeight text-center">Roberto Antillón</p>
-								{/* <ul className="list-group list-group-flush">
-									<li className="list-group-item text-secondary" style={{ fontSize: '15px' }}>Curso: Guitarra eléctrica</li>
-								</ul> */}
-							</div>
-						</div>
-					</div>
+					{store.professors && store.professors.map((professor) => {
+						return (
+							<CardAdminProfessor name={professor.name} key={professor.number_carID} id={professor.id} />
+						)
+					})}
 					<div className="mt-auto ms-3">
 						<Link to="/formprofessor" className="text-decoration-none">
 							<MultiButton color='purple' text='Agregar nuevo profesor' width='200' />
@@ -42,8 +39,9 @@ export const HomeAdmin = () => {
 					</div>
 				</div>
 				<div className="continer-fluid d-flex ps-5 ms-5">
+
 					<div className="cardProfessor" style={{ width: '20rem' }}>
-						<table class="table table-hover">
+						<table className="table table-hover">
 							<thead>
 								<tr>
 									<th scope="col">N°</th>
@@ -51,21 +49,15 @@ export const HomeAdmin = () => {
 								</tr>
 							</thead>
 							<tbody>
-								<tr className="table-row">
-									<th scope="row">1</th>
-									<td>Guitarra Eléctrica</td>
-								</tr>
-								<tr className="table-row">
-									<th scope="row">2</th>
-									<td>Piano</td>
-								</tr>
-								<tr className="table-row">
-									<th scope="row">3</th>
-									<td colspan="2">Canto lírico</td>
-								</tr>
+								{store.courses && store.courses.map((course, index) => {
+									return (
+										<ListAdminCourse name={course.name} key={course.name} id={course.id} />
+									)
+								})}
 							</tbody>
 						</table>
 					</div>
+
 					<div className="mt-auto ms-3">
 						<Link to="/formprofessor" className="text-decoration-none">
 							<MultiButton color='purple' text='Agregar nuevo curso' width='200' />
@@ -78,22 +70,11 @@ export const HomeAdmin = () => {
 					</div>
 				</div>
 				<div className="continer-fluid d-flex ps-5 ms-5">
-					<div className="cardProfessor" style={{ width: '20rem' }}>
-						<div className="card cardProff" style={{ borderRadius: '20px' }}>
-							<img src="https://i.imgur.com/qTL6olW.png" className="card-img-top" alt="..." style={{ height: 'auto', padding: '30px' }} />
-							<div className="card-body">
-								<p className="card-title fs-5 mediumWeight text-center">Greiza García</p>
-								{/* <ul className="list-group list-group-flush">
-									<li className="list-group-item text-secondary" style={{ fontSize: '15px' }}>Curso: Guitarra eléctrica</li>
-								</ul> */}
-							</div>
-						</div>
-					</div>
+					<CardAdminStudent />
 					<div className="mt-auto ms-3">
 						<Link to="/formstudent" className="text-decoration-none">
 							<MultiButton color='purple' text='Agregar nuevo estudiante' width='210' />
 						</Link>
-
 					</div>
 				</div>
 			</div>
