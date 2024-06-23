@@ -3,7 +3,7 @@ import { MultiButton } from '../MultiButton'
 import { Link } from 'react-router-dom'
 import { Context } from "../../store/appContext";
 
-export const ListAdminCourse = (name, id) => {
+export const ListAdminCourse = ({ name, id }) => {
     const { store, actions } = useContext(Context);
 
     return (
