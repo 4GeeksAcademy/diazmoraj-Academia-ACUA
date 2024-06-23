@@ -5,6 +5,7 @@ import { MultiButton } from '../component/MultiButton'
 import { Carousel } from '../component/Carousel'
 import { CardGoals } from '../component/Card/CardGoals'
 import { CardPlan } from '../component/Card/CardPlan'
+import { Link } from 'react-router-dom'
 
 const HomeACUA = () => {
 
@@ -13,7 +14,7 @@ const HomeACUA = () => {
       <NavbarACUA />
       <div className='bannerAcua container-fluid d-flex justify-content-center align-items-end'>
         <div className="portraitBox">
-          <div className="acuaPortraitText portraitPrimaryColor">
+          <div className="acuaPortraitText portraitPrimaryColor" style={{ zIndex: '3' }}>
             <div className="boxPoints">
               <img className='pointsUpper' src="https://i.imgur.com/hJ1Q7yE.png" alt="" />
             </div>
@@ -60,15 +61,30 @@ const HomeACUA = () => {
       </section>
       <section className="reachGoalsSection" style={{ marginTop: '100px', marginBottom: '100px' }}>
         <div className="goalsBox">
-          <div className="goalsTitleBox d-flex flex-column align-items-center">
+          <div className="goalsTitleBox d-flex flex-column align-items-center mb-3">
             <h2 className='portraitPrimaryColor bigWeight fs-1'>¡Alcanza Tus Objetivos!</h2>
             <p className='text-secondary mt-0 text-center'>¡Nuestra academia brinda el seguimiento y soporte necesario para llevar a cabo el aprendizaje que necesitass!</p>
           </div>
           <div className="cardGoalContainerBox container pb-3 mt-3 mb-3">
             <div className="container d-flex flex-row justify-content-center gap-4 flex-wrap">
-              <CardGoals color="purple" iconName="fa-solid fa-book" iconColor="white" iconBackgroundColor='#5751e1' />
-              <CardGoals color="yellow" iconName="fa-solid fa-certificate" iconColor="white" iconBackgroundColor='#ffc224' />
-              <CardGoals color="blue" iconName="fa-solid fa-graduation-cap" iconColor="white" iconBackgroundColor='#1bcbe3' />
+              <CardGoals
+                text='Profesores expertos'
+                color="purple"
+                iconName="fa-solid fa-book"
+                iconColor="white"
+                iconBackgroundColor='#5751e1' />
+              <CardGoals
+                text='Clases efectivas'
+                color="yellow"
+                iconName="fa-solid fa-certificate"
+                iconColor="white"
+                iconBackgroundColor='#ffc224' />
+              <CardGoals
+                text=' Multiples instrumentos'
+                color="blue"
+                iconName="fa-solid fa-graduation-cap"
+                iconColor="white"
+                iconBackgroundColor='#1bcbe3' />
             </div>
           </div>
         </div>
@@ -78,11 +94,49 @@ const HomeACUA = () => {
           <h2 className='portraitPrimaryColor bigWeight fs-1 text-center text-white' style={{ zIndex: '3' }}>Conoce Nuestros</h2>
           <h2 className='portraitPrimaryColor bigWeight fs-1 text-center text-white ms-3 textPlanes' style={{ backgroundColor: '#ffc224', borderRadius: '15px', padding: '4px' }}>Planes</h2>
         </div>
-        <div className="planCardBox container d-flex flex-row justify-content-center flex-wrap" style={{ marginTop: '100px', padding: '20px', gap: '30px' }}>
-          <CardPlan />
-          <CardPlan />
-          <CardPlan />
+        <div className="planCardBox container d-flex flex-row justify-content-center flex-wrap" style={{ marginBottom: '80px', marginTop: '100px', padding: '20px', gap: '30px' }}>
+          <CardPlan
+            planType='Plan 1 presencial - Virtual'
+            price='¢65000' fontSz='50'
+            planModality='por mes'
+            firstFeature='Clases de 1 hora'
+            secondFeature='1 vez por semana'
+            thirdFeature='Instrumentos a disposicion' />
+          <CardPlan
+            planType='Domicilio'
+            price='¢75000'
+            fontSz='50'
+            planModality='por mes'
+            firstFeature='Clases de 1 hora'
+            secondFeature='1 vez por semana'
+            thirdFeature='Instrumentos a disposicion' />
+          <CardPlan
+            planType='Personalizado'
+            price='Contacta con nosotros'
+            fontSz='40'
+            firstFeature='Clases de 1 hora'
+            secondFeature='1 vez por semana'
+            thirdFeature='Instrumentos a disposicion' />
         </div>
+      </section>
+      <div className="plansTitleBox container-fluid mt-3 mb-3 d-flex justify-content-center align-items-center"></div>
+      <section className="aboutUs container" style={{ marginTop: '100px', paddingTop: '50px', paddingBottom: '40px', marginBottom: '80px' }}>
+        <div className="sectionAboutUs container d-flex flex-row flex-wrap justify-content-around align-items-center" style={{ paddingLeft: '30px', paddingRight: '30px' }}>
+          <div className="textUs" style={{ width: '500px' }}>
+            <h2 className='portraitPrimaryColor bigWeight fs-1 text-center text-white' style={{ zIndex: '3', paddingBottom: '55px' }}> Sobre <strong style={{ backgroundColor: '#ffc224', borderRadius: '15px', padding: '4px', fontWeight: '600' }}> Nosotros </strong></h2>
+            <p className='text-white mt-0 text-left'>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Temporibus laudantium accusantium magni? Minus laboriosam, sequi temporibus animi ratione, blanditiis illum quidem perferendis quae exercitationem quibusdam aliquam nisi nostrum nihil aliquid?</p>
+            <p className='text-white mt-0 text-left'>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Temporibus laudantium accusantium magni? Minus laboriosam, sequi temporibus animi ratione</p>
+            <Link to='/signup'>
+              <p className='text-white mt-0 text-center' style={{ paddingTop: '30px' }}> <strong>¡Comienza ahora mismo!</strong></p>
+            </Link>
+          </div>
+          <div className="imgAboutUs">
+            <img id='"imgAboutUs"' src="https://i.imgur.com/7lOAUrM.png" alt="logo-acua" style={{ width: '300px', marginTop: '20px' }} />
+          </div>
+        </div>
+      </section>
+      <section className="contactSection">
+
       </section>
     </React.Fragment >
   )
