@@ -62,7 +62,7 @@ body{
     color: #5751e1
 }
 
-@media screen and (max-width: 1280px) {
+@media screen and (max-width: 1250px) {
     .externalLoginButton{
         display: none;
     }
@@ -93,6 +93,18 @@ body{
     .pointDiv img{
         display: none;
     }
+
+    .imgAboutUs img{
+        display: none;
+    }
+
+    .aboutUs{
+        background-color: #5751e1;
+        width: 90vw;
+        margin: auto;
+        padding: 20px;
+        border-radius: 20px;
+    }
 }
 
 @media screen and (min-width: 1280px){
@@ -104,7 +116,9 @@ body{
     }
     
     .bannerImageSize{
-        height: 420px;
+        z-index: 1;
+        height: 400px;
+        object-fit: cover;
         /*
         bottom: 145px;
         left: 37%;
@@ -124,6 +138,19 @@ body{
         padding-left: 200px;
         
     }
+
+    #imageAboutUs{
+        display: none;
+    }
+
+    .aboutUs{
+        background-color: #5751e1;
+        width: 80vw;
+        margin: auto;
+        padding: 20px;
+        border-radius: 20px;
+    }
+
 }
 
 @media screen and (min-width: 2048px){
@@ -158,6 +185,14 @@ body{
         right: 2px;
         top: 25px;
         width: 150px;
+    }
+
+    .aboutUs{
+        background-color: #5751e1;
+        width: 80vw;
+        margin: auto;
+        padding: 20px;
+        border-radius: 20px;
     }
     
 }
@@ -263,7 +298,7 @@ body{
 }
 
 .cardProff{
-    box-shadow: rgba(14, 63, 126, 0.06) 0px 0px 0px 1px, rgba(42, 51, 70, 0.03) 0px 1px 1px -0.5px, rgba(42, 51, 70, 0.04) 0px 2px 2px -1px, rgba(42, 51, 70, 0.04) 0px 3px 3px -1.5px, rgba(42, 51, 70, 0.03) 0px 5px 5px -2.5px, rgba(42, 51, 70, 0.03) 0px 10px 10px -5px, rgba(42, 51, 70, 0.03) 0px 24px 24px -8px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 }
 
 .swiper-button-next{
@@ -281,6 +316,7 @@ body{
     height: 100px;
     position: relative;
     z-index: 1 ;
+    padding-top: 10px;
 }
 
 .textPlanes{
@@ -292,16 +328,10 @@ body{
     width: 370px;
     background-color: white;
     border-radius: 20px;
-    box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 }
 
-.aboutUsBox{
-    width: 63vw;
-    height: 60vh;
-    background-color: #5751e1;
-    margin: auto;
-    border-radius: 20px;
-}
+
 .add-button:hover{
     cursor: pointer;
     border: 2px solid #5751e1;
@@ -309,14 +339,7 @@ body{
     transition: ease-out 0.2s;
 }
 
-
-<<<<<<< HEAD
-
-
-
-=======
 .table-row:hover{
     cursor: pointer;
     background-color: #e1cbee
 }
->>>>>>> 26541d659d5b1a26b8306459bbf830d8f8c75451

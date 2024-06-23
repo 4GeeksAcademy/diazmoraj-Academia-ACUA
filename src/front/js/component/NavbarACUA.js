@@ -32,7 +32,11 @@ export const NavbarACUA = () => {
 						<li className="nav-item">
 							<p className="nav-link" href="#">Contacto</p>
 						</li>
-						<li className="nav-item liLoginButton"> <LogButton text="Login" /> </li>
+						<Link to='/login' className="text-decoration-none">
+							<li className="nav-item liLoginButton">
+								<LogButton text="Login" /> '
+							</li>
+						</Link>
 					</ul>
 				</div>
 				<div className=" externalLoginButton me-5">
