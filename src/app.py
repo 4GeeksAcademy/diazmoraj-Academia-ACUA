@@ -27,6 +27,7 @@ ENV = "development" if os.getenv("FLASK_DEBUG") == "1" else "production"
 static_file_dir = os.path.join(os.path.dirname(
     os.path.realpath(__file__)), '../public/')
 app = Flask(__name__)
+CORS(app)
 app.url_map.strict_slashes = False
 
 # database condiguration
@@ -84,7 +85,7 @@ def get_all_administrator():
     for admin in all_admins:
         admins_serialized.append(admin.serialize())
         print(admins_serialized)
-    return jsonify({"data": admins_serialized}), 200
+    return jsonify({"administrators": admins_serialized}), 200
 
 @app.route('/api/professors', methods=['GET'])
 def get_all_professor():
@@ -93,7 +94,7 @@ def get_all_professor():
     for profe in all_profes:
         profes_serialized.append(profe.serialize())
         print(profes_serialized)
-    return jsonify({"data": profes_serialized}), 200
+    return jsonify({"professors": profes_serialized}), 200
 
 @app.route('/api/students', methods=['GET'])
 def get_all_student():
@@ -102,7 +103,7 @@ def get_all_student():
     for stud in all_studs:
         studs_serialized.append(stud.serialize())
         print(studs_serialized)
-    return jsonify({"data": studs_serialized}), 200
+    return jsonify({"students": studs_serialized}), 200
 
 @app.route('/api/professorspayment', methods=['GET'])
 def get_all_profpay():
@@ -138,7 +139,7 @@ def get_all_course():
     for course in all_courses:
         courses_serialized.append(course.serialize())
         print(courses_serialized)
-    return jsonify({"data": courses_serialized}), 200
+    return jsonify({"courses": courses_serialized}), 200
 
 @app.route('/api/modalities', methods=['GET'])
 def get_all_modality():

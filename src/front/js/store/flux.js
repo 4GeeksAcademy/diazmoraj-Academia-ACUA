@@ -58,9 +58,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 						return response.json();
 					})
 					.then((data) => {
-						console.log("Data: ", data)
-						console.log(data.data)
-						setStore({ administrators: data.data })
+						console.log("Data:", data)
+						console.log(data.administrators)
+						setStore({ administrators: data.administrators })
 					})
 					.catch((error) => {
 						console.log(error)
@@ -75,9 +75,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 						return response.json();
 					})
 					.then((data) => {
-						console.log("Data: ", data)
-						console.log(data)
-						setStore({ professors: data })
+						console.log("Data:", data)
+						console.log(data.professors)
+						setStore({ professors: data.professors })
 					})
 					.catch((error) => {
 						console.log(error)
@@ -92,9 +92,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 						return response.json();
 					})
 					.then((data) => {
-						console.log("Data: ", data)
-						console.log(data)
-						setStore({ students: data })
+						console.log("Data:", data)
+						console.log(data.students)
+						setStore({ students: data.students })
 					})
 					.catch((error) => {
 						console.log(error)
@@ -109,8 +109,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 						return response.json();
 					})
 					.then((data) => {
-						console.log({ "courses": data })
-						setStore({ courses: data })
+						console.log("Data:", data)
+						console.log(data.courses)
+						setStore({ courses: data.courses })
 					})
 					.catch((error) => {
 						console.log(error)
