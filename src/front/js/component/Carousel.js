@@ -8,12 +8,11 @@ import { CardProfessorHome } from './Card/CardProfessorHome';
 export const Carousel = () => {
 
     const swiper = new Swiper('.swiper', {
+        modules: [Navigation],
         navigation: {
             nextEl: '.swiper-button-next',
             prevEl: '.swiper-button-prev',
         },
-        modules: [Navigation],
-        loop: true,
         scrollbar: {
             el: '.swiper-scrollbar',
         },
@@ -22,9 +21,14 @@ export const Carousel = () => {
         spaceBetween: 20,
         breakpoints: {
             900: {
+                slidesPerView: 3,
+                slidesPerGroup: 3,
+            },
+            1080: {
                 slidesPerView: 4,
                 slidesPerGroup: 4,
             }
+
         }
     });
 
