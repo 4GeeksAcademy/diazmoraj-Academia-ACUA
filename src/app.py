@@ -19,6 +19,7 @@ from api.models import ElectronicInvoice
 from api.models import Course
 from api.models import Modality
 from api.models import NewCourse
+from flask_cors import CORS
 
 # from models import Person
 
@@ -76,7 +77,7 @@ def serve_any_other_file(path):
 #--------------------------------------#
 #App Route para los metodos GET
 
-@app.route('/api/administrator', methods=['GET'])
+@app.route('/api/administrators', methods=['GET'])
 def get_all_administrator():
     all_admins = Administrator.query.all()
     admins_serialized = []
@@ -85,7 +86,7 @@ def get_all_administrator():
         print(admins_serialized)
     return jsonify({"data": admins_serialized}), 200
 
-@app.route('/api/professor', methods=['GET'])
+@app.route('/api/professors', methods=['GET'])
 def get_all_professor():
     all_profes = Professor.query.all()
     profes_serialized = []
@@ -94,7 +95,7 @@ def get_all_professor():
         print(profes_serialized)
     return jsonify({"data": profes_serialized}), 200
 
-@app.route('/api/student', methods=['GET'])
+@app.route('/api/students', methods=['GET'])
 def get_all_student():
     all_studs = Student.query.all()
     studs_serialized = []
@@ -103,23 +104,23 @@ def get_all_student():
         print(studs_serialized)
     return jsonify({"data": studs_serialized}), 200
 
-@app.route('/api/professorpayment', methods=['GET'])
+@app.route('/api/professorspayment', methods=['GET'])
 def get_all_profpay():
     all_profpays = ProfessorPayment.query.all()
     profpays_serialized = []
     for profpay in all_profpays:
         profpays_serialized.append(profpay.serialize())
         print(profpays_serialized)
-    return jsonify({"data": "all_profpay"}), 200
+    return jsonify({"data": profpays_serialized}), 200
 
-@app.route('/api/studentpayment', methods=['GET'])
+@app.route('/api/studentspayment', methods=['GET'])
 def get_all_studpay():
     all_studpays = StudentPayment.query.all()
     studpays_serialized = []
     for studpay in all_studpays:
         studpays_serialized.append(studpay.serialize())
         print(studpays_serialized)
-    return jsonify({"data": "all_studpay"}), 200
+    return jsonify({"data": studpays_serialized}), 200
 
 @app.route('/api/electronicinvoice', methods=['GET'])
 def get_all_electinv():
@@ -128,25 +129,25 @@ def get_all_electinv():
     for electinv in all_electinvs:
         electinvs_serialized.append(electinv.serialize())
         print(electinvs_serialized)
-    return jsonify({"data": "all_electinv"}), 200
+    return jsonify({"data": electinvs_serialized}), 200
 
-@app.route('/api/course', methods=['GET'])
+@app.route('/api/courses', methods=['GET'])
 def get_all_course():
     all_courses = Course.query.all()
     courses_serialized = []
     for course in all_courses:
         courses_serialized.append(course.serialize())
         print(courses_serialized)
-    return jsonify({"data": "all_course"}), 200
+    return jsonify({"data": courses_serialized}), 200
 
-@app.route('/api/modality', methods=['GET'])
+@app.route('/api/modalities', methods=['GET'])
 def get_all_modality():
     all_modalities = Modality.query.all()
     modalities_serialized = []
     for modality in all_modalities:
         modalities_serialized.append(modality.serialize())
         print(modalities_serialized)
-    return jsonify({"data": "all_modality"}), 200
+    return jsonify({"data": modalities_serialized}), 200
 
 @app.route('/api/newcourses', methods=['GET'])
 def get_all_newcourses():
@@ -155,7 +156,8 @@ def get_all_newcourses():
     for newcourse in all_newcourses:
         newcourses_serialized.append(newcourse.serialize())
         print(newcourses_serialized)
-    return jsonify({"data": "all_newcourse"}), 200
+    return jsonify({"data": newcourses_serialized}), 200
+
 
 #----------------------------------------------#
 #App Route para los metodos GET ID

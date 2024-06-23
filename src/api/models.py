@@ -29,7 +29,7 @@ class Administrator(db.Model):
             "id": self.id,
             "name": self.name,
             "last_name": self.last_name,
-            "photo": self.photo,
+            # "photo": self.photo,
             "cardID_type": self.cardID_type,
             "number_cardID": self.number_cardID,
             "birthday": self.birthday,
@@ -68,7 +68,7 @@ class Professor(db.Model):
             "id": self.id,
             "name": self.name,
             "last_name": self.last_name,
-            "photo": self.photo,
+            # "photo": self.photo,
             "cardID_type": self.cardID_type,
             "number_cardID": self.number_cardID,
             "birthday": self.birthday,
@@ -108,7 +108,7 @@ class Student(db.Model):
             "id": self.id,
             "name": self.name,
             "last_name": self.last_name,
-            "photo": self.photo,
+            # "photo": self.photo,
             "cardID_type": self.cardID_type,
             "number_cardID": self.number_cardID,
             "birthday": self.birthday,
@@ -130,14 +130,14 @@ class ProfessorPayment(db.Model):
     professor_id = db.Column(db.Integer, db.ForeignKey('professor.id'))
     professor_id_relationship = db.relationship("Professor", back_populates="professor_payment")
 
-def serialize(self):
-    return{
-        "id": self.id,
-        "payment_method": self.payment_method,
-        "phone_number": self.phone_number,
-        "iban_acount": self.iban_acount,
-        "professor_id": self.professor_id
-    }
+    def serialize(self):
+        return{
+            "id": self.id,
+            "payment_method": self.payment_method,
+            "phone_number": self.phone_number,
+            "iban_acount": self.iban_acount,
+            "professor_id": self.professor_id
+        }
     
 class StudentPayment(db.Model):
     __tablename__ = 'student_payment'
@@ -152,8 +152,8 @@ class StudentPayment(db.Model):
     def serialize(self):
         return{
             "id": self.id,
-            "date": self.payment_method,
-            "mount": self.phone_number,
+            "date": self.date,
+            "mount": self.mount,
             "student_id": self.student_id
         }
 

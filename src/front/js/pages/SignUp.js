@@ -84,9 +84,7 @@ export const SignUp = () => {
         </div>
         <div className="mb-3">
           <button type="submit" className="btn btn-warning w-100"
-            style={{ borderRadius: '20px', boxShadow: '0px 4px 8px' }}>Sign up →</button>
-        <MultiButton color="purple" text="Back to Home" link="/homeacua" />
-        <p>¿Ya tienes un usuario? Inicia sesión aquí</p>
+            style={{ borderRadius: '20px', boxShadow: '0px 4px 8px' }}>Inicia sesión →</button>
         </div> 
         <Link to={`/Login`} className="mt-3">
       ¿Ya tienes un usuario? Inicia sesión aquí</Link>
