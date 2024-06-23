@@ -51,9 +51,9 @@ export const HomeAdmin = () => {
 								</tr>
 							</thead>
 							<tbody>
-								{/* {store.courses && store.courses.map(course =>
+								{store.courses && store.courses.map(course =>
 									(<ListAdminCourse name={course.name} key={course.name} id={course.id} />)
-								)} */}
+								)}
 							</tbody>
 						</table>
 					</div>
@@ -70,11 +70,11 @@ export const HomeAdmin = () => {
 					</div>
 				</div>
 				<div className="continer-fluid d-flex ps-5 ms-5">
-					{/* {store.students && store.students.map((student, index) => {
+					{store.students && store.students.map((student, index) => {
 						return (
 							<CardAdminStudent name={student.name} key={student.number_carID} id={student.id} />
 						)
-					})} */}
+					})}
 					<div className="mt-auto ms-3">
 						<Link to="/formstudent" className="text-decoration-none">
 							<MultiButton color='purple' text='Agregar nuevo estudiante' width='210' />
