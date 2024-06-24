@@ -129,7 +129,7 @@ class ProfessorPayment(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     payment_method = db.Column(db.String(50))
     phone_number = db.Column(db.Integer)
-    iban_acount = db.Column(db.Integer, unique=True)
+    iban_acount = db.Column(db.BigInteger, unique=True)
     professor_id = db.Column(db.Integer, db.ForeignKey('professor.id'))
     professor_id_relationship = db.relationship("Professor", back_populates="professor_payment")
 
