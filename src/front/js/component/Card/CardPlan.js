@@ -5,8 +5,6 @@ import { MultiButton } from '../MultiButton'
 
 
 export const CardPlan = ({ planType, planModality, price, firstFeature, secondFeature, thirdFeature, fontSz }) => {
-
-    console.log(fontSz)
     return (
         <React.Fragment>
             <div className="cardPlan d-flex flex-column align-items-center justify-content-center" style={{ gap: '35px' }}>
