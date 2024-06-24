@@ -58,6 +58,8 @@ const Layout = () => {
                         <Route path="/" element={<HomeACUA />} />
                         <Route path="/formstudent" element={<FormStudent />} />
                         <Route path="/infoprofessor" element={<InfoProfessor />} />
+                        <Route path="/infoadmin" element={<InfoAdmin />} />
+                        <Route path="/infostudent" element={<InfoStudent />} />
                         <Route path="/newcourse" element={<NewCourse />} />
                         <Route path="/newmodality" element={<NewModality />} />
                         <Route path="/electronicinvoice" element={<ElectronicInvoice />} />

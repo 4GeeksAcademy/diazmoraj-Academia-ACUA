@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { MultiButton } from "../component/MultiButton";
 
 
-
 export const SignUp = () => {
   return (
     <div className="d-flex flex-column justify-content-center align-items-center"
@@ -82,9 +81,8 @@ export const SignUp = () => {
           <label className="form-label">Confirmar contraseña</label>
           <input type="password" className="form-control" placeholder="Confirmar contraseña" />
         </div>
-        <div className="mb-3">
-          <button type="submit" className="btn btn-warning w-100"
-            style={{ borderRadius: '20px', boxShadow: '0px 4px 8px' }}>Inicia sesión →</button>
+        <div className="mb-4">
+        <MultiButton color="purple" text="Inicia sesión →" width="700" link="/HomeStudent" />
         </div> 
         <Link to={`/Login`} className="mt-3">
       ¿Ya tienes un usuario? Inicia sesión aquí</Link>
