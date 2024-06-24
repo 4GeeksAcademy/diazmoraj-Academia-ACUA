@@ -1,11 +1,11 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Swiper from 'swiper';
 import 'swiper/css';
 import 'swiper/css/bundle';
 import { Navigation } from 'swiper/modules';
 import { CardProfessorHome } from './Card/CardProfessorHome';
 
-export const Carousel = () => {
+export const Carousel = ({ array }) => {
 
     const randomNumber = () => {
         let random = 0
@@ -51,14 +51,20 @@ export const Carousel = () => {
         <React.Fragment>
             <div className="swiper">
                 <div className="swiper-wrapper">
-                    <div className="swiper-slide"><CardProfessorHome number={randomNumber()} /></div>
-                    <div className="swiper-slide"><CardProfessorHome number={randomNumber()} /></div>
-                    <div className="swiper-slide"><CardProfessorHome number={randomNumber()} /></div>
-                    <div className="swiper-slide"><CardProfessorHome number={randomNumber()} /></div>
-                    <div className="swiper-slide"><CardProfessorHome number={randomNumber()} /></div>
-                    <div className="swiper-slide"><CardProfessorHome number={randomNumber()} /></div>
-                    <div className="swiper-slide"><CardProfessorHome number={randomNumber()} /></div>
-                    <div className="swiper-slide"><CardProfessorHome number={randomNumber()} /></div>
+                    {array?.map((arrayItem) => {
+                        return (
+                            <div className="swiper-slide">
+                                <CardProfessorHome
+                                    number={randomNumber()}
+                                    key={arrayItem.id}
+                                    name={arrayItem.name}
+                                    lastName={arrayItem.last_name}
+                                    disctrict={arrayItem.disctrict}
+                                    province={arrayItem.province}
+                                />
+
+                            </div>)
+                    })}
                 </div>
                 <div className="swiper-pagination"></div>
                 <div className="swiper-scrollbar"></div>
