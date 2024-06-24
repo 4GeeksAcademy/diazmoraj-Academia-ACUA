@@ -331,9 +331,11 @@ def new_profe():
         db.session.add(new_profe)
         db.session.commit()
     except Exception as error:
-        return jsonify({"msg": error.args[0]}), 500
+        db.session.rollback()
+        print(error)
+        return jsonify({"msg": "Ocurrió un error al crear un nuevo profesor"}), 500
 
-    return jsonify({"msg": "OK"}), 200
+    return jsonify({"data": new_profe.serialize()}), 201
 
 @app.route('/api/student', methods=['POST'])
 def new_stud():
