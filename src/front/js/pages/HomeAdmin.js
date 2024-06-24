@@ -8,6 +8,10 @@ import { CardAdminProfessor } from "../component/Card/CardAdminProfessor";
 import { ListAdminCourse } from "../component/Card/ListAdminCourse";
 import { CardAdminStudent } from "../component/Card/CardAdminStudent";
 import { Context } from "../store/appContext";
+import { Carousel } from "../component/Carousel";
+import { CarouselAdmin } from "../component/CarouselAdmin";
+import { CarouselAdminStudents } from "../component/CarouselAdminStudents";
+
 
 export const HomeAdmin = () => {
 	const { store, actions } = useContext(Context);
@@ -21,19 +25,25 @@ export const HomeAdmin = () => {
 						<h4 className="py-2 ps-5 ms-5 fs-3 fw-bold">Profesores</h4>
 					</div>
 				</div>
-				<div className="continer-fluid d-flex ps-5 ms-5">
-					<>
+				<div className="container-fluid d-flex">
+
+					{/* <CarouselAdminProfessor /> */}
+
+					<CarouselAdmin array={store.professors} />
+
+					{/* <>
 						{store.professors && store.professors.map((professor) => {
 							return (
 								<CardAdminProfessor name={professor.name} last_name={professor.last_name} key={professor.number_cardID} id={professor.id} />
 							)
 						})}
-					</>
-					<div className="mt-auto ms-3">
-						<Link to="/adminprofreg" className="text-decoration-none">
-							<MultiButton color='purple' text='Agregar nuevo profesor' width='200' />
-						</Link>
-					</div>
+					</> */}
+
+				</div>
+				<div className="container-fluid d-flex justify-content-center my-3">
+					<Link to="/adminprofreg" className="text-decoration-none">
+						<MultiButton color='purple' text='Agregar nuevo profesor' width='200' />
+					</Link>
 				</div>
 				<div className="d-flex align-content-center justify-content-center mb-3 mt-3 py-4 jumbo rounded-3">
 					<div className="container-fluid align-content-center">
@@ -69,17 +79,19 @@ export const HomeAdmin = () => {
 						<h4 className="py-2 ps-5 ms-5 fs-3 fw-bold">Estudiantes</h4>
 					</div>
 				</div>
-				<div className="continer-fluid d-flex ps-5 ms-5">
-					{store.students && store.students.map((student, index) => {
+				<div className="continer-fluid d-flex">
+
+					<CarouselAdminStudents array={store.students} />
+					{/* {store.students && store.students.map((student, index) => {
 						return (
 							<CardAdminStudent name={student.name} last_name={student.last_name} key={student.number_carID} id={student.id} />
 						)
-					})}
-					<div className="mt-auto ms-3">
-						<Link to="/formstudent" className="text-decoration-none">
-							<MultiButton color='purple' text='Agregar nuevo estudiante' width='210' />
-						</Link>
-					</div>
+					})} */}
+				</div>
+				<div className="container-fluid d-flex my-3 justify-content-center">
+					<Link to="/formstudent" className="text-decoration-none">
+						<MultiButton color='purple' text='Agregar nuevo estudiante' width='210' />
+					</Link>
 				</div>
 			</div>
 		</React.Fragment>

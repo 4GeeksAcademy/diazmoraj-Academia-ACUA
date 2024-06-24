@@ -117,6 +117,20 @@ const getState = ({ getStore, getActions, setStore }) => {
 						console.log(error)
 					})
 			},
+
+			// Agregar profesor
+			newProfessor: async () => {
+				try {
+					// fetching data from the backend
+					const resp = await fetch(process.env.BACKEND_URL + "/api/professor", { method: ['POST'], headers: { "Content-Type": "application/json" }, body: JSON.stringify() })
+					const data = await resp.json()
+					setStore({ message: data.message })
+					// don't forget to return something, that is how the async resolves
+					return data;
+				} catch (error) {
+					console.log("Error loading message from backend", error)
+				}
+			},
 		}
 	}
 };
