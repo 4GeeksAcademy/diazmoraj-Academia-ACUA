@@ -14,7 +14,7 @@ export const CardAdminProfessor = ({ name, id, last_name }) => {
                 </div>
                 <img src="https://i.imgur.com/qTL6olW.png" className="card-img-top" alt="..." style={{ height: 'auto', padding: '30px' }} />
                 <div className="card-body">
-                    <p className="card-title fs-5 mediumWeight text-center">{name}{last_name}</p>
+                    <p className="card-title fs-5 mediumWeight text-center">{name} {last_name}</p>
                 </div>
             </div>
         </div>
