@@ -29,10 +29,12 @@ export const NewCourse = () => {
                         </div>
                     </div>
                     <div className="d-flex justify-content-between">
-                        <Link to="/homestudent" className="text-decoration-none">
+                        <Link to="/homeadmin" className="text-decoration-none">
                             <MultiButton color='purple' text='Volver' width='100' />
                         </Link>
-                        <MultiButton color='purple' text='Guardar' width='100' />
+                        <Link to="/homeadmin" className="text-decoration-none">
+                            <MultiButton color='purple' text='Guardar' width='100' />
+                        </Link>
                     </div>
                 </form>
             </div>

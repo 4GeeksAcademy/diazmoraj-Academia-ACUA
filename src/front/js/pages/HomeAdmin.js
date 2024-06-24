@@ -25,12 +25,12 @@ export const HomeAdmin = () => {
 					<>
 						{store.professors && store.professors.map((professor) => {
 							return (
-								<CardAdminProfessor name={professor.name} key={professor.number_cardID} id={professor.id} />
+								<CardAdminProfessor name={professor.name} last_name={professor.last_name} key={professor.number_cardID} id={professor.id} />
 							)
 						})}
 					</>
 					<div className="mt-auto ms-3">
-						<Link to="/formprofessor" className="text-decoration-none">
+						<Link to="/adminprofreg" className="text-decoration-none">
 							<MultiButton color='purple' text='Agregar nuevo profesor' width='200' />
 						</Link>
 					</div>
@@ -42,7 +42,7 @@ export const HomeAdmin = () => {
 				</div>
 				<div className="continer-fluid d-flex ps-5 ms-5">
 
-					<div className="cardProfessor" style={{ width: '20rem' }}>
+					<div className="cardProfessor" style={{ width: '18rem' }}>
 						<table className="table table-hover">
 							<thead>
 								<tr>
@@ -59,7 +59,7 @@ export const HomeAdmin = () => {
 					</div>
 
 					<div className="mt-auto ms-3">
-						<Link to="/formprofessor" className="text-decoration-none">
+						<Link to="/newcourse" className="text-decoration-none">
 							<MultiButton color='purple' text='Agregar nuevo curso' width='200' />
 						</Link>
 					</div>
@@ -72,7 +72,7 @@ export const HomeAdmin = () => {
 				<div className="continer-fluid d-flex ps-5 ms-5">
 					{store.students && store.students.map((student, index) => {
 						return (
-							<CardAdminStudent name={student.name} key={student.number_carID} id={student.id} />
+							<CardAdminStudent name={student.name} last_name={student.last_name} key={student.number_carID} id={student.id} />
 						)
 					})}
 					<div className="mt-auto ms-3">

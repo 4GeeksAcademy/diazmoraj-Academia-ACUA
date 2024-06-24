@@ -32,6 +32,7 @@ import FormProfessor from "./pages/FormProfessor";
 import FormStudent from "./pages/FormStudent";
 
 import { Footer } from "./component/Footer";
+import AdminProfReg from "./component/Card/AdminProfReg";
 
 //create your first component
 const Layout = () => {
@@ -60,6 +61,8 @@ const Layout = () => {
                         <Route path="/newcourse" element={<NewCourse />} />
                         <Route path="/newmodality" element={<NewModality />} />
                         <Route path="/electronicinvoice" element={<ElectronicInvoice />} />
+                        <Route path="/formprofessor" element={<FormProfessor />} />
+                        <Route path="/adminprofreg" element={<AdminProfReg />} />
 
                     </Routes>
 
