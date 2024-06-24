@@ -17,7 +17,7 @@ export const NavbarAdmin = () => {
                     <div className="collapse navbar-collapse" id="navbarScroll">
                         <ul className="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll fs-6">
                             <li>
-                                <Link to="/homeacua" className="text-decoration-none nav-link">
+                                <Link to="/" className="text-decoration-none nav-link">
                                     <span className="me-4">Inicio</span>
                                 </Link>
                             </li>
