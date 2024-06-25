@@ -33,15 +33,15 @@ export const Carousel = ({ array }) => {
         breakpoints: {
             700: {
                 slidesPerView: 2,
-                slidesPerGroup: 2,
+                slidesPerGroup: 1,
             },
             900: {
                 slidesPerView: 3,
-                slidesPerGroup: 3,
+                slidesPerGroup: 1,
             },
             1080: {
                 slidesPerView: 4,
-                slidesPerGroup: 4,
+                slidesPerGroup: 1,
             }
 
         }

@@ -10,6 +10,7 @@ import { ContactCardInfo } from '../component/Card/ContactCardInfo'
 import { ContactForm } from '../component/ContactForm'
 import { useContext } from 'react'
 import { Context } from '../store/appContext'
+import { NewCarrousel } from '../component/NewCarrousel'
 
 const HomeACUA = () => {
   const { actions, store } = useContext(Context)
@@ -62,7 +63,7 @@ const HomeACUA = () => {
           <p className='text-secondary mt-0'>¡Conoce quien esta detras de nuestra formacion!</p>
         </div>
         <div className="carousel container pb-3 mt-3 mb-3 d-flex flew-row justify-content-center">
-          <Carousel array={store.professors} />
+          <NewCarrousel />
         </div>
       </section>
       <section className="reachGoalsSection" style={{ marginTop: '100px', marginBottom: '100px' }}>
