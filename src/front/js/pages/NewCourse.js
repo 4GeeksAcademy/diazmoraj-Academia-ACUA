@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 export const NewCourse = () => {
     return (
         <React.Fragment>
-            <div className="d-flex flex-column justify-content-center align-items-center"
+            <div className="d-flex flex-column justify-content-start align-items-center min-vh-100"
                 style={{ backgroundColor: '#f8f9fa' }}>
                 <div style={{ position: 'relative', width: '100%' }}>
                     <img src="https://i.postimg.cc/XJ784zpy/Whats-App-Image-2024-06-17-at-19-29-08.jpg"
