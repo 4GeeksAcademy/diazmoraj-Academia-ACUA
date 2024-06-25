@@ -252,7 +252,7 @@ def new_admin():
         return jsonify({"msg": "Debes escribir una provincia"}), 400
     if "canton" not in body:
         return jsonify({"msg": "Debes escribir un canton"}), 400
-    if "dstrict" not in body:
+    if "distric" not in body:
         return jsonify({"msg": "Debes escribir un distrito"}), 400
     if "password" not in body:
         return jsonify({"msg": "Debes escribir una contraseña"}), 400
@@ -260,7 +260,7 @@ def new_admin():
     new_admin = Administrator()
     new_admin.name = body["name"]
     new_admin.last_name = body["last_name"]
-    new_admin.photo = body["photo"]
+    # new_admin.photo = body["photo"]
     new_admin.cardID_type = body["cardID_type"]
     new_admin.number_cardID = body["number_cardID"]
     new_admin.birthday = body["birthday"]
@@ -293,18 +293,18 @@ def new_profe():
         return jsonify({"msg": "Debes seleccionar un tipo de identificacion"}), 400
     if "number_cardID" not in body:
         return jsonify({"msg": "Debes escribir un numero de identificacion"}), 400
-    # if "birthday" not in body:
-    #     return jsonify({"msg": "Debes registrar su nacimiento"}), 400
+    if "birthday" not in body:
+        return jsonify({"msg": "Debes registrar su nacimiento"}), 400
     if "email" not in body:
         return jsonify({"msg": "El campo email es obligatorio"}), 400
     if "phone_number" not in body:
         return jsonify({"msg": "Debes registrar un telefono"}), 400
-    # if "province" not in body:
-    #     return jsonify({"msg": "Debes escribir una provincia"}), 400
-    # if "canton" not in body:
-    #     return jsonify({"msg": "Debes escribir un canton"}), 400
-    # if "district" not in body:
-    #     return jsonify({"msg": "Debes escribir un distrito"}), 400
+    if "province" not in body:
+        return jsonify({"msg": "Debes escribir una provincia"}), 400
+    if "canton" not in body:
+        return jsonify({"msg": "Debes escribir un canton"}), 400
+    if "distric" not in body:
+        return jsonify({"msg": "Debes escribir un distrito"}), 400
     if "password" not in body:
         return jsonify({"msg": "Debes escribir una contraseña"}), 400
     
@@ -314,12 +314,12 @@ def new_profe():
     # new_profe.photo = body["photo"]
     new_profe.cardID_type = body["cardID_type"]
     new_profe.number_cardID = body["number_cardID"]
-    # new_profe.birthday = body["birthday"]
+    new_profe.birthday = body["birthday"]
     new_profe.email = body["email"]
     new_profe.phone_number = body["phone_number"]
-    # new_profe.province = body["province"]
-    # new_profe.canton = body["canton"]
-    # new_profe.distric = body["distric"]
+    new_profe.province = body["province"]
+    new_profe.canton = body["canton"]
+    new_profe.distric = body["distric"]
     new_profe.password = body["password"]
     
     try:
@@ -341,8 +341,8 @@ def new_stud():
         return jsonify({"msg": "Debes escribir un nombre"}), 400
     if "last_name" not in body:
         return jsonify({"msg": "Debes escribir un apellido"}), 400
-    if "photo" not in body:
-        return jsonify({"msg": "Debes agregar una photo"}), 400
+    # if "photo" not in body:
+    #     return jsonify({"msg": "Debes agregar una photo"}), 400
     if "cardID_type" not in body:
         return jsonify({"msg": "Debes seleccionar un tipo de identificacion"}), 400
     if "number_cardID" not in body:
@@ -357,21 +357,21 @@ def new_stud():
         return jsonify({"msg": "Debes escribir una provincia"}), 400
     if "canton" not in body:
         return jsonify({"msg": "Debes escribir un canton"}), 400
-    if "dstrict" not in body:
+    if "distric" not in body:
         return jsonify({"msg": "Debes escribir un distrito"}), 400
     if "password" not in body:
         return jsonify({"msg": "Debes escribir una contraseña"}), 400
-    if "student_payment" not in body:
-        return jsonify({"msg": "Debes seleccionar un pago"}), 400
-    if "electronic_invoice" not in body:
-        return jsonify({"msg": "Debes seleccionar si desea factura electronica"}), 400
-    if "new_course_student" not in body:
-        return jsonify({"msg": "Debes seleccionar un estudiante"}), 400
+    # if "student_payment" not in body:
+    #     return jsonify({"msg": "Debes seleccionar un pago"}), 400
+    # if "electronic_invoice" not in body:
+    #     return jsonify({"msg": "Debes seleccionar si desea factura electronica"}), 400
+    # if "new_course_student" not in body:
+    #     return jsonify({"msg": "Debes seleccionar un estudiante"}), 400
     
     new_stud = Student()
     new_stud.name = body["name"]
     new_stud.last_name = body["last_name"]
-    new_stud.photo = body["photo"]
+    # new_stud.photo = body["photo"]
     new_stud.cardID_type = body["cardID_type"]
     new_stud.number_cardID = body["number_cardID"]
     new_stud.birthday = body["birthday"]
@@ -381,9 +381,9 @@ def new_stud():
     new_stud.canton = body["canton"]
     new_stud.distric = body["distric"]
     new_stud.password = body["password"]
-    new_stud.student_payment = body["student_payment"]
-    new_stud.electronic_invoice = body["electronic_invoice"]
-    new_stud.new_course_student = body["new_course_student"]
+    # new_stud.student_payment = body["student_payment"]
+    # new_stud.electronic_invoice = body["electronic_invoice"]
+    # new_stud.new_course_student = body["new_course_student"]
     try:
         db.session.add(new_stud)
         db.session.commit()
@@ -462,7 +462,7 @@ def new_electinv():
         return jsonify({"msg": "Debes escribir una provincia"}), 400
     if "canton" not in body:
         return jsonify({"msg": "Debes escribir un canton"}), 400
-    if "dstrict" not in body:
+    if "distric" not in body:
         return jsonify({"msg": "Debes escribir un distrito"}), 400
     if "student_id" not in body:
         return jsonify({"msg": "Debes seleccionar un estudiante"}), 400
@@ -471,11 +471,11 @@ def new_electinv():
     new_electinv.name = body["name"]
     new_electinv.cardID_type = body["cardID_type"]
     new_electinv.number_cardID = body["number_cardID"]
-    new_electinv = body["email"]
+    new_electinv.email = body["email"]
     new_electinv.phone_number = body["phone_number"]
     new_electinv.province = body["province"]
     new_electinv.canton = body["canton"]
-    new_electinv = body["distric"]
+    new_electinv.distric = body["distric"]
     new_electinv.student_id = body["student_id"]
     try:
         db.session.add(new_electinv)
