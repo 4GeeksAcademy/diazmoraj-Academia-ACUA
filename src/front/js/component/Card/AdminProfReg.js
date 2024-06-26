@@ -1,8 +1,47 @@
-import React from "react";
+import React, { useState } from "react";
+import { useContext } from "react";
+import { Context } from "../../store/appContext"
+import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { MultiButton } from "../MultiButton";
 
 const AdminProfReg = () => {
+
+    const navigate = useNavigate()
+    const { store, actions } = useContext(Context)
+    const [formData, setFormData] = useState({
+        name: "",
+        last_name: "",
+        cardID_type: "",
+        number_cardID: 0,
+        email: "",
+        phone_number: 0,
+        password: ""
+    })
+
+    const flag = store.isProfessorCreated
+
+    const handleInputChange = (event) => {
+        const { name, value } = event.target;
+        setFormData((prevFormData) => ({
+            ...prevFormData,
+            [name]: value,
+        }))
+    }
+
+    const handleSubmit = (event) => {
+        actions.newProfessor(formData)
+        if (flag) {
+            return (
+                <div class="alert alert-success" role="alert">
+                    A simple success alert—check it out!
+                </div>
+            )
+        }
+        setInterval(navigate("/homeadmin"), 2000)
+        event.preventDefault();
+    }
+
     return (
         <div className="d-flex flex-column justify-content-center align-items-center"
             style={{ backgroundColor: '#f8f9fa' }}>
@@ -19,48 +58,50 @@ const AdminProfReg = () => {
                     <h1>Registro de nuevo profesor</h1>
                 </div>
             </div>
-            <form className="mt-4 p-4 rounded shadow mb-4" style={{ backgroundColor: '#e9ecef' }}>
+            <form className="mt-4 p-4 rounded shadow mb-4" style={{ backgroundColor: '#e9ecef' }} onSubmit={handleSubmit}>
                 <h3 className="mb-3">Ingrese los datos</h3>
                 <div className="d-flex mb-3">
                     <div className="me-2 flex-fill">
                         <label className="form-label">Nombre</label>
-                        <input className="form-control" placeholder="Nombre" />
+                        <input className="form-control" placeholder="Nombre" name="name" value={formData.name} onChange={handleInputChange} />
                     </div>
                     <div className="ms-2 flex-fill">
                         <label className="form-label">Apellido</label>
-                        <input className="form-control" placeholder="Apellido" />
+                        <input className="form-control" placeholder="Apellido" name="last_name" value={formData.last_name} onChange={handleInputChange} />
                     </div>
                 </div>
                 <div className="mb-3">
                     <label className="form-label">Email</label>
-                    <input className="form-control" placeholder="Email" />
+                    <input className="form-control" placeholder="Email" name="email" value={formData.email} onChange={handleInputChange} />
                 </div>
                 <div className="mb-3">
                     <label className="form-label">Número telefónico</label>
-                    <input className="form-control" placeholder="Número telefónico" />
+                    <input className="form-control" placeholder="Número telefónico" name="phone_number" value={formData.phone_number} onChange={handleInputChange} />
                 </div>
                 <div className="d-flex mb-3">
                     <div className="me-2 flex-fill">
                         <label className="form-label">Tipo de identificación</label>
-                        <input className="form-control" placeholder="Tipo de identificación" />
+                        <input className="form-control" placeholder="Tipo de identificación" name="cardID_type" value={formData.cardID_type} onChange={handleInputChange} />
                     </div>
                     <div className="ms-2 flex-fill">
                         <label className="form-label">Número de identificación</label>
-                        <input className="form-control" placeholder="Número de identificación" />
+                        <input className="form-control" placeholder="Número de identificación" name="number_cardID" value={formData.number_cardID} onChange={handleInputChange} />
                     </div>
                 </div>
                 <div className="mb-3">
                     <label className="form-label">Contraseña</label>
-                    <input type="password" className="form-control" placeholder="Contraseña" />
+                    <input type="password" className="form-control" placeholder="Contraseña" name="password" value={formData.password} onChange={handleInputChange} />
                 </div>
                 <div className="mb-4">
                     <label className="form-label">Confirmar contraseña</label>
                     <input type="password" className="form-control" placeholder="Confirmar contraseña" />
                 </div>
                 <div className=" container d-flex justify-content-center mb-3">
-                    <Link className="text-decoration-none" to="/homeadmin">
-                        <MultiButton color='purple' text='Guardar' width='200' />
-                    </Link>
+                    <button type="submit" class="btn btn-primary">Enviar</button>
+
+                    {/* <Link className="text-decoration-none" to="/homeadmin"> */}
+                    {/* <MultiButton color='purple' text='Guardar' width='200' /> */}
+                    {/* </Link> */}
                 </div>
             </form>
         </div>

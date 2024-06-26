@@ -11,13 +11,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			modalities: [],
 
-			professorpayment: [],
+			professorspayment: [],
 
-			studentpayment: [],
+			studentspayment: [],
 
 			electronicinvoices: [],
 
 			newcourses: [],
+			
+			isProfessorCreated: false,
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -54,7 +56,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			// Todos los administradores
 			getAdmins: () => {
-				fetch(process.env.BACKEND_URL + "/api/administrator")
+				fetch(process.env.BACKEND_URL + "/api/administrators")
 					.then(response => {
 						console.log(response);
 						return response.json();
@@ -71,7 +73,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			// Todos los profesores
 			getProfessors: () => {
-				fetch(process.env.BACKEND_URL + "/api/professor")
+				fetch(process.env.BACKEND_URL + "/api/professors")
 					.then(response => {
 						console.log(response);
 						return response.json();
@@ -88,7 +90,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			// Todos los estudiantes
 			getStudents: () => {
-				fetch(process.env.BACKEND_URL + "/api/student")
+				fetch(process.env.BACKEND_URL + "/api/students")
 					.then(response => {
 						console.log(response);
 						return response.json();
@@ -105,7 +107,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			// Todos los cursos
 			getCourses: () => {
-				fetch(process.env.BACKEND_URL + "/api/course")
+				fetch(process.env.BACKEND_URL + "/api/courses")
 					.then(response => {
 						console.log(response);
 						return response.json();
@@ -122,7 +124,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			// Todas las modalidades
 			getModalities: () => {
-				fetch(process.env.BACKEND_URL + "/api/modality")
+				fetch(process.env.BACKEND_URL + "/api/modalities")
 					.then(response => {
 						console.log(response);
 						return response.json();
@@ -139,15 +141,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			// Todos los pagos de profesores
 			getProfessorPayment: () => {
-				fetch(process.env.BACKEND_URL + "/api/professorpayment")
+				fetch(process.env.BACKEND_URL + "/api/professorspayment")
 					.then(response => {
 						console.log(response);
 						return response.json();
 					})
 					.then((data) => {
 						console.log("Data:", data)
-						console.log(data.professorpayment)
-						setStore({ professorpayment: data.professorpayment })
+						console.log(data.profpays)
+						setStore({ professorspayment: data.profpays })
 					})
 					.catch((error) => {
 						console.log(error)
@@ -156,15 +158,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			// Todos los pagos de estudiantes
 			getStudentPayment: () => {
-				fetch(process.env.BACKEND_URL + "/api/studentpayment")
+				fetch(process.env.BACKEND_URL + "/api/studentspayment")
 					.then(response => {
 						console.log(response);
 						return response.json();
 					})
 					.then((data) => {
 						console.log("Data:", data)
-						console.log(data.studentpayment)
-						setStore({ studentpayment: data.studentpayment})
+						console.log(data.studpays)
+						setStore({ studentspayment: data.studpays})
 					})
 					.catch((error) => {
 						console.log(error)
@@ -180,8 +182,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 					.then((data) => {
 						console.log("Data:", data)
-						console.log(data.electronicinvoices)
-						setStore({ electronicinvoices: data.electronicinvoices })
+						console.log(data.electinvs)
+						setStore({ electronicinvoices: data.electinvs })
 					})
 					.catch((error) => {
 						console.log(error)
@@ -229,14 +231,20 @@ const getState = ({ getStore, getActions, setStore }) => {
 			// 	}
 			// },
 			// Agregar profesor
-			newProfessor: () => {
+			newProfessor: (object) => {
+				// const store = getStore()
 				fetch(process.env.BACKEND_URL + "/api/professor",{
 					method:"POST",
-					body: JSON.stringify(),
+					body: JSON.stringify(object),
 					headers: { "Content-Type": "application/json" }
 				})
-				.then(response => response())
-				.then(data => {setStore(data.professors)})
+				.then(response => {console.log(response)
+					if (response.ok){
+						setStore({isProfessorCreated:true})
+					}
+					return response.json()
+				})
+				.then(data => data)
 				.catch(error => error)
 			},
 
@@ -284,7 +292,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					headers: { "Content-Type": "application/json" }
 				})
 				.then(response => response())
-				.then(data => {setStore(data.professorpayment)})
+				.then(data => {setStore(data.professorspayment)})
 				.catch(error => error)
 			},
 
@@ -296,7 +304,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					headers: { "Content-Type": "application/json" }
 				})
 				.then(response => response())
-				.then(data => {setStore(data.studentpayment)})
+				.then(data => {setStore(data.studentspayment)})
 				.catch(error => error)
 			},
 

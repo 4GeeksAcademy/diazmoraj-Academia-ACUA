@@ -293,18 +293,18 @@ def new_profe():
         return jsonify({"msg": "Debes seleccionar un tipo de identificacion"}), 400
     if "number_cardID" not in body:
         return jsonify({"msg": "Debes escribir un numero de identificacion"}), 400
-    if "birthday" not in body:
-        return jsonify({"msg": "Debes registrar su nacimiento"}), 400
+    # if "birthday" not in body:
+    #     return jsonify({"msg": "Debes registrar su nacimiento"}), 400
     if "email" not in body:
         return jsonify({"msg": "El campo email es obligatorio"}), 400
     if "phone_number" not in body:
         return jsonify({"msg": "Debes registrar un telefono"}), 400
-    if "province" not in body:
-        return jsonify({"msg": "Debes escribir una provincia"}), 400
-    if "canton" not in body:
-        return jsonify({"msg": "Debes escribir un canton"}), 400
-    if "distric" not in body:
-        return jsonify({"msg": "Debes escribir un distrito"}), 400
+    # if "province" not in body:
+    #     return jsonify({"msg": "Debes escribir una provincia"}), 400
+    # if "canton" not in body:
+    #     return jsonify({"msg": "Debes escribir un canton"}), 400
+    # if "distric" not in body:
+    #     return jsonify({"msg": "Debes escribir un distrito"}), 400
     if "password" not in body:
         return jsonify({"msg": "Debes escribir una contraseña"}), 400
     
@@ -314,12 +314,12 @@ def new_profe():
     # new_profe.photo = body["photo"]
     new_profe.cardID_type = body["cardID_type"]
     new_profe.number_cardID = body["number_cardID"]
-    new_profe.birthday = body["birthday"]
+    # new_profe.birthday = body["birthday"]
     new_profe.email = body["email"]
     new_profe.phone_number = body["phone_number"]
-    new_profe.province = body["province"]
-    new_profe.canton = body["canton"]
-    new_profe.distric = body["distric"]
+    # new_profe.province = body["province"]
+    # new_profe.canton = body["canton"]
+    # new_profe.distric = body["distric"]
     new_profe.password = body["password"]
     
     try:
