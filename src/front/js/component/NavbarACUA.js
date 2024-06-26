@@ -21,7 +21,7 @@ export const NavbarACUA = () => {
 				}}>
 					<ul className="navbar-nav fw-semibold fs-6 flex-wrap-reverse justify-content-center mt-3 portraitPrimaryColor">
 						<li className="nav-item">
-							<p className="nav-link" aria-current="page" href="#">Inicio</p>
+						<Link className="nav-link" aria-current="page" to="/">Inicio</Link>
 						</li>
 						<li className="nav-item">
 							<p className="nav-link" href="#">Planes</p>
