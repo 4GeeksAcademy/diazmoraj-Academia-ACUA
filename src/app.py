@@ -112,7 +112,7 @@ def get_all_profpay():
     for profpay in all_profpays:
         profpays_serialized.append(profpay.serialize())
         print(profpays_serialized)
-    return jsonify({"data": profpays_serialized}), 200
+    return jsonify({"profpays": profpays_serialized}), 200
 
 @app.route('/api/studentspayment', methods=['GET'])
 def get_all_studpay():
@@ -121,7 +121,7 @@ def get_all_studpay():
     for studpay in all_studpays:
         studpays_serialized.append(studpay.serialize())
         print(studpays_serialized)
-    return jsonify({"data": studpays_serialized}), 200
+    return jsonify({"studpays": studpays_serialized}), 200
 
 @app.route('/api/electronicinvoice', methods=['GET'])
 def get_all_electinv():
@@ -130,7 +130,7 @@ def get_all_electinv():
     for electinv in all_electinvs:
         electinvs_serialized.append(electinv.serialize())
         print(electinvs_serialized)
-    return jsonify({"data": electinvs_serialized}), 200
+    return jsonify({"electinvs": electinvs_serialized}), 200
 
 @app.route('/api/courses', methods=['GET'])
 def get_all_course():
@@ -148,7 +148,7 @@ def get_all_modality():
     for modality in all_modalities:
         modalities_serialized.append(modality.serialize())
         print(modalities_serialized)
-    return jsonify({"data": modalities_serialized}), 200
+    return jsonify({"modality": modalities_serialized}), 200
 
 @app.route('/api/newcourses', methods=['GET'])
 def get_all_newcourses():
@@ -157,7 +157,7 @@ def get_all_newcourses():
     for newcourse in all_newcourses:
         newcourses_serialized.append(newcourse.serialize())
         print(newcourses_serialized)
-    return jsonify({"data": newcourses_serialized}), 200
+    return jsonify({"newcourses": newcourses_serialized}), 200
 
 
 #----------------------------------------------#
@@ -293,18 +293,18 @@ def new_profe():
         return jsonify({"msg": "Debes seleccionar un tipo de identificacion"}), 400
     if "number_cardID" not in body:
         return jsonify({"msg": "Debes escribir un numero de identificacion"}), 400
-    if "birthday" not in body:
-        return jsonify({"msg": "Debes registrar su nacimiento"}), 400
+    # if "birthday" not in body:
+    #     return jsonify({"msg": "Debes registrar su nacimiento"}), 400
     if "email" not in body:
         return jsonify({"msg": "El campo email es obligatorio"}), 400
     if "phone_number" not in body:
         return jsonify({"msg": "Debes registrar un telefono"}), 400
-    if "province" not in body:
-        return jsonify({"msg": "Debes escribir una provincia"}), 400
-    if "canton" not in body:
-        return jsonify({"msg": "Debes escribir un canton"}), 400
-    if "distric" not in body:
-        return jsonify({"msg": "Debes escribir un distrito"}), 400
+    # if "province" not in body:
+    #     return jsonify({"msg": "Debes escribir una provincia"}), 400
+    # if "canton" not in body:
+    #     return jsonify({"msg": "Debes escribir un canton"}), 400
+    # if "distric" not in body:
+    #     return jsonify({"msg": "Debes escribir un distrito"}), 400
     if "password" not in body:
         return jsonify({"msg": "Debes escribir una contraseña"}), 400
     
@@ -314,12 +314,12 @@ def new_profe():
     # new_profe.photo = body["photo"]
     new_profe.cardID_type = body["cardID_type"]
     new_profe.number_cardID = body["number_cardID"]
-    new_profe.birthday = body["birthday"]
+    # new_profe.birthday = body["birthday"]
     new_profe.email = body["email"]
     new_profe.phone_number = body["phone_number"]
-    new_profe.province = body["province"]
-    new_profe.canton = body["canton"]
-    new_profe.distric = body["distric"]
+    # new_profe.province = body["province"]
+    # new_profe.canton = body["canton"]
+    # new_profe.distric = body["distric"]
     new_profe.password = body["password"]
     
     try:
