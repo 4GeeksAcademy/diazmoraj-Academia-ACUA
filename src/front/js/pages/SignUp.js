@@ -1,10 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { NavbarACUA } from '../component/NavbarACUA'
 import { MultiButton } from "../component/MultiButton";
 
 
 export const SignUp = () => {
   return (
+    <React.Fragment>
+      <NavbarACUA />
     <div className="d-flex flex-column justify-content-center align-items-center"
       style={{ backgroundColor: '#f8f9fa' }}>
       <div style={{ position: 'relative', width: '100%' }}>
@@ -88,5 +91,6 @@ export const SignUp = () => {
       ¿Ya tienes un usuario? Inicia sesión aquí</Link>
       </form>
     </div>
+    </React.Fragment>
   );
 };

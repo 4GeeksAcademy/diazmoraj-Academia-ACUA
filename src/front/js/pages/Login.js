@@ -1,10 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../../styles/login.css";
+import { NavbarACUA } from '../component/NavbarACUA'
 import { MultiButton } from "../component/MultiButton";
 
 const Login = () => {
   return (
+    <React.Fragment>
+      <NavbarACUA />
     <div className="d-flex flex-column justify-content-between min-vh-100" style={{ backgroundColor: "#f8f9fa", margin: "0" }}>
       <div style={{ position: "relative", width: "100%" }}>
         <img src="https://i.postimg.cc/XJ784zpy/Whats-App-Image-2024-06-17-at-19-29-08.jpg" alt="Jumbotron" className="img-fluid mb-3" style={{ width: "100%", maxHeight: "150px", objectFit: "cover" }} />
@@ -30,6 +33,7 @@ const Login = () => {
         </form>
       </div>
     </div>
+    </React.Fragment>
   );
 };
 
