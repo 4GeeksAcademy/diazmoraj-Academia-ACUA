@@ -112,7 +112,7 @@ def get_all_profpay():
     for profpay in all_profpays:
         profpays_serialized.append(profpay.serialize())
         print(profpays_serialized)
-    return jsonify({"data": profpays_serialized}), 200
+    return jsonify({"profpays": profpays_serialized}), 200
 
 @app.route('/api/studentspayment', methods=['GET'])
 def get_all_studpay():
@@ -121,7 +121,7 @@ def get_all_studpay():
     for studpay in all_studpays:
         studpays_serialized.append(studpay.serialize())
         print(studpays_serialized)
-    return jsonify({"data": studpays_serialized}), 200
+    return jsonify({"studpays": studpays_serialized}), 200
 
 @app.route('/api/electronicinvoice', methods=['GET'])
 def get_all_electinv():
@@ -130,7 +130,7 @@ def get_all_electinv():
     for electinv in all_electinvs:
         electinvs_serialized.append(electinv.serialize())
         print(electinvs_serialized)
-    return jsonify({"data": electinvs_serialized}), 200
+    return jsonify({"electinvs": electinvs_serialized}), 200
 
 @app.route('/api/courses', methods=['GET'])
 def get_all_course():
@@ -148,7 +148,7 @@ def get_all_modality():
     for modality in all_modalities:
         modalities_serialized.append(modality.serialize())
         print(modalities_serialized)
-    return jsonify({"data": modalities_serialized}), 200
+    return jsonify({"modalities": modalities_serialized}), 200
 
 @app.route('/api/newcourses', methods=['GET'])
 def get_all_newcourses():
@@ -157,7 +157,7 @@ def get_all_newcourses():
     for newcourse in all_newcourses:
         newcourses_serialized.append(newcourse.serialize())
         print(newcourses_serialized)
-    return jsonify({"data": newcourses_serialized}), 200
+    return jsonify({"newcourses": newcourses_serialized}), 200
 
 
 #----------------------------------------------#
@@ -168,63 +168,63 @@ def get_single_admin(number_cardID):
     single_admin = Administrator.query.filter_by(number_cardID = number_cardID).first()
     if single_admin is None:
         return jsonify({"msg": "El administrador con el ID: {} no existe".format(number_cardID)}), 400
-    return jsonify({"data": single_admin.serialize()}), 200
+    return jsonify({"administrator": single_admin.serialize()}), 200
 
 @app.route('/api/professor/<int:id>', methods=['GET'])
 def get_single_profe(id):
     single_profe = Professor.query.get(id)
     if single_profe is None:
         return jsonify({"msg": "El profesor con el ID: {} no existe".format(id)}), 400
-    return jsonify({"data": single_profe.serialize()}), 200
+    return jsonify({"professor": single_profe.serialize()}), 200
 
 @app.route('/api/student/<int:id>', methods=['GET'])
 def get_single_stud(id):
     single_stud = Student.query.get(id)
     if single_stud is None:
         return jsonify({"msg": "El estudiante con el ID: {} no existe".format(id)}), 400
-    return jsonify({"data": single_stud.serialize()}), 200
+    return jsonify({"student": single_stud.serialize()}), 200
 
 @app.route('/api/professorpayment/<int:id>', methods=['GET'])
 def get_single_profpay(id):
     single_profpay = ProfessorPayment.query.get(id)
     if single_profpay is None:
         return jsonify({"msg": "La informacion de pago con el ID: {} no existe".format(id)}), 400
-    return jsonify({"data": single_profpay.serialize()}), 200
+    return jsonify({"professor_payment": single_profpay.serialize()}), 200
 
 @app.route('/api/studentpayment/<int:id>', methods=['GET'])
 def get_single_studpay(id):
     single_studpay = StudentPayment.query.get(id)
     if single_studpay is None:
         return jsonify({"msg": "La informacion de pago con el ID: {} no existe".format(id)}), 400
-    return jsonify({"data": single_studpay.serialize()}), 200
+    return jsonify({"student_payment": single_studpay.serialize()}), 200
 
 @app.route('/api/electronicinvoice/<int:id>', methods=['GET'])
 def get_single_electinv(id):
     single_electinv = ElectronicInvoice.query.get(id)
     if single_electinv is None:
         return jsonify({"msg": "La informacion de la factura electronica con el ID: {} no existe".format(id)}), 400
-    return jsonify({"data": single_electinv.serialize()}), 200
+    return jsonify({"student_electinv": single_electinv.serialize()}), 200
 
 @app.route('/api/course/<int:id>', methods=['GET'])
 def get_single_course(id):
     single_course = Course.query.get(id)
     if single_course is None:
         return jsonify({"msg": "El curso con el ID: {} no existe".format(id)}), 400
-    return jsonify({"data": single_course.serialize()}), 200
+    return jsonify({"course": single_course.serialize()}), 200
 
 @app.route('/api/modality/<int:id>', methods=['GET'])
 def get_single_modality(id):
     single_modality = Modality.query.get(id)
     if setup_commands is None:
         return jsonify({"msg": "La modalidad con el ID: {} no existe".format(id)}), 400
-    return jsonify({"data": single_modality.serialize()}), 200
+    return jsonify({"modality": single_modality.serialize()}), 200
 
 @app.route('/api/newcourse/<int:id>', methods=['GET'])
 def get_single_newcourse(id):
     single_newcourse = NewCourse.query.get(id)
     if single_newcourse is None:
         return jsonify({"msg": "El curso registrado con el ID: {} no existe".format(id)}), 400
-    return jsonify({"data": single_newcourse.serialize()}), 200
+    return jsonify({"newcourse": single_newcourse.serialize()}), 200
 
 #------------------------------------------#
 #App Route para los metodos POST
