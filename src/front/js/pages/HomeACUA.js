@@ -96,6 +96,7 @@ const HomeACUA = () => {
           </div>
         </div>
       </section>
+      <div id="planes">
       <section className="ourPlans">
         <div className="plansTitleBox container-fluid mt-3 mb-3 d-flex justify-content-center align-items-center">
           <h2 className='portraitPrimaryColor bigWeight fs-1 text-center text-white' style={{ zIndex: '3' }}>Conoce Nuestros</h2>
@@ -125,7 +126,9 @@ const HomeACUA = () => {
             secondFeature='1 vez por semana'
             thirdFeature='Instrumentos a disposicion' />
         </div>
-      </section>
+      </section> 
+       </div>
+       <div id="sobre-nosotros">
       <div className="plansTitleBox container-fluid mt-3 mb-3 d-flex justify-content-center align-items-center"></div>
       <section className="aboutUs container" style={{ marginTop: '100px', paddingTop: '50px', paddingBottom: '40px', marginBottom: '120px' }}>
         <div className="sectionAboutUs container d-flex flex-row flex-wrap justify-content-around align-items-center" style={{ paddingLeft: '30px', paddingRight: '30px' }}>
@@ -142,6 +145,8 @@ const HomeACUA = () => {
           </div>
         </div>
       </section>
+      </div>
+      <div id="contacto">
       <section className="contactSection">
         <div className="contactBox container-fluid" style={{ padding: '20px 20px' }}>
           <div className="textContact" style={{ marginTop: "30px", marginBottom: "50px" }}>
@@ -173,6 +178,7 @@ const HomeACUA = () => {
           </div>
         </div>
       </section>
+      </div>
     </React.Fragment >
   )
 }

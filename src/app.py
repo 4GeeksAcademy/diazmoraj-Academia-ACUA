@@ -112,7 +112,7 @@ def get_all_profpay():
     for profpay in all_profpays:
         profpays_serialized.append(profpay.serialize())
         print(profpays_serialized)
-    return jsonify({"data": profpays_serialized}), 200
+    return jsonify({"profpays": profpays_serialized}), 200
 
 @app.route('/api/studentspayment', methods=['GET'])
 def get_all_studpay():
@@ -121,7 +121,7 @@ def get_all_studpay():
     for studpay in all_studpays:
         studpays_serialized.append(studpay.serialize())
         print(studpays_serialized)
-    return jsonify({"data": studpays_serialized}), 200
+    return jsonify({"studpays": studpays_serialized}), 200
 
 @app.route('/api/electronicinvoice', methods=['GET'])
 def get_all_electinv():
@@ -130,7 +130,7 @@ def get_all_electinv():
     for electinv in all_electinvs:
         electinvs_serialized.append(electinv.serialize())
         print(electinvs_serialized)
-    return jsonify({"data": electinvs_serialized}), 200
+    return jsonify({"electinvs": electinvs_serialized}), 200
 
 @app.route('/api/courses', methods=['GET'])
 def get_all_course():
@@ -148,7 +148,7 @@ def get_all_modality():
     for modality in all_modalities:
         modalities_serialized.append(modality.serialize())
         print(modalities_serialized)
-    return jsonify({"data": modalities_serialized}), 200
+    return jsonify({"modalities": modalities_serialized}), 200
 
 @app.route('/api/newcourses', methods=['GET'])
 def get_all_newcourses():
@@ -157,7 +157,7 @@ def get_all_newcourses():
     for newcourse in all_newcourses:
         newcourses_serialized.append(newcourse.serialize())
         print(newcourses_serialized)
-    return jsonify({"data": newcourses_serialized}), 200
+    return jsonify({"newcourses": newcourses_serialized}), 200
 
 
 #----------------------------------------------#
@@ -168,63 +168,63 @@ def get_single_admin(number_cardID):
     single_admin = Administrator.query.filter_by(number_cardID = number_cardID).first()
     if single_admin is None:
         return jsonify({"msg": "El administrador con el ID: {} no existe".format(number_cardID)}), 400
-    return jsonify({"data": single_admin.serialize()}), 200
+    return jsonify({"administrator": single_admin.serialize()}), 200
 
 @app.route('/api/professor/<int:id>', methods=['GET'])
 def get_single_profe(id):
     single_profe = Professor.query.get(id)
     if single_profe is None:
         return jsonify({"msg": "El profesor con el ID: {} no existe".format(id)}), 400
-    return jsonify({"data": single_profe.serialize()}), 200
+    return jsonify({"professor": single_profe.serialize()}), 200
 
 @app.route('/api/student/<int:id>', methods=['GET'])
 def get_single_stud(id):
     single_stud = Student.query.get(id)
     if single_stud is None:
         return jsonify({"msg": "El estudiante con el ID: {} no existe".format(id)}), 400
-    return jsonify({"data": single_stud.serialize()}), 200
+    return jsonify({"student": single_stud.serialize()}), 200
 
 @app.route('/api/professorpayment/<int:id>', methods=['GET'])
 def get_single_profpay(id):
     single_profpay = ProfessorPayment.query.get(id)
     if single_profpay is None:
         return jsonify({"msg": "La informacion de pago con el ID: {} no existe".format(id)}), 400
-    return jsonify({"data": single_profpay.serialize()}), 200
+    return jsonify({"professor_payment": single_profpay.serialize()}), 200
 
 @app.route('/api/studentpayment/<int:id>', methods=['GET'])
 def get_single_studpay(id):
     single_studpay = StudentPayment.query.get(id)
     if single_studpay is None:
         return jsonify({"msg": "La informacion de pago con el ID: {} no existe".format(id)}), 400
-    return jsonify({"data": single_studpay.serialize()}), 200
+    return jsonify({"student_payment": single_studpay.serialize()}), 200
 
 @app.route('/api/electronicinvoice/<int:id>', methods=['GET'])
 def get_single_electinv(id):
     single_electinv = ElectronicInvoice.query.get(id)
     if single_electinv is None:
         return jsonify({"msg": "La informacion de la factura electronica con el ID: {} no existe".format(id)}), 400
-    return jsonify({"data": single_electinv.serialize()}), 200
+    return jsonify({"student_electinv": single_electinv.serialize()}), 200
 
 @app.route('/api/course/<int:id>', methods=['GET'])
 def get_single_course(id):
     single_course = Course.query.get(id)
     if single_course is None:
         return jsonify({"msg": "El curso con el ID: {} no existe".format(id)}), 400
-    return jsonify({"data": single_course.serialize()}), 200
+    return jsonify({"course": single_course.serialize()}), 200
 
 @app.route('/api/modality/<int:id>', methods=['GET'])
 def get_single_modality(id):
     single_modality = Modality.query.get(id)
     if setup_commands is None:
         return jsonify({"msg": "La modalidad con el ID: {} no existe".format(id)}), 400
-    return jsonify({"data": single_modality.serialize()}), 200
+    return jsonify({"modality": single_modality.serialize()}), 200
 
 @app.route('/api/newcourse/<int:id>', methods=['GET'])
 def get_single_newcourse(id):
     single_newcourse = NewCourse.query.get(id)
     if single_newcourse is None:
         return jsonify({"msg": "El curso registrado con el ID: {} no existe".format(id)}), 400
-    return jsonify({"data": single_newcourse.serialize()}), 200
+    return jsonify({"newcourse": single_newcourse.serialize()}), 200
 
 #------------------------------------------#
 #App Route para los metodos POST
@@ -252,7 +252,7 @@ def new_admin():
         return jsonify({"msg": "Debes escribir una provincia"}), 400
     if "canton" not in body:
         return jsonify({"msg": "Debes escribir un canton"}), 400
-    if "dstrict" not in body:
+    if "distric" not in body:
         return jsonify({"msg": "Debes escribir un distrito"}), 400
     if "password" not in body:
         return jsonify({"msg": "Debes escribir una contraseña"}), 400
@@ -260,7 +260,7 @@ def new_admin():
     new_admin = Administrator()
     new_admin.name = body["name"]
     new_admin.last_name = body["last_name"]
-    new_admin.photo = body["photo"]
+    # new_admin.photo = body["photo"]
     new_admin.cardID_type = body["cardID_type"]
     new_admin.number_cardID = body["number_cardID"]
     new_admin.birthday = body["birthday"]
@@ -303,7 +303,7 @@ def new_profe():
     #     return jsonify({"msg": "Debes escribir una provincia"}), 400
     # if "canton" not in body:
     #     return jsonify({"msg": "Debes escribir un canton"}), 400
-    # if "district" not in body:
+    # if "distric" not in body:
     #     return jsonify({"msg": "Debes escribir un distrito"}), 400
     if "password" not in body:
         return jsonify({"msg": "Debes escribir una contraseña"}), 400
@@ -341,8 +341,8 @@ def new_stud():
         return jsonify({"msg": "Debes escribir un nombre"}), 400
     if "last_name" not in body:
         return jsonify({"msg": "Debes escribir un apellido"}), 400
-    if "photo" not in body:
-        return jsonify({"msg": "Debes agregar una photo"}), 400
+    # if "photo" not in body:
+    #     return jsonify({"msg": "Debes agregar una photo"}), 400
     if "cardID_type" not in body:
         return jsonify({"msg": "Debes seleccionar un tipo de identificacion"}), 400
     if "number_cardID" not in body:
@@ -357,21 +357,21 @@ def new_stud():
         return jsonify({"msg": "Debes escribir una provincia"}), 400
     if "canton" not in body:
         return jsonify({"msg": "Debes escribir un canton"}), 400
-    if "dstrict" not in body:
+    if "distric" not in body:
         return jsonify({"msg": "Debes escribir un distrito"}), 400
     if "password" not in body:
         return jsonify({"msg": "Debes escribir una contraseña"}), 400
-    if "student_payment" not in body:
-        return jsonify({"msg": "Debes seleccionar un pago"}), 400
-    if "electronic_invoice" not in body:
-        return jsonify({"msg": "Debes seleccionar si desea factura electronica"}), 400
-    if "new_course_student" not in body:
-        return jsonify({"msg": "Debes seleccionar un estudiante"}), 400
+    # if "student_payment" not in body:
+    #     return jsonify({"msg": "Debes seleccionar un pago"}), 400
+    # if "electronic_invoice" not in body:
+    #     return jsonify({"msg": "Debes seleccionar si desea factura electronica"}), 400
+    # if "new_course_student" not in body:
+    #     return jsonify({"msg": "Debes seleccionar un estudiante"}), 400
     
     new_stud = Student()
     new_stud.name = body["name"]
     new_stud.last_name = body["last_name"]
-    new_stud.photo = body["photo"]
+    # new_stud.photo = body["photo"]
     new_stud.cardID_type = body["cardID_type"]
     new_stud.number_cardID = body["number_cardID"]
     new_stud.birthday = body["birthday"]
@@ -381,9 +381,9 @@ def new_stud():
     new_stud.canton = body["canton"]
     new_stud.distric = body["distric"]
     new_stud.password = body["password"]
-    new_stud.student_payment = body["student_payment"]
-    new_stud.electronic_invoice = body["electronic_invoice"]
-    new_stud.new_course_student = body["new_course_student"]
+    # new_stud.student_payment = body["student_payment"]
+    # new_stud.electronic_invoice = body["electronic_invoice"]
+    # new_stud.new_course_student = body["new_course_student"]
     try:
         db.session.add(new_stud)
         db.session.commit()
@@ -462,7 +462,7 @@ def new_electinv():
         return jsonify({"msg": "Debes escribir una provincia"}), 400
     if "canton" not in body:
         return jsonify({"msg": "Debes escribir un canton"}), 400
-    if "dstrict" not in body:
+    if "distric" not in body:
         return jsonify({"msg": "Debes escribir un distrito"}), 400
     if "student_id" not in body:
         return jsonify({"msg": "Debes seleccionar un estudiante"}), 400
@@ -471,11 +471,11 @@ def new_electinv():
     new_electinv.name = body["name"]
     new_electinv.cardID_type = body["cardID_type"]
     new_electinv.number_cardID = body["number_cardID"]
-    new_electinv = body["email"]
+    new_electinv.email = body["email"]
     new_electinv.phone_number = body["phone_number"]
     new_electinv.province = body["province"]
     new_electinv.canton = body["canton"]
-    new_electinv = body["distric"]
+    new_electinv.distric = body["distric"]
     new_electinv.student_id = body["student_id"]
     try:
         db.session.add(new_electinv)
