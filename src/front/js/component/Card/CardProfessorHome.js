@@ -6,7 +6,7 @@ import React from 'react'
 export const CardProfessorHome = ({ number, name, lastName, district, province }) => {
     return (
         <React.Fragment>
-            <div className="cardProfessor">
+            <div className="cardProfessor" style={{ paddingBottom: '20px', width: '300px' }}>
                 <div className="card cardProff" style={{ borderRadius: '20px' }}>
                     <img src={`https://xsgames.co/randomusers/assets/avatars/male/${number}.jpg`} className="card-img-top" alt="..." style={{ height: 'auto', padding: '30px', borderRadius: '70%' }} />
                     <div className="card-body">
