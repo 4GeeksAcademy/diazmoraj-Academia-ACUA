@@ -31,6 +31,8 @@ import injectContext from "./store/appContext";
 import FormProfessor from "./pages/FormProfessor";
 import FormStudent from "./pages/FormStudent";
 
+import Undefined from "./pages/Undefined";
+
 import { Footer } from "./component/Footer";
 import AdminProfReg from "./component/Card/AdminProfReg";
 
@@ -53,7 +55,6 @@ const Layout = () => {
                         <Route path="/homeprofessor" element={<HomeProfessor />} />
                         <Route path="/homeadmin" element={<HomeAdmin />} />
                         <Route path="/signup" element={<SignUp />} />
-                        <Route path="*" element={<h1>Not found!</h1>} />
                         <Route path="/login" element={<Login />} />
                         <Route path="/" element={<HomeACUA />} />
                         <Route path="/formstudent" element={<FormStudent />} />
@@ -65,6 +66,9 @@ const Layout = () => {
                         <Route path="/electronicinvoice" element={<ElectronicInvoice />} />
                         <Route path="/formprofessor" element={<FormProfessor />} />
                         <Route path="/adminprofreg" element={<AdminProfReg />} />
+                        <Route path="/undefined" element={<Undefined />} />
+
+                        <Route path="*" element={<Undefined />} />
 
                     </Routes>
 
