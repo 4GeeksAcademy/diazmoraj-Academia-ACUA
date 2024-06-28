@@ -3,15 +3,54 @@ import { Link } from "react-router-dom";
 import { MultiButton } from "../component/MultiButton";
 
 const FormStudent = () => {
+
+    const navigate = useNavigate()
+    const { store, actions } = useContext(Context)
+    const [formData, setFormData] = useState({
+        name: "",
+        cardID_type: "",
+        number_cardID: 0,
+        email: "",
+        phone_number: 0,
+        password: ""
+    })
+
+    const flag = store.isStudenteCreated
+
+    const handleInputChange = (event) => {
+        const { name, value } = event.target;
+        setFormData((prevFormData) => ({
+            ...prevFormData,
+            [name]: value,
+        }))
+    }
+
+    const handleSubmit = (event) => {
+        actions.ElectronicInvoice(formData)
+        if (flag) {
+          return(
+            <div class="alert alert-success" role="alert">
+                A simple success alert—check it out!
+            </div>
+          )
+        }
+        setInterval(navigate("/student"), 2000)
+        event.preventDefault();
+      }
+
     return (
-        <div className="d-flex flex-column justify-content-center align-items-center" 
-        style={{ backgroundColor: '#f8f9fa' }}>
+        <div className="d-flex flex-column justify-content-center align-items-center"
+            style={{ backgroundColor: '#f8f9fa' }}>
             <div style={{ position: 'relative', width: '100%' }}>
-                <img src="https://i.postimg.cc/XJ784zpy/Whats-App-Image-2024-06-17-at-19-29-08.jpg" 
-                alt="Jumbotron" className="img-fluid mb-3" style={{ width: '100%', maxHeight: '150px', 
-                objectFit: 'cover' }} />
-                <div style={{ position: 'absolute', top: '50%', left: '35%', transform: 'translate(-45%, -50%)', 
-                    color: 'black' }}>
+                <img src="https://i.postimg.cc/XJ784zpy/Whats-App-Image-2024-06-17-at-19-29-08.jpg"
+                    alt="Jumbotron" className="img-fluid mb-3" style={{
+                        width: '100%', maxHeight: '150px',
+                        objectFit: 'cover'
+                    }} />
+                <div style={{
+                    position: 'absolute', top: '50%', left: '35%', transform: 'translate(-45%, -50%)',
+                    color: 'black'
+                }}>
                     <h1>Registro de nuevo estudiante</h1>
                 </div>
             </div>
@@ -52,7 +91,7 @@ const FormStudent = () => {
                         <label className="form-label">Número de identificación</label>
                         <input className="form-control" placeholder="Número de identificación" />
                     </div>
-                </div> 
+                </div>
                 <div className="d-flex mb-3">
                     <div className="me-2 flex-fill">
                         <label className="form-label">Provincia</label>
@@ -76,10 +115,10 @@ const FormStudent = () => {
                     <input type="password" className="form-control" placeholder="Confirmar contraseña" />
                 </div>
                 <div className="mb-4">
-        <MultiButton color="purple" text="Inicia sesión →" width="700" link="/HomeStudent" />
-        </div> 
+                    <MultiButton color="purple" text="Inicia sesión →" width="700" link="/HomeStudent" />
+                </div>
                 <Link to={`/Login`} className="mt-3">
-                ¿Ya tienes un usuario? Inicia sesión aquí</Link>
+                    ¿Ya tienes un usuario? Inicia sesión aquí</Link>
             </form>
         </div>
     );
