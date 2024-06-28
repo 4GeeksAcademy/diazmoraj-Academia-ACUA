@@ -1,24 +1,32 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { NavbarACUA } from '../component/NavbarACUA'
 import { CircleIcon } from '../component/CircleIcon'
 import { MultiButton } from '../component/MultiButton'
 import { Carousel } from '../component/Carousel'
 import { CardGoals } from '../component/Card/CardGoals'
+import { CardPlan } from '../component/Card/CardPlan'
+import { Link } from 'react-router-dom'
+import { ContactCardInfo } from '../component/Card/ContactCardInfo'
+import { ContactForm } from '../component/ContactForm'
+import { useContext } from 'react'
+import { Context } from '../store/appContext'
 
 const HomeACUA = () => {
+  const { actions, store } = useContext(Context)
 
+  console.log(store.professors)
   return (
     <React.Fragment>
       <NavbarACUA />
       <div className='bannerAcua container-fluid d-flex justify-content-center align-items-end'>
         <div className="portraitBox">
-          <div className="acuaPortraitText portraitPrimaryColor">
+          <div className="acuaPortraitText portraitPrimaryColor" style={{ zIndex: '3' }}>
             <div className="boxPoints">
               <img className='pointsUpper' src="https://i.imgur.com/hJ1Q7yE.png" alt="" />
             </div>
             <h1 className='acuaTitle' id='bannerTitle'>ACUA</h1>
             <p className='acuaShortResume mb-4'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam nobis nesciunt alias consequuntur debitis hic excepturi id rem aut, expedit</p>
-            <MultiButton color='purple' text='Suscribete!' width='160' />
+            <MultiButton color='purple' text='Suscribete!' width='160' link='/signup' />
           </div>
         </div>
         <div className="imageBox">
@@ -53,27 +61,124 @@ const HomeACUA = () => {
           <h2 className='portraitPrimaryColor bigWeight fs-1'>Nuestros Profesores</h2>
           <p className='text-secondary mt-0'>¡Conoce quien esta detras de nuestra formacion!</p>
         </div>
-        <div className="carousel container pb-3 mt-3 mb-3">
-          <Carousel />
+        <div className="carousel container pb-3 mt-3 mb-3 d-flex flew-row justify-content-center">
+          <Carousel array={store.professors} />
         </div>
       </section>
-      <section className="reachGoalsSection" style={{ marginTop: '100px' }}>
+      <section className="reachGoalsSection" style={{ marginTop: '100px', marginBottom: '100px' }}>
         <div className="goalsBox">
-          <div className="goalsTitleBox d-flex flex-column align-items-center">
+          <div className="goalsTitleBox d-flex flex-column align-items-center mb-3">
             <h2 className='portraitPrimaryColor bigWeight fs-1'>¡Alcanza Tus Objetivos!</h2>
-            <p className='text-secondary mt-0'>¡Nuestra academia brinda el seguimiento y soporte necesario para llevar a cabo el aprendizaje que necesitass!</p>
+            <p className='text-secondary mt-0 text-center'>¡Nuestra academia brinda el seguimiento y soporte necesario para llevar a cabo el aprendizaje que necesitass!</p>
           </div>
           <div className="cardGoalContainerBox container pb-3 mt-3 mb-3">
-            <div className="container d-flex flex-row justinfy-content-center gap-4 flex-wrap">
-              <CardGoals color="purple" iconName="fa-solid fa-book" iconColor="white" iconBackgroundColor='#5751e1' />
-              <CardGoals color="yellow" iconName="fa-solid fa-certificate" iconColor="white" iconBackgroundColor='#ffc224' />
-              <CardGoals color="blue" iconName="fa-solid fa-graduation-cap" iconColor="white" iconBackgroundColor='#1bcbe3' />
+            <div className="container d-flex flex-row justify-content-center gap-4 flex-wrap">
+              <CardGoals
+                text='Profesores expertos'
+                color="purple"
+                iconName="fa-solid fa-book"
+                iconColor="white"
+                iconBackgroundColor='#5751e1' />
+              <CardGoals
+                text='Clases efectivas'
+                color="yellow"
+                iconName="fa-solid fa-certificate"
+                iconColor="white"
+                iconBackgroundColor='#ffc224' />
+              <CardGoals
+                text=' Multiples instrumentos'
+                color="blue"
+                iconName="fa-solid fa-graduation-cap"
+                iconColor="white"
+                iconBackgroundColor='#1bcbe3' />
             </div>
           </div>
         </div>
       </section>
-    </React.Fragment>
+      <div id="planes">
+      <section className="ourPlans">
+        <div className="plansTitleBox container-fluid mt-3 mb-3 d-flex justify-content-center align-items-center">
+          <h2 className='portraitPrimaryColor bigWeight fs-1 text-center text-white' style={{ zIndex: '3' }}>Conoce Nuestros</h2>
+          <h2 className='portraitPrimaryColor bigWeight fs-1 text-center text-white ms-3 textPlanes' style={{ backgroundColor: '#ffc224', borderRadius: '15px', padding: '4px' }}>Planes</h2>
+        </div>
+        <div className="planCardBox container d-flex flex-row justify-content-center flex-wrap" style={{ marginBottom: '80px', marginTop: '100px', padding: '20px', gap: '30px' }}>
+          <CardPlan
+            planType='Plan 1 presencial - Virtual'
+            price='¢65000' fontSz='50'
+            planModality='por mes'
+            firstFeature='Clases de 1 hora'
+            secondFeature='1 vez por semana'
+            thirdFeature='Instrumentos a disposicion' />
+          <CardPlan
+            planType='Domicilio'
+            price='¢75000'
+            fontSz='50'
+            planModality='por mes'
+            firstFeature='Clases de 1 hora'
+            secondFeature='1 vez por semana'
+            thirdFeature='Instrumentos a disposicion' />
+          <CardPlan
+            planType='Personalizado'
+            price='Contacta con nosotros'
+            fontSz='40'
+            firstFeature='Clases de 1 hora'
+            secondFeature='1 vez por semana'
+            thirdFeature='Instrumentos a disposicion' />
+        </div>
+      </section> 
+       </div>
+       <div id="sobre-nosotros">
+      <div className="plansTitleBox container-fluid mt-3 mb-3 d-flex justify-content-center align-items-center"></div>
+      <section className="aboutUs container" style={{ marginTop: '100px', paddingTop: '50px', paddingBottom: '40px', marginBottom: '120px' }}>
+        <div className="sectionAboutUs container d-flex flex-row flex-wrap justify-content-around align-items-center" style={{ paddingLeft: '30px', paddingRight: '30px' }}>
+          <div className="textUs" style={{ width: '500px' }}>
+            <h2 className='portraitPrimaryColor bigWeight fs-1 text-center text-white' style={{ zIndex: '3', paddingBottom: '55px' }}> Quienes <strong style={{ backgroundColor: '#ffc224', borderRadius: '15px', padding: '4px', fontWeight: '600' }}> Somos </strong></h2>
+            <p className='text-white mt-0 text-left'>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Temporibus laudantium accusantium magni? Minus laboriosam, sequi temporibus animi ratione, blanditiis illum quidem perferendis quae exercitationem quibusdam aliquam nisi nostrum nihil aliquid?</p>
+            <p className='text-white mt-0 text-left'>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Temporibus laudantium accusantium magni? Minus laboriosam, sequi temporibus animi ratione</p>
+            <Link to='/signup'>
+              <p className='text-white mt-0 text-center' style={{ paddingTop: '30px' }}> <strong>¡Comienza ahora mismo!</strong></p>
+            </Link>
+          </div>
+          <div className="imgAboutUs">
+            <img id='"imgAboutUs"' src="https://i.imgur.com/7lOAUrM.png" alt="logo-acua" style={{ width: '300px', marginTop: '20px' }} />
+          </div>
+        </div>
+      </section>
+      </div>
+      <div id="contacto">
+      <section className="contactSection">
+        <div className="contactBox container-fluid" style={{ padding: '20px 20px' }}>
+          <div className="textContact" style={{ marginTop: "30px", marginBottom: "50px" }}>
+            <h2 className='bigWeight fs-1 text-center text-white'>Contacta con nosotros!</h2>
+            <p className='text-light mt-0 text-center'>Envia un mensaje y nuestro equipo se pondrá en contacto contigo</p>
+          </div>
+          <div className="container" style={{ padding: '50px' }}>
+            <div className="row justify-content-center">
+              <div className="col-xl-5 col-sm-11">
+                <div className="topInfo d-flex flex-column mt-2 gap-2">
+                  <ContactCardInfo
+                    icon="fa-location-dot"
+                    title="Direccion"
+                    description="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Asperiores, aliquid perspiciatis non obcaecati " />
+                  <ContactCardInfo
+                    icon="fa-phone-volume"
+                    title="Teléfono"
+                    description="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Asperiores, aliquid perspiciatis non obcaecati " />
+                  <ContactCardInfo
+                    icon="fa-envelope"
+                    title="E-mail"
+                    description="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Asperiores, aliquid perspiciatis non obcaecati " />
+                </div>
+              </div>
+              <div className="rightInfo col-xl-7 col-sm-11 mt-2">
+                <ContactForm />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      </div>
+    </React.Fragment >
   )
 }
-
 export default HomeACUA

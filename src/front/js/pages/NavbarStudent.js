@@ -17,18 +17,18 @@ export const NavbarStudent = () => {
 						</button>
 						<div className="collapse navbar-collapse" id="navbarScroll">
 							<ul className="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll fs-6">
-								<li className="nav-link">
-									<Link to="/homeacua" className="text-decoration-none">
+								<li>
+									<Link to="/" className="text-decoration-none nav-link">
 										<span className="me-4">Inicio</span>
 									</Link>
 								</li>
-								<li className="nav-link">
-									<Link to="/formstudent" className="text-decoration-none">
+								<li>
+									<Link to="/formstudent" className="text-decoration-none nav-link">
 										<span className="me-4">Información personal</span>
 									</Link>
 								</li>
-								<li className="nav-link">
-									<Link to="/electronicinvoice" className="text-decoration-none">
+								<li>
+									<Link to="/electronicinvoice" className="text-decoration-none nav-link">
 										<span className="me-4">Facturación</span>
 									</Link>
 								</li>

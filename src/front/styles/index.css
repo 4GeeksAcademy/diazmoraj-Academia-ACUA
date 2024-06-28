@@ -38,11 +38,12 @@ body{
 #loginButton{
     border-radius: 40px;
     padding-top: 7px;
-    width: 100px;
-    height: 40px;
+    width: 110px;
+    height: 45px;
     background-color: #ffc224;
     border: 2px solid #d0a42e;
     text-align: center;
+    font-size: 19px;
 }
 
 #loginButton:hover{
@@ -61,12 +62,12 @@ body{
     color: #5751e1
 }
 
-@media screen and (max-width: 1280px) {
+@media screen and (max-width: 1250px) {
     .externalLoginButton{
         display: none;
     }
     .navbar-nav{
-        gap: 20px;
+        gap: 30px;
     }
     .bannerImageSize{
         display: none;
@@ -88,6 +89,22 @@ body{
         margin-right: 40px;
         padding-right: 30px;
     }
+    
+    .pointDiv img{
+        display: none;
+    }
+
+    .imgAboutUs img{
+        display: none;
+    }
+
+    .aboutUs{
+        background-color: #5751e1;
+        width: 90vw;
+        margin: auto;
+        padding: 20px;
+        border-radius: 20px;
+    }
 }
 
 @media screen and (min-width: 1280px){
@@ -95,11 +112,13 @@ body{
         display: none;
     }
     .navbar-nav{
-        gap: 60px;
+        gap: 100px;
     }
     
     .bannerImageSize{
-        height: 420px;
+        z-index: 1;
+        height: 400px;
+        object-fit: cover;
         /*
         bottom: 145px;
         left: 37%;
@@ -119,6 +138,19 @@ body{
         padding-left: 200px;
         
     }
+
+    #imageAboutUs{
+        display: none;
+    }
+
+    .aboutUs{
+        background-color: #5751e1;
+        width: 70vw;
+        margin: auto;
+        padding: 20px;
+        border-radius: 20px;
+    }
+
 }
 
 @media screen and (min-width: 2048px){
@@ -145,6 +177,22 @@ body{
         top: -55px;
         left: 360px;
         height: 100px;
+    }
+
+    .yellowDiv img{
+        position: absolute;
+        z-index: 2;
+        right: 2px;
+        top: 25px;
+        width: 150px;
+    }
+
+    .aboutUs{
+        background-color: #5751e1;
+        width: 45vw;
+        margin: auto;
+        padding: 20px;
+        border-radius: 20px;
     }
     
 }
@@ -246,27 +294,43 @@ body{
     text-align: center;
     font-size: 18px;
     border-radius: 20px;
-    padding: 12px;
+    padding: 15px;
 }
 
 .cardProff{
-    box-shadow: rgba(14, 63, 126, 0.06) 0px 0px 0px 1px, rgba(42, 51, 70, 0.03) 0px 1px 1px -0.5px, rgba(42, 51, 70, 0.04) 0px 2px 2px -1px, rgba(42, 51, 70, 0.04) 0px 3px 3px -1.5px, rgba(42, 51, 70, 0.03) 0px 5px 5px -2.5px, rgba(42, 51, 70, 0.03) 0px 10px 10px -5px, rgba(42, 51, 70, 0.03) 0px 24px 24px -8px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 }
 
 .swiper-button-next{
     margin-left: 200px;
 }
 
-.cardGoalContainerBox{
-    padding: 35px;
-}
-
 .cardGoal{
-    background-color: red;
     height: 210px;
-    width: 400px;
+    width: 420px;
     border-radius: 15px;
 }
+
+.plansTitleBox{
+    background-color: #5751e1;
+    height: 100px;
+    position: relative;
+    z-index: 1 ;
+    padding-top: 10px;
+}
+
+.textPlanes{
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+}
+
+.cardPlan{
+    height: 500px;
+    width: 370px;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
+
 
 .add-button:hover{
     cursor: pointer;
@@ -278,4 +342,24 @@ body{
 .table-row:hover{
     cursor: pointer;
     background-color: #e1cbee
+}
+
+.contactBox{
+    background-color: #5751e1;
+}
+
+.contactCardInfo{
+    background-color: white;
+    border-radius: 15px;
+}
+
+.contactForm{
+    background-color: white;
+    height: 100%;
+    border-radius: 15px;
+}
+
+.textAreaContact{
+    width: 70%;
+    min-height: 300px;
 }

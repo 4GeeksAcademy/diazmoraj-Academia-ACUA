@@ -4,8 +4,10 @@ import 'swiper/css';
 import 'swiper/css/bundle';
 import { Navigation } from 'swiper/modules';
 import { CardProfessorHome } from './Card/CardProfessorHome';
+import { CardProfessorAdmin } from './Card/CardProfessorAdmin';
+import { CardStudentAdmin } from './Card/CardStudentAdmin';
 
-export const Carousel = ({ array }) => {
+export const CarouselAdminStudents = ({ array }) => {
 
     const randomNumber = () => {
         let random = 0
@@ -54,7 +56,7 @@ export const Carousel = ({ array }) => {
                     {array?.map((arrayItem) => {
                         return (
                             <div className="swiper-slide">
-                                <CardProfessorHome
+                                <CardStudentAdmin
                                     number={randomNumber()}
                                     key={arrayItem.id}
                                     name={arrayItem.name}
