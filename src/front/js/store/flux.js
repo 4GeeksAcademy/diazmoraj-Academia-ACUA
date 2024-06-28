@@ -250,15 +250,19 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			// Agregar estudiante
 			newStudent: () => {
-				fetch(process.env.BACKEND_URL + "/api/student",{
-					method:"POST",
+				fetch(process.env.BACKEND_URL + "/api/student", {
+					method: "POST",
 					body: JSON.stringify(),
 					headers: { "Content-Type": "application/json" }
 				})
-				.then(response => response())
-				.then(data => {setStore(data.students)})
-				.catch(error => error)
+				.then(response => response.json())
+				.then(data => {
+					console.log(data);
+					setStore(data.students);
+				})
+				.catch(error => console.error("Error:", error));
 			},
+			
 
 			// Agregar curso
 			newCourse: () => {
@@ -321,15 +325,20 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			// Agregar nuevo curso
-			newnewCourse: () => {
-				fetch(process.env.BACKEND_URL + "/api/newcourse",{
-					method:"POST",
-					body: JSON.stringify(),
+			newnewCourse: (courseData) => {
+				fetch(process.env.BACKEND_URL + "/api/newcourse", {
+					method: "POST",
+					body: JSON.stringify(courseData),
 					headers: { "Content-Type": "application/json" }
 				})
-				.then(response => response())
-				.then(data => {setStore(data.newcourses)})
-				.catch(error => error)
+				.then(response => response.json())
+				.then(data => {
+					if (data.msg === "OK") {
+					} else {
+						console.error(data.msg);
+					}
+				})
+				.catch(error => console.error("Error:", error));
 			},
 			
 		}

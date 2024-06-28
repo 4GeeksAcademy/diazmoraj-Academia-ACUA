@@ -6,7 +6,7 @@ from flask import Flask, request, jsonify, url_for, send_from_directory
 from flask_migrate import Migrate
 from flask_swagger import swagger
 from api.utils import APIException, generate_sitemap
-from api.models import db
+from api.models import db, Student
 from api.routes import api
 from api.admin import setup_admin
 from api.commands import setup_commands
@@ -21,6 +21,12 @@ from api.models import Modality
 from api.models import NewCourse
 from flask_cors import CORS
 
+from flask_jwt_extended import create_access_token
+from flask_jwt_extended import get_jwt_identity
+from flask_jwt_extended import jwt_required
+from flask_jwt_extended import JWTManager
+from flask_bcrypt import Bcrypt, generate_password_hash, check_password_hash
+
 # from models import Person
 
 ENV = "development" if os.getenv("FLASK_DEBUG") == "1" else "production"
@@ -29,6 +35,9 @@ static_file_dir = os.path.join(os.path.dirname(
 app = Flask(__name__)
 CORS(app)
 app.url_map.strict_slashes = False
+
+app.config["JWT_SECRET_KEY"] = os.getenv("JWT-KEY")
+jwt = JWTManager(app)
 
 # database condiguration
 db_url = os.getenv("DATABASE_URL")
@@ -346,7 +355,7 @@ def new_stud():
     if "cardID_type" not in body:
         return jsonify({"msg": "Debes seleccionar un tipo de identificacion"}), 400
     if "number_cardID" not in body:
-        return jsonify({"msg": "Debes escribir un numero de identificacion"}), 400
+       return jsonify({"msg": "Debes escribir un numero de identificacion"}), 400
     if "birthday" not in body:
         return jsonify({"msg": "Debes registrar su nacimiento"}), 400
     if "email" not in body:
@@ -485,7 +494,7 @@ def new_electinv():
 
     return jsonify({"msg": "OK"}), 200
 
-@app.route('/api/course', methods=['POST'])
+@app.route('/api/newcourse', methods=['POST'])
 def new_course():
     body = request.get_json(silent=True)
     if body is None:
@@ -493,7 +502,6 @@ def new_course():
     if "name" not in body:
         return jsonify({"msg": "Debes escribir un nombre"}), 400
 
-    
     new_course = Course()
     new_course.name = body["name"]
 
@@ -504,6 +512,7 @@ def new_course():
         return jsonify({"msg": error.args[0]}), 500
 
     return jsonify({"msg": "OK"}), 200
+
 
 @app.route('/api/modality', methods=['POST'])
 def new_modality():
@@ -550,6 +559,28 @@ def new_newcourse():
         return jsonify({"msg": error.args[0]}), 500
 
     return jsonify({"msg": "OK"}), 200
+
+@app.route("/api/login", methods=["POST"])
+def login():
+    body = request.get_json(silent=True)
+    
+    if body is None:
+        return jsonify({"msg": "El cuerpo de la solicitud está vacío"}), 400
+    if "email" not in body or not body["email"]:
+        return jsonify({"msg": "Debes completar el campo email"}), 400
+    if "password" not in body or not body["password"]:
+        return jsonify({"msg": "Debes completar el campo contraseña"}), 400
+    
+    student = Student.query.filter_by(email=body["email"]).first()
+    if student is None or not check_password_hash(student.password, body['password']):
+        return jsonify({"msg": "Email o contraseña inválidos"}), 400
+
+    access_token = create_access_token(identity=student.email)
+    return jsonify({"msg": "ok", "access_token": access_token}), 200
+
+if __name__ == "__main__":
+    app.run(debug=True)
+    
 
 #------------------------------------------------------#
 #App Route para los metodos PUT
