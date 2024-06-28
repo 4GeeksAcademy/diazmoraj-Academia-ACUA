@@ -25,19 +25,19 @@ export const HomeAdmin = () => {
 						<h4 className="py-2 ps-5 ms-5 fs-3 fw-bold">Profesores</h4>
 					</div>
 				</div>
-				<div className="container-fluid d-flex">
+				<div className="container-fluid d-flex ms-5 ps-5">
 
 					{/* <CarouselAdminProfessor /> */}
 
-					<CarouselAdmin array={store.professors} />
+					{/* <CarouselAdmin array={store.professors} /> */}
 
-					{/* <>
+					<>
 						{store.professors && store.professors.map((professor) => {
 							return (
 								<CardAdminProfessor name={professor.name} last_name={professor.last_name} key={professor.number_cardID} id={professor.id} />
 							)
 						})}
-					</> */}
+					</>
 
 				</div>
 				<div className="container-fluid d-flex justify-content-center my-3">
@@ -81,7 +81,7 @@ export const HomeAdmin = () => {
 				</div>
 				<div className="continer-fluid d-flex">
 
-					<CarouselAdminStudents array={store.students} />
+					{/* <CarouselAdminStudents array={store.students} /> */}
 					{/* {store.students && store.students.map((student, index) => {
 						return (
 							<CardAdminStudent name={student.name} last_name={student.last_name} key={student.number_carID} id={student.id} />
