@@ -252,21 +252,20 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			// Agregar estudiante
-			newStudent: (object) => {
-				fetch(process.env.BACKEND_URL + "/api/student",{
-					method:"POST",
-					body: JSON.stringify(object),
+			newStudent: () => {
+				fetch(process.env.BACKEND_URL + "/api/student", {
+					method: "POST",
+					body: JSON.stringify(),
 					headers: { "Content-Type": "application/json" }
 				})
-				.then(response => {console.log(response)
-					if(response.ok){
-						setStore({isStudentCreated:true})
-					}
-					return response.json()
+				.then(response => response.json())
+				.then(data => {
+					console.log(data);
+					setStore(data.students);
 				})
-				.then(data => data)
-				.catch(error => error)
+				.catch(error => console.error("Error:", error));
 			},
+			
 
 			// Agregar curso
 			newCourse: (object) => {
@@ -368,6 +367,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				})
 				.then(data => data)
 				.catch(error => error)
+
 			},
 			
 		}
