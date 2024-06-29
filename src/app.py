@@ -237,7 +237,7 @@ def get_single_modality(modality):
 #------------------------------------------#
 #App Route para los metodos POST
 
-@app.route('/api/administrator', methods=['POST'])
+@app.route('/api/createadministrator', methods=['POST'])
 def new_admin():
     body = request.get_json(silent=True)
     if body is None:
@@ -297,7 +297,7 @@ def new_admin():
 
     # return jsonify({"msg": "OK"}), 200
 
-@app.route('/api/professor', methods=['POST'])
+@app.route('/api/createprofessor', methods=['POST'])
 def new_profe():
     body = request.get_json(silent=True)
     if body is None:
@@ -351,7 +351,7 @@ def new_profe():
 
     return jsonify({"new_professor": new_profe.serialize()}), 201
 
-@app.route('/api/student', methods=['POST'])
+@app.route('/api/createstudent', methods=['POST'])
 def new_stud():
     body = request.get_json(silent=True)
     if body is None:
@@ -423,7 +423,7 @@ def new_stud():
 
     # return jsonify({"msg": "OK"}), 200
 
-@app.route('/api/professorpayment', methods=['POST'])
+@app.route('/api/createprofessorpayment', methods=['POST'])
 def new_profpay():
     body = request.get_json(silent=True)
     if body is None:
@@ -461,7 +461,7 @@ def new_profpay():
 
     # return jsonify({"msg": "OK"}), 200
 
-@app.route('/api/studentpayment', methods=['POST'])
+@app.route('/api/createstudentpayment', methods=['POST'])
 def new_studpay():
     body = request.get_json(silent=True)
     if body is None:
@@ -496,7 +496,7 @@ def new_studpay():
 
     # return jsonify({"msg": "OK"}), 200
 
-@app.route('/api/electronicinvoice', methods=['POST'])
+@app.route('/api/createnewelectronicinvoice', methods=['POST'])
 def new_electinv():
     body = request.get_json(silent=True)
     if body is None:
@@ -581,7 +581,7 @@ def add_course():
     # return jsonify({"msg": "OK"}), 200
 
 
-@app.route('/api/modality', methods=['POST'])
+@app.route('/api/addmodality', methods=['POST'])
 def new_modality():
     body = request.get_json(silent=True)
     if body is None:
@@ -673,7 +673,7 @@ if __name__ == "__main__":
 #------------------------------------------------------#
 #App Route para los metodos PUT
 
-@app.route('/api/administrator/<int:number_cardID>', methods=['PUT'])
+@app.route('/api/editadministratorinfo/<int:number_cardID>', methods=['PUT'])
 def update_admin(number_cardID):
     body = request.get_json(silent=True)
     admin_to_update = Administrator.query.filter_by(number_cardID = number_cardID).first()
@@ -723,7 +723,7 @@ def update_admin(number_cardID):
 
     # return jsonify({"msg": "OK"}), 200
 
-@app.route('/api/professor/<int:number_cardID>', methods=['PUT'])
+@app.route('/api/editprofessorinfo/<int:number_cardID>', methods=['PUT'])
 def update_profe(number_cardID):
     body = request.get_json(silent=True)
     profe_to_update = Professor.query.filter_by(number_cardID = number_cardID).first()
@@ -746,7 +746,7 @@ def update_profe(number_cardID):
 
     return jsonify({"updated_professor": profe_to_update.serialize()}), 201
 
-@app.route('/api/student/<int:number_cardID>', methods=['PUT'])
+@app.route('/api/editstudentinfo/<int:number_cardID>', methods=['PUT'])
 def update_student(number_cardID):
     body = request.get_json(silent=True)
     student_to_update = Student.query.filter_by(number_cardID = number_cardID).first()
@@ -808,7 +808,7 @@ def update_student(number_cardID):
 
 #     return jsonify({"msg": "OK"}), 200
 
-@app.route('/api/professorpayment/<int:id>', methods=['PUT'])
+@app.route('/api/editprofessorpaymentinfo/<int:id>', methods=['PUT'])
 def update_profpay(id):
     body = request.get_json(silent=True)
     profpay_to_update = ProfessorPayment.query.get(id)
@@ -855,7 +855,7 @@ def update_profpay(id):
 
 #     return jsonify({"msg": "OK"}), 200
 
-@app.route('/api/studentpayment/<int:id>', methods=['PUT'])
+@app.route('/api/editstudentpaymentinfo/<int:id>', methods=['PUT'])
 def update_studpay(id):
     body = request.get_json(silent=True)
     studpay_to_update = StudentPayment.query.get(id)
@@ -897,7 +897,7 @@ def update_studpay(id):
 
 #     return jsonify({"msg": "OK"}), 200
 
-@app.route('/api/electronicinvoice/<int:id>', methods=['PUT'])
+@app.route('/api/editelectronicinvoiceinfo/<int:id>', methods=['PUT'])
 def update_electinv(id):
     body = request.get_json(silent=True)
     electinv_to_update = ElectronicInvoice.query.get(id)
@@ -969,7 +969,7 @@ def update_electinv(id):
 
 #     return jsonify({"msg": "OK"}), 200
 
-@app.route('/api/course/<name>', methods=['PUT'])
+@app.route('/api/editcourse/<name>', methods=['PUT'])
 def update_course(name):
     body = request.get_json(silent=True)
     course_to_update = Course.query.filter_by(name = name).first()
@@ -1006,7 +1006,7 @@ def update_course(name):
 
 #     return jsonify({"msg": "OK"}), 200
 
-@app.route('/api/modality/<name>', methods=['PUT'])
+@app.route('/api/editmodality/<name>', methods=['PUT'])
 def update_modality(name):
     body = request.get_json(silent=True)
     modality_to_update = Modality.query.filter_by(name = name).first()
@@ -1043,7 +1043,7 @@ def update_modality(name):
 
 #     return jsonify({"msg": "OK"}), 200
 
-@app.route('/api/registeredcourse/<id>', methods=['PUT'])
+@app.route('/api/editregisteredcourse/<id>', methods=['PUT'])
 def update_registered_course(id):
     body = request.get_json(silent=True)
     registered_course_to_update = NewCourse.query.get(id)
