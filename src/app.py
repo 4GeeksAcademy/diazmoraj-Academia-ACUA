@@ -969,10 +969,10 @@ def update_electinv(id):
 
 #     return jsonify({"msg": "OK"}), 200
 
-@app.route('/api/editcourse/<name>', methods=['PUT'])
-def update_course(name):
+@app.route('/api/editcourse/<int:id>', methods=['PUT'])
+def update_course(id):
     body = request.get_json(silent=True)
-    course_to_update = Course.query.filter_by(name = name).first()
+    course_to_update = Course.query.get(id)
     if course_to_update is None:
         return jsonify({"msg": "Curso no encontrado"}), 404
     if "name" in body:
@@ -1006,10 +1006,10 @@ def update_course(name):
 
 #     return jsonify({"msg": "OK"}), 200
 
-@app.route('/api/editmodality/<name>', methods=['PUT'])
-def update_modality(name):
+@app.route('/api/editmodality/<int:id>', methods=['PUT'])
+def update_modality(id):
     body = request.get_json(silent=True)
-    modality_to_update = Modality.query.filter_by(name = name).first()
+    modality_to_update = Modality.query.get(id)
     if modality_to_update is None:
         return jsonify({"msg": "Curso no encontrado"}), 404
     if "name" in body:
@@ -1043,7 +1043,7 @@ def update_modality(name):
 
 #     return jsonify({"msg": "OK"}), 200
 
-@app.route('/api/editregisteredcourse/<id>', methods=['PUT'])
+@app.route('/api/editregisteredcourse/<int:id>', methods=['PUT'])
 def update_registered_course(id):
     body = request.get_json(silent=True)
     registered_course_to_update = NewCourse.query.get(id)
