@@ -1,7 +1,48 @@
 import React from "react";
 import { MultiButton } from "../component/MultiButton";
+import { showNotification } from "../utils/ShowNotification";
 
 const InfoProfessor = () => {
+
+  const navigate = useNavigate()
+    const { store, actions } = useContext(Context)
+    const [formData, setFormData] = useState({
+        name: "",
+        last_name: "",
+        cardID_type: "",
+        number_cardID: 0,
+        email: "",
+        phone_number: 0,
+        password: ""
+    })
+
+    // const flag = store.isProfessorCreated
+
+    const handleInputChange = (event) => {
+        const { name, value } = event.target;
+        setFormData((prevFormData) => ({
+            ...prevFormData,
+            [name]: value,
+        }))
+    }
+
+    const handleSubmit = async () => {
+        // event.preventDefault();
+        const isCreated = await actions.newProfessor(formData)
+        console.log(isCreated)
+        if (isCreated) {
+            showNotification("Profesor creado con éxito")
+            navigate("/homeadmin")
+        } else {
+            showNotification("Ocurrió un error al tratar de agregar un profesor", "error")
+        }
+
+
+
+        // setInterval(navigate("/homeadmin"), 2000)
+
+    }
+    
   return (
     <div className="d-flex flex-column justify-content-center align-items-center"
       style={{ backgroundColor: '#f8f9fa' }}>
