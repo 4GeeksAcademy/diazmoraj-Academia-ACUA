@@ -2,8 +2,41 @@ import React from "react";
 import LogButton from "../component/LogButton";
 import { MultiButton } from "../component/MultiButton";
 import { Link } from "react-router-dom";
+import { showNotification } from "../utils/ShowNotification";
 
 export const StudentPayment = () => {
+
+    const navigate = useNavigate()
+    const { store, actions } = useContext(Context)
+    const [formData, setFormData] = useState({
+        date: "",
+        mount: "",
+        student_id: "",
+    })
+
+    // const flag = store.isProfessorCreated
+
+    const handleInputChange = (event) => {
+        const { name, value } = event.target;
+        setFormData((prevFormData) => ({
+            ...prevFormData,
+            [name]: value,
+        }))
+    }
+
+    const handleSubmit = async () => {
+        // event.preventDefault();
+        const isCreated = await actions.newStudentPayment(formData)
+        console.log(isCreated)
+        if (isCreated) {
+            showNotification("Fecha de pago creada con éxito")
+            navigate("/homeadmin")
+        } else {
+            showNotification("Ocurrió un error al tratar de agregar una nueva fecha de pago", "error")
+        }
+
+    }
+
     return (
         <React.Fragment>
             <div className="d-flex flex-column justify-content-center align-items-center"
@@ -25,22 +58,22 @@ export const StudentPayment = () => {
                     <div className="d-flex mb-3 row">
                         <div className="me-2 flex-fill">
                             <label className="form-label fs-4 mb-3" style={{ color: '#5751e1' }}>Fecha de próximo pago</label>
-                            <input className="form-control mb-3" placeholder="Fecha Mes Año" />
+                            <input className="form-control mb-3" placeholder="Fecha Mes Año" onClick={handleInputChange}/>
                         </div>
                         <div className="me-2 flex-fill">
                             <label className="form-label fs-4 mb-3" style={{ color: '#5751e1' }}>Monto</label>
-                            <input className="form-control mb-3" placeholder="Monto en colones" />
+                            <input className="form-control mb-3" placeholder="Monto en colones" onClick={handleInputChange}/>
                         </div>
                         <div className="me-2 flex-fill">
                             <label className="form-label fs-4 mb-3" style={{ color: '#5751e1' }}>Fecha vencimiento</label>
-                            <input className="form-control mb-3" placeholder="Fecha Mes Año" />
+                            <input className="form-control mb-3" placeholder="Fecha Mes Año" onClick={handleInputChange}/>
                         </div>
                     </div>
                     <div className="d-flex justify-content-between">
                         <Link to="/homeadmin" className="text-decoration-none">
-                            <MultiButton color='purple' text='Volver' width='100' />
+                            <MultiButton color='purple' text='Volver' width='100' onClick={handleSubmit}/>
                         </Link>
-                        <MultiButton color='purple' text='Guardar' width='100' />
+                        <MultiButton color='purple' text='Guardar' width='100' onClick={handleSubmit}/>
                     </div>
                 </form>
             </div>
