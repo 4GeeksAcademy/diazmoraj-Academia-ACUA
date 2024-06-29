@@ -34,7 +34,12 @@ import FormStudent from "./pages/FormStudent";
 import Undefined from "./pages/Undefined";
 
 import { Footer } from "./component/Footer";
-import AdminProfReg from "./component/Card/AdminProfReg";
+
+import AdminProfReg from "./pages/AdminProfReg";
+import { Toaster } from "react-hot-toast";
+
+
+
 
 //create your first component
 const Layout = () => {
@@ -76,6 +81,7 @@ const Layout = () => {
 
                 </ScrollToTop>
             </BrowserRouter>
+            <Toaster />
         </div>
     );
 };
