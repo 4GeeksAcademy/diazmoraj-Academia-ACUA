@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import rigoImage from "../../img/rigo-baby.jpg";
 import "../../styles/home.css";
 import { NavbarAdmin } from "./NavbarAdmin";
@@ -14,7 +14,17 @@ import { CarouselAdminStudents } from "../component/CarouselAdminStudents";
 
 
 export const HomeAdmin = () => {
+
 	const { store, actions } = useContext(Context);
+
+
+	// useEffect(() => {
+	// 	console.log("Se ejecuta getProfessors");
+	// 	actions.getProfessors()
+	// }, [])
+	useEffect(() => {
+		console.log("Se ejecuta por la dependencia")
+	}, [store.professors])
 
 	return (
 		<React.Fragment>

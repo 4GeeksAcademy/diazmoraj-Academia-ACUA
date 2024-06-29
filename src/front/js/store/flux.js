@@ -18,7 +18,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			electronicinvoices: [],
 
 			newcourses: [],
-			
+
 			isAdministratorCreated: false,
 			isProfessorCreated: false,
 			isStudentCreated: false,
@@ -175,7 +175,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then((data) => {
 						console.log("Data:", data)
 						console.log(data.studpays)
-						setStore({ studentspayment: data.studpays})
+						setStore({ studentspayment: data.studpays })
 					})
 					.catch((error) => {
 						console.log(error)
@@ -218,37 +218,47 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			// Agregar administrador
 			newAdministrator: (object) => {
-				fetch(process.env.BACKEND_URL + "/api/administrator",{
-					method:"POST",
+				fetch(process.env.BACKEND_URL + "/api/administrator", {
+					method: "POST",
 					body: JSON.stringify(object),
 					headers: { "Content-Type": "application/json" }
 				})
-				.then(response => {console.log(response)
-					if(response.ok){
-						setStore({isAdministratorCreated:true})
-					}
-					return response.json()
-				})
-				.then(data => data)
-				.catch(error => error)
+					.then(response => {
+						console.log(response)
+						if (response.ok) {
+							setStore({ isAdministratorCreated: true })
+						}
+						return response.json()
+					})
+					.then(data => data)
+					.catch(error => error)
 			},
 
 			// Agregar profesor
-			newProfessor: (object) => {
-				// const store = getStore()
-				fetch(process.env.BACKEND_URL + "/api/professor",{
-					method:"POST",
-					body: JSON.stringify(object),
+			newProfessor: (data) => {
+				const actions = getActions()
+				return fetch(process.env.BACKEND_URL + "/api/professor", {
+					method: "POST",
+					body: JSON.stringify(data),
 					headers: { "Content-Type": "application/json" }
 				})
-				.then(response => {console.log(response)
-					if (response.ok){
-						setStore({isProfessorCreated:true})
-					}
-					return response.json()
-				})
-				.then(data => data)
-				.catch(error => error)
+					.then(response => {
+						console.log(response)
+						if (response.ok) {
+							return response.json()
+						}
+						throw new Error("Ocurrió un error creando un nuevo profesor")
+					})
+					.then(data => {
+						console.log(data)
+						// setStore({ isProfessorCreated: true })
+						actions.getProfessors()
+						return true
+					})
+					.catch(error => {
+						console.log(error)
+						return false
+					})
 			},
 
 			// Agregar estudiante
@@ -258,118 +268,124 @@ const getState = ({ getStore, getActions, setStore }) => {
 					body: JSON.stringify(),
 					headers: { "Content-Type": "application/json" }
 				})
-				.then(response => response.json())
-				.then(data => {
-					console.log(data);
-					setStore(data.students);
-				})
-				.catch(error => console.error("Error:", error));
+					.then(response => response.json())
+					.then(data => {
+						console.log(data);
+						setStore(data.students);
+					})
+					.catch(error => console.error("Error:", error));
 			},
-			
+
 
 			// Agregar curso
 			newCourse: (object) => {
-				fetch(process.env.BACKEND_URL + "/api/course",{
-					method:"POST",
+				fetch(process.env.BACKEND_URL + "/api/course", {
+					method: "POST",
 					body: JSON.stringify(object),
 					headers: { "Content-Type": "application/json" }
 				})
-				.then(response => {console.log(response)
-					if(response.ok){
-						setStore({isCourseCreated:true})
-					}
-					return response.json()
-				})
-				.then(data => data)
-				.catch(error => error)
+					.then(response => {
+						console.log(response)
+						if (response.ok) {
+							setStore({ isCourseCreated: true })
+						}
+						return response.json()
+					})
+					.then(data => data)
+					.catch(error => error)
 			},
 
 			// Agregar modalidad
 			newModality: (objet) => {
-				fetch(process.env.BACKEND_URL + "/api/modality",{
-					method:"POST",
+				fetch(process.env.BACKEND_URL + "/api/modality", {
+					method: "POST",
 					body: JSON.stringify(objet),
 					headers: { "Content-Type": "application/json" }
 				})
-				.then(response => {console.log(response)
-					if(response.ok){
-						setStore({isModalityCreated:true})
-					}
-					return response.json()
-				})
-				.then(data => data)
-				.catch(error => error)
+					.then(response => {
+						console.log(response)
+						if (response.ok) {
+							setStore({ isModalityCreated: true })
+						}
+						return response.json()
+					})
+					.then(data => data)
+					.catch(error => error)
 			},
 
 			// Agregar pago profesor
 			newProfessorPayment: (objet) => {
-				fetch(process.env.BACKEND_URL + "/api/professorpayment",{
-					method:"POST",
+				fetch(process.env.BACKEND_URL + "/api/professorpayment", {
+					method: "POST",
 					body: JSON.stringify(objet),
 					headers: { "Content-Type": "application/json" }
 				})
-				.then(response => {console.log(response)
-					if(response.ok){
-						setStore({isProfessorPaymentCreated:true})
-					}
-					return response.json()
-				})
-				.then(data => data)
-				.catch(error => error)
+					.then(response => {
+						console.log(response)
+						if (response.ok) {
+							setStore({ isProfessorPaymentCreated: true })
+						}
+						return response.json()
+					})
+					.then(data => data)
+					.catch(error => error)
 			},
 
 			// Agregar pago estudiante
 			newStudentPayment: (objet) => {
-				fetch(process.env.BACKEND_URL + "/api/studentpayment",{
-					method:"POST",
+				fetch(process.env.BACKEND_URL + "/api/studentpayment", {
+					method: "POST",
 					body: JSON.stringify(objet),
 					headers: { "Content-Type": "application/json" }
 				})
-				.then(response => {console.log(response)
-					if(response.ok){
-						setStore({isStudentPaymentCreated:true})
-					}
-					return response.json()
-				})
-				.then(data => data)
-				.catch(error => error)
+					.then(response => {
+						console.log(response)
+						if (response.ok) {
+							setStore({ isStudentPaymentCreated: true })
+						}
+						return response.json()
+					})
+					.then(data => data)
+					.catch(error => error)
 			},
 
 			// Agregar factura electronica
 			newElectronicInvoice: (object) => {
-				fetch(process.env.BACKEND_URL + "/api/electronicinvoice",{
-					method:"POST",
+				fetch(process.env.BACKEND_URL + "/api/electronicinvoice", {
+					method: "POST",
 					body: JSON.stringify(object),
 					headers: { "Content-Type": "application/json" }
 				})
-				.then(response => {console.log(response)
-					if(response.ok){
-						setStore({isElectronicInvoiceCreated})
-					}
-					return response.json()
-				})
-				.then(data => data)
-				.catch(error => error)
+					.then(response => {
+						console.log(response)
+						if (response.ok) {
+							setStore({ isElectronicInvoiceCreated })
+						}
+						return response.json()
+					})
+					.then(data => data)
+					.catch(error => error)
 			},
 
 			// Agregar nuevo curso
 			newnewCourse: (object) => {
-				fetch(process.env.BACKEND_URL + "/api/newcourse",{
-					method:"POST",
+				fetch(process.env.BACKEND_URL + "/api/newcourse", {
+					method: "POST",
 					body: JSON.stringify(object),
 					headers: { "Content-Type": "application/json" }
 				})
-				.then(response => {console.log(response)
-					if(response.ok){
-						setStore({isNewCourseCreated})
-					}
-					return response.json()
-				})
-				.then(data => data)
-				.catch(error => error)
+					.then(response => {
+						console.log(response)
+						if (response.ok) {
+							setStore({ isNewCourseCreated })
+						}
+						return response.json()
+					})
+					.then(data => data)
+					.catch(error => error)
 
 			},
-			
+
 		}
 	}
 };
