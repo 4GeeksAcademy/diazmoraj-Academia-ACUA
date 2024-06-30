@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { useContext } from "react";
-import { Context } from "../../store/appContext"
+import { Context } from "../store/appContext";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { MultiButton } from "../MultiButton";
+import { MultiButton } from "../component/MultiButton";
+import { showNotification } from "../utils/ShowNotification";
 
 const AdminProfReg = () => {
 
@@ -19,7 +20,7 @@ const AdminProfReg = () => {
         password: ""
     })
 
-    const flag = store.isProfessorCreated
+    // const flag = store.isProfessorCreated
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
@@ -29,17 +30,21 @@ const AdminProfReg = () => {
         }))
     }
 
-    const handleSubmit = (event) => {
-        actions.newProfessor(formData)
-        if (flag) {
-            return (
-                <div class="alert alert-success" role="alert">
-                    A simple success alert—check it out!
-                </div>
-            )
+    const handleSubmit = async () => {
+        // event.preventDefault();
+        const isCreated = await actions.newProfessor(formData)
+        console.log(isCreated)
+        if (isCreated) {
+            showNotification("Profesor creado con éxito")
+            navigate("/homeadmin")
+        } else {
+            showNotification("Ocurrió un error al tratar de agregar un profesor", "error")
         }
-        setInterval(navigate("/homeadmin"), 2000)
-        event.preventDefault();
+
+
+
+        // setInterval(navigate("/homeadmin"), 2000)
+
     }
 
     return (
@@ -58,7 +63,7 @@ const AdminProfReg = () => {
                     <h1>Registro de nuevo profesor</h1>
                 </div>
             </div>
-            <form className="mt-4 p-4 rounded shadow mb-4" style={{ backgroundColor: '#e9ecef' }} onSubmit={handleSubmit}>
+            <form className="mt-4 p-4 rounded shadow mb-4" style={{ backgroundColor: '#e9ecef' }}>
                 <h3 className="mb-3">Ingrese los datos</h3>
                 <div className="d-flex mb-3">
                     <div className="me-2 flex-fill">
@@ -97,7 +102,7 @@ const AdminProfReg = () => {
                     <input type="password" className="form-control" placeholder="Confirmar contraseña" />
                 </div>
                 <div className=" container d-flex justify-content-center mb-3">
-                    <button type="submit" class="btn btn-primary">Enviar</button>
+                    <button type="button" className="btn btn-primary" onClick={handleSubmit}>Enviar</button>
 
                     {/* <Link className="text-decoration-none" to="/homeadmin"> */}
                     {/* <MultiButton color='purple' text='Guardar' width='200' /> */}

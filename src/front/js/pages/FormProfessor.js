@@ -1,8 +1,43 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { MultiButton } from "../component/MultiButton";
+import { showNotification } from "../utils/ShowNotification";
 
 const FormProfessor = () => {
+
+    const navigate = useNavigate()
+    const { store, actions } = useContext(Context)
+    const [formData, setFormData] = useState({
+        name: "",
+        last_name: "",
+        cardID_type: "",
+        number_cardID: 0,
+        email: "",
+        phone_number: 0,
+        password: ""
+    })
+
+    // const flag = store.isProfessorCreated
+
+    const handleInputChange = (event) => {
+        const { name, value } = event.target;
+        setFormData((prevFormData) => ({
+            ...prevFormData,
+            [name]: value,
+        }))
+    }
+
+    const handleSubmit = async () => {
+        const isCreated = await actions.newProfessor(formData)
+        console.log(isCreated)
+        if (isCreated) {
+            showNotification("Profesor creado con éxito")
+            navigate("/homeadmin")
+        } else {
+            showNotification("Ocurrió un error al tratar de agregar un profesor", "error")
+        }
+    }
+
     return (
         <div className="d-flex flex-column justify-content-center align-items-center" 
         style={{ backgroundColor: '#f8f9fa' }}>
@@ -20,63 +55,63 @@ const FormProfessor = () => {
                 <div className="d-flex mb-3">
                     <div className="me-2 flex-fill">
                         <label className="form-label">Nombre</label>
-                        <input className="form-control" placeholder="Nombre" />
+                        <input className="form-control" placeholder="Nombre" onClick={handleInputChange}/>
                     </div>
                     <div className="ms-2 flex-fill">
                         <label className="form-label">Apellido</label>
-                        <input className="form-control" placeholder="Apellido" />
+                        <input className="form-control" placeholder="Apellido" onClick={handleInputChange}/>
                     </div>
                 </div>
                 <div className="mb-3">
                     <label className="form-label">Fecha de nacimiento</label>
                     <div className="d-flex">
-                        <input className="form-control me-2" placeholder="Día" style={{ maxWidth: '80px' }} />
-                        <input className="form-control me-2" placeholder="Mes" style={{ maxWidth: '100px' }} />
-                        <input className="form-control" placeholder="Año" style={{ maxWidth: '100px' }} />
+                        <input className="form-control me-2" placeholder="Día" style={{ maxWidth: '80px' }} onClick={handleInputChange}/>
+                        <input className="form-control me-2" placeholder="Mes" style={{ maxWidth: '100px' }} onClick={handleInputChange}/>
+                        <input className="form-control" placeholder="Año" style={{ maxWidth: '100px' }} onClick={handleInputChange}/>
                     </div>
                 </div>
                 <div className="mb-3">
                     <label className="form-label">Email</label>
-                    <input className="form-control" placeholder="Email" />
+                    <input className="form-control" placeholder="Email" onClick={handleInputChange}/>
                 </div>
                 <div className="mb-3">
                     <label className="form-label">Número telefónico</label>
-                    <input className="form-control" placeholder="Número telefónico" />
+                    <input className="form-control" placeholder="Número telefónico" onClick={handleInputChange}/>
                 </div>
                 <div className="d-flex mb-3">
                     <div className="me-2 flex-fill">
                         <label className="form-label">Tipo de identificación</label>
-                        <input className="form-control" placeholder="Tipo de identificación" />
+                        <input className="form-control" placeholder="Tipo de identificación" onClick={handleInputChange}/>
                     </div>
                     <div className="ms-2 flex-fill">
                         <label className="form-label">Número de identificación</label>
-                        <input className="form-control" placeholder="Número de identificación" />
+                        <input className="form-control" placeholder="Número de identificación" onClick={handleInputChange}/>
                     </div>
                 </div> 
                 <div className="d-flex mb-3">
                     <div className="me-2 flex-fill">
                         <label className="form-label">Provincia</label>
-                        <input className="form-control" placeholder="Provincia" />
+                        <input className="form-control" placeholder="Provincia" onClick={handleInputChange}/>
                     </div>
                     <div className="me-2 flex-fill">
                         <label className="form-label">Cantón</label>
-                        <input className="form-control" placeholder="Cantón" />
+                        <input className="form-control" placeholder="Cantón" onClick={handleInputChange}/>
                     </div>
                     <div className="me-2 flex-fill">
                         <label className="form-label">Distrito</label>
-                        <input className="form-control" placeholder="Distrito" />
+                        <input className="form-control" placeholder="Distrito" onClick={handleInputChange}/>
                     </div>
                 </div>
                 <div className="mb-3">
                     <label className="form-label">Contraseña</label>
-                    <input type="password" className="form-control" placeholder="Contraseña" />
+                    <input type="password" className="form-control" placeholder="Contraseña" onClick={handleInputChange}/>
                 </div>
                 <div className="mb-4">
                     <label className="form-label">Confirmar contraseña</label>
-                    <input type="password" className="form-control" placeholder="Confirmar contraseña" />
+                    <input type="password" className="form-control" placeholder="Confirmar contraseña" onClick={handleInputChange}/>
                 </div>
                 <div className="mb-4">
-        <MultiButton color="purple" text="Inicia sesión →" width="700" link="/HomeProfessor" />
+        <MultiButton color="purple" text="Inicia sesión →" width="700" link="/HomeProfessor" onClick={handleSubmit}/>
         </div> 
                 <Link to={`/Login`} className="mt-3">
                 ¿Ya tienes un usuario? Inicia sesión aquí</Link>

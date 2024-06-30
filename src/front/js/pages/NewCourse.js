@@ -2,8 +2,42 @@ import React from "react";
 import LogButton from "../component/LogButton";
 import { MultiButton } from "../component/MultiButton";
 import { Link } from "react-router-dom";
+import { showNotification } from "../utils/ShowNotification";
 
 export const NewCourse = () => {
+
+    const navigate = useNavigate()
+    const { store, actions } = useContext(Context)
+    const [formData, setFormData] = useState({
+        professor_id: 0,
+        student_id: 0,
+        course_id: 0,
+        modality_id: 0,
+    })
+
+    // const flag = store.isProfessorCreated
+
+    const handleInputChange = (event) => {
+        const { professor_id, value } = event.target;
+        setFormData((prevFormData) => ({
+            ...prevFormData,
+            [professor_id]: value,
+        }))
+    }
+
+    const handleSubmit = async () => {
+        // event.preventDefault();
+        const isCreated = await actions.newnewCourse(formData)
+        console.log(isCreated)
+        if (isCreated) {
+            showNotification("Nuevo curso creado con éxito")
+            navigate("/homeadmin")
+        } else {
+            showNotification("Ocurrió un error al tratar de agregar un nuevo curso", "error")
+        }
+
+    }
+
     return (
         <React.Fragment>
             <div className="d-flex flex-column justify-content-start align-items-center min-vh-100"
@@ -30,10 +64,10 @@ export const NewCourse = () => {
                     </div>
                     <div className="d-flex justify-content-between">
                         <Link to="/homeadmin" className="text-decoration-none">
-                            <MultiButton color='purple' text='Volver' width='100' />
+                            <MultiButton color='purple' text='Volver' width='100' onClick={handleSubmit}/>
                         </Link>
                         <Link to="/homeadmin" className="text-decoration-none">
-                            <MultiButton color='purple' text='Guardar' width='100' />
+                            <MultiButton color='purple' text='Guardar' width='100' onClick={handleSubmit}/>
                         </Link>
                     </div>
                 </form>

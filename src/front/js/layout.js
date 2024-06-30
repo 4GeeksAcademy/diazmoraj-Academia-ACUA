@@ -15,6 +15,7 @@ import HomeACUA from "./pages/HomeACUA";
 import { HomeAdmin } from "./pages/HomeAdmin";
 import { HomeProfessor } from "./pages/HomeProfessor";
 import { HomeStudent } from "./pages/HomeStudent";
+import HomeGeneral from "./pages/HomeGeneral";
 
 import InfoAdmin from "./pages/InfoAdmin";
 import InfoProfessor from "./pages/InfoProfessor";
@@ -34,7 +35,12 @@ import FormStudent from "./pages/FormStudent";
 import Undefined from "./pages/Undefined";
 
 import { Footer } from "./component/Footer";
-import AdminProfReg from "./component/Card/AdminProfReg";
+
+import AdminProfReg from "./pages/AdminProfReg";
+import { Toaster } from "react-hot-toast";
+
+
+
 
 //create your first component
 const Layout = () => {
@@ -54,6 +60,7 @@ const Layout = () => {
                         <Route path="/homestudent" element={<HomeStudent />} />
                         <Route path="/homeprofessor" element={<HomeProfessor />} />
                         <Route path="/homeadmin" element={<HomeAdmin />} />
+                        <Route path="/homegeneral" element={<HomeGeneral />} />
                         <Route path="/signup" element={<SignUp />} />
                         <Route path="/login" element={<Login />} />
                         <Route path="/" element={<HomeACUA />} />
@@ -76,6 +83,7 @@ const Layout = () => {
 
                 </ScrollToTop>
             </BrowserRouter>
+            <Toaster />
         </div>
     );
 };
