@@ -38,6 +38,7 @@ import { Footer } from "./component/Footer";
 
 import AdminProfReg from "./pages/AdminProfReg";
 import { Toaster } from "react-hot-toast";
+import AdminStudReg from "./pages/AdminStudReg";
 
 
 
@@ -73,6 +74,7 @@ const Layout = () => {
                         <Route path="/electronicinvoice" element={<ElectronicInvoice />} />
                         <Route path="/formprofessor" element={<FormProfessor />} />
                         <Route path="/adminprofreg" element={<AdminProfReg />} />
+                        <Route path="/adminstudreg" element={<AdminStudReg />} />
                         <Route path="/undefined" element={<Undefined />} />
 
                         <Route path="*" element={<Undefined />} />

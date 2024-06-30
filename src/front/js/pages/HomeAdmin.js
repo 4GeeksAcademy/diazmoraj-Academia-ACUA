@@ -92,14 +92,16 @@ export const HomeAdmin = () => {
 				<div className="continer-fluid d-flex">
 
 					{/* <CarouselAdminStudents array={store.students} /> */}
-					{/* {store.students && store.students.map((student, index) => {
-						return (
-							<CardAdminStudent name={student.name} last_name={student.last_name} key={student.number_carID} id={student.id} />
-						)
-					})} */}
+					<>
+						{store.students && store.students.map((student) => {
+							return (
+								<CardAdminStudent name={student.name} last_name={student.last_name} key={student.number_carID} id={student.id} />
+							)
+						})}
+					</>
 				</div>
 				<div className="container-fluid d-flex my-3 justify-content-center">
-					<Link to="/formstudent" className="text-decoration-none">
+					<Link to="/adminstudreg" className="text-decoration-none">
 						<MultiButton color='purple' text='Agregar nuevo estudiante' width='210' />
 					</Link>
 				</div>
