@@ -357,7 +357,7 @@ def new_profe():
 
     return jsonify({"new_professor": new_profe.serialize()}), 201
 
-@app.route('/api/student', methods=['POST'])
+@app.route('/api/createstudent', methods=['POST'])
 def new_stud():
     body = request.get_json(silent=True)
     if body is None:
@@ -372,18 +372,18 @@ def new_stud():
         return jsonify({"msg": "Debes seleccionar un tipo de identificacion"}), 400
     if "number_cardID" not in body:
        return jsonify({"msg": "Debes escribir un numero de identificacion"}), 400
-    if "birthday" not in body:
-        return jsonify({"msg": "Debes registrar su nacimiento"}), 400
+    # if "birthday" not in body:
+    #     return jsonify({"msg": "Debes registrar su nacimiento"}), 400
     if "email" not in body:
         return jsonify({"msg": "El campo email es obligatorio"}), 400
     if "phone_number" not in body:
         return jsonify({"msg": "Debes registrar un telefono"}), 400
-    if "province" not in body:
-        return jsonify({"msg": "Debes escribir una provincia"}), 400
-    if "canton" not in body:
-        return jsonify({"msg": "Debes escribir un canton"}), 400
-    if "distric" not in body:
-        return jsonify({"msg": "Debes escribir un distrito"}), 400
+    # if "province" not in body:
+    #     return jsonify({"msg": "Debes escribir una provincia"}), 400
+    # if "canton" not in body:
+    #     return jsonify({"msg": "Debes escribir un canton"}), 400
+    # if "distric" not in body:
+    #     return jsonify({"msg": "Debes escribir un distrito"}), 400
     if "password" not in body:
         return jsonify({"msg": "Debes escribir una contraseña"}), 400
     # if "student_payment" not in body:
@@ -399,12 +399,12 @@ def new_stud():
     # new_stud.photo = body["photo"]
     new_stud.cardID_type = body["cardID_type"]
     new_stud.number_cardID = body["number_cardID"]
-    new_stud.birthday = body["birthday"]
+    # new_stud.birthday = body["birthday"]
     new_stud.email = body["email"]
     new_stud.phone_number = body["phone_number"]
-    new_stud.province = body["province"]
-    new_stud.canton = body["canton"]
-    new_stud.distric = body["distric"]
+    # new_stud.province = body["province"]
+    # new_stud.canton = body["canton"]
+    # new_stud.distric = body["distric"]
     new_stud.password = body["password"]
     new_stud.user_type = "student"
     # new_stud.student_payment = body["student_payment"]

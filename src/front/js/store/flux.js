@@ -263,7 +263,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						// setStore({ isProfessorCreated: true })
 						actions.getProfessors()
 						localStorage.setItem("userType", "profesor"); // Guardar el tipo de usuario en localStorage
-                        console.log("Tipo de usuario guardado en localStorage");
+						console.log("Tipo de usuario guardado en localStorage");
 						return true
 					})
 					.catch(error => {
@@ -275,16 +275,18 @@ const getState = ({ getStore, getActions, setStore }) => {
 			// Agregar estudiante
 			// actions.js
 			newStudent: async (formData) => {
+				const actions = getActions()
 				try {
-					const response = await fetch(process.env.BACKEND_URL + "/api/student", {
+					const response = await fetch(process.env.BACKEND_URL + "/api/createstudent", {
 						method: "POST",
 						body: JSON.stringify(formData),
 						headers: { "Content-Type": "application/json" }
 					});
 					const data = await response.json();
-					
+
 					if (response.ok) {
 						setStore({ student: data.student });
+						actions.getStudents();
 						localStorage.setItem("userType", "estudiante"); // Guarda el tipo de usuario en localStorage
 						console.log("Tipo de usuario guardado en localStorage");
 						return true;
@@ -298,8 +300,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 
-			
-			
+
+
 			login: async (email, password) => {
 				try {
 					const response = await fetch(process.env.BACKEND_URL + "/api/login", {
@@ -307,12 +309,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 						headers: { "Content-Type": "application/json" },
 						body: JSON.stringify({ email, password })
 					});
-			
+
 					if (!response.ok) {
 						const errorData = await response.json();
 						throw new Error(errorData.msg);
 					}
-			
+
 					const data = await response.json();
 					localStorage.setItem("access_token", data.access_token);
 					localStorage.setItem("user_type", data.user_type);  // Guarda el tipo de usuario en el localStorage
@@ -322,7 +324,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					return { success: false, message: error.message };
 				}
 			},
-			
+
 
 			// Agregar curso
 			newCourse: (data) => {

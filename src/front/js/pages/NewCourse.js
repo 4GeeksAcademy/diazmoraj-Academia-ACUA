@@ -1,7 +1,9 @@
-import React from "react";
-import LogButton from "../component/LogButton";
-import { MultiButton } from "../component/MultiButton";
+import React, { useState } from "react";
+import { useContext } from "react";
+import { Context } from "../store/appContext";
+import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { MultiButton } from "../component/MultiButton";
 import { showNotification } from "../utils/ShowNotification";
 
 export const NewCourse = () => {
@@ -9,25 +11,22 @@ export const NewCourse = () => {
     const navigate = useNavigate()
     const { store, actions } = useContext(Context)
     const [formData, setFormData] = useState({
-        professor_id: 0,
-        student_id: 0,
-        course_id: 0,
-        modality_id: 0,
+        name: ""
     })
 
     // const flag = store.isProfessorCreated
 
     const handleInputChange = (event) => {
-        const { professor_id, value } = event.target;
+        const { name, value } = event.target;
         setFormData((prevFormData) => ({
             ...prevFormData,
-            [professor_id]: value,
+            [name]: value,
         }))
     }
 
     const handleSubmit = async () => {
         // event.preventDefault();
-        const isCreated = await actions.newnewCourse(formData)
+        const isCreated = await actions.newCourse(formData)
         console.log(isCreated)
         if (isCreated) {
             showNotification("Nuevo curso creado con éxito")
@@ -59,16 +58,17 @@ export const NewCourse = () => {
                     <div className="d-flex mb-3">
                         <div className="me-2 flex-fill">
                             <label className="form-label fs-4 mb-3" style={{ color: '#5751e1' }}>Introduzca nombre del nuevo curso</label>
-                            <input className="form-control mb-3" placeholder="Nombre nuevo curso" />
+                            <input className="form-control mb-3" placeholder="Nombre nuevo curso" name="name" value={formData.name} onChange={handleInputChange} />
                         </div>
                     </div>
                     <div className="d-flex justify-content-between">
                         <Link to="/homeadmin" className="text-decoration-none">
-                            <MultiButton color='purple' text='Volver' width='100' onClick={handleSubmit}/>
+                            <MultiButton color='purple' text='Volver' width='100' onClick={handleSubmit} />
                         </Link>
-                        <Link to="/homeadmin" className="text-decoration-none">
-                            <MultiButton color='purple' text='Guardar' width='100' onClick={handleSubmit}/>
-                        </Link>
+                        <button type="button" className="btn btn-primary" onClick={handleSubmit}>Guardar</button>
+                        {/* <Link to="/homeadmin" className="text-decoration-none">
+                            <MultiButton color='purple' text='Guardar' width='100' onClick={handleSubmit} />
+                        </Link> */}
                     </div>
                 </form>
             </div>
