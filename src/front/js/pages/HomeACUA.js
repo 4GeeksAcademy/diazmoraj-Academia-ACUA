@@ -10,6 +10,7 @@ import { ContactCardInfo } from '../component/Card/ContactCardInfo'
 import { ContactForm } from '../component/ContactForm'
 import { useContext } from 'react'
 import { Context } from '../store/appContext'
+import { NewCarrousel } from '../component/NewCarrousel'
 
 const HomeACUA = () => {
   const { actions, store } = useContext(Context)
@@ -62,7 +63,7 @@ const HomeACUA = () => {
           <p className='text-secondary mt-0'>¡Conoce quien esta detras de nuestra formacion!</p>
         </div>
         <div className="carousel container pb-3 mt-3 mb-3 d-flex flew-row justify-content-center">
-          <Carousel array={store.professors} />
+          <NewCarrousel array={store.professors} />
         </div>
       </section>
       <section className="reachGoalsSection" style={{ marginTop: '100px', marginBottom: '100px' }}>
@@ -96,87 +97,87 @@ const HomeACUA = () => {
         </div>
       </section>
       <div id="planes">
-      <section className="ourPlans">
-        <div className="plansTitleBox container-fluid mt-3 mb-3 d-flex justify-content-center align-items-center">
-          <h2 className='portraitPrimaryColor bigWeight fs-1 text-center text-white' style={{ zIndex: '3' }}>Conoce Nuestros</h2>
-          <h2 className='portraitPrimaryColor bigWeight fs-1 text-center text-white ms-3 textPlanes' style={{ backgroundColor: '#ffc224', borderRadius: '15px', padding: '4px' }}>Planes</h2>
-        </div>
-        <div className="planCardBox container d-flex flex-row justify-content-center flex-wrap" style={{ marginBottom: '80px', marginTop: '100px', padding: '20px', gap: '30px' }}>
-          <CardPlan
-            planType='Plan 1 presencial - Virtual'
-            price='¢65000' fontSz='50'
-            planModality='por mes'
-            firstFeature='Clases de 1 hora'
-            secondFeature='1 vez por semana'
-            thirdFeature='Instrumentos a disposicion' />
-          <CardPlan
-            planType='Domicilio'
-            price='¢75000'
-            fontSz='50'
-            planModality='por mes'
-            firstFeature='Clases de 1 hora'
-            secondFeature='1 vez por semana'
-            thirdFeature='Instrumentos a disposicion' />
-          <CardPlan
-            planType='Personalizado'
-            price='Contacta con nosotros'
-            fontSz='40'
-            firstFeature='Clases de 1 hora'
-            secondFeature='1 vez por semana'
-            thirdFeature='Instrumentos a disposicion' />
-        </div>
-      </section> 
-       </div>
-       <div id="sobre-nosotros">
-      <div className="plansTitleBox container-fluid mt-3 mb-3 d-flex justify-content-center align-items-center"></div>
-      <section className="aboutUs container" style={{ marginTop: '100px', paddingTop: '50px', paddingBottom: '40px', marginBottom: '120px' }}>
-        <div className="sectionAboutUs container d-flex flex-row flex-wrap justify-content-around align-items-center" style={{ paddingLeft: '30px', paddingRight: '30px' }}>
-          <div className="textUs" style={{ width: '500px' }}>
-            <h2 className='portraitPrimaryColor bigWeight fs-1 text-center text-white' style={{ zIndex: '3', paddingBottom: '55px' }}> Quienes <strong style={{ backgroundColor: '#ffc224', borderRadius: '15px', padding: '4px', fontWeight: '600' }}> Somos </strong></h2>
-            <p className='text-white mt-0 text-left'>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Temporibus laudantium accusantium magni? Minus laboriosam, sequi temporibus animi ratione, blanditiis illum quidem perferendis quae exercitationem quibusdam aliquam nisi nostrum nihil aliquid?</p>
-            <p className='text-white mt-0 text-left'>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Temporibus laudantium accusantium magni? Minus laboriosam, sequi temporibus animi ratione</p>
-            <Link to='/signup'>
-              <p className='text-white mt-0 text-center' style={{ paddingTop: '30px' }}> <strong>¡Comienza ahora mismo!</strong></p>
-            </Link>
+        <section className="ourPlans">
+          <div className="plansTitleBox container-fluid mt-3 mb-3 d-flex justify-content-center align-items-center">
+            <h2 className='portraitPrimaryColor bigWeight fs-1 text-center text-white' style={{ zIndex: '3' }}>Conoce Nuestros</h2>
+            <h2 className='portraitPrimaryColor bigWeight fs-1 text-center text-white ms-3 textPlanes' style={{ backgroundColor: '#ffc224', borderRadius: '15px', padding: '4px' }}>Planes</h2>
           </div>
-          <div className="imgAboutUs">
-            <img id='"imgAboutUs"' src="https://i.imgur.com/7lOAUrM.png" alt="logo-acua" style={{ width: '300px', marginTop: '20px' }} />
+          <div className="planCardBox container d-flex flex-row justify-content-center flex-wrap" style={{ marginBottom: '80px', marginTop: '100px', padding: '20px', gap: '30px' }}>
+            <CardPlan
+              planType='Plan 1 presencial - Virtual'
+              price='¢65000' fontSz='50'
+              planModality='por mes'
+              firstFeature='Clases de 1 hora'
+              secondFeature='1 vez por semana'
+              thirdFeature='Instrumentos a disposicion' />
+            <CardPlan
+              planType='Domicilio'
+              price='¢75000'
+              fontSz='50'
+              planModality='por mes'
+              firstFeature='Clases de 1 hora'
+              secondFeature='1 vez por semana'
+              thirdFeature='Instrumentos a disposicion' />
+            <CardPlan
+              planType='Personalizado'
+              price='Contacta con nosotros'
+              fontSz='40'
+              firstFeature='Clases de 1 hora'
+              secondFeature='1 vez por semana'
+              thirdFeature='Instrumentos a disposicion' />
           </div>
-        </div>
-      </section>
+        </section>
+      </div>
+      <div id="sobre-nosotros">
+        <div className="plansTitleBox container-fluid mt-3 mb-3 d-flex justify-content-center align-items-center"></div>
+        <section className="aboutUs container" style={{ marginTop: '100px', paddingTop: '50px', paddingBottom: '40px', marginBottom: '120px' }}>
+          <div className="sectionAboutUs container d-flex flex-row flex-wrap justify-content-around align-items-center" style={{ paddingLeft: '30px', paddingRight: '30px' }}>
+            <div className="textUs" style={{ width: '500px' }}>
+              <h2 className='portraitPrimaryColor bigWeight fs-1 text-center text-white' style={{ zIndex: '3', paddingBottom: '55px' }}> Quienes <strong style={{ backgroundColor: '#ffc224', borderRadius: '15px', padding: '4px', fontWeight: '600' }}> Somos </strong></h2>
+              <p className='text-white mt-0 text-left'>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Temporibus laudantium accusantium magni? Minus laboriosam, sequi temporibus animi ratione, blanditiis illum quidem perferendis quae exercitationem quibusdam aliquam nisi nostrum nihil aliquid?</p>
+              <p className='text-white mt-0 text-left'>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Temporibus laudantium accusantium magni? Minus laboriosam, sequi temporibus animi ratione</p>
+              <Link to='/signup'>
+                <p className='text-white mt-0 text-center' style={{ paddingTop: '30px' }}> <strong>¡Comienza ahora mismo!</strong></p>
+              </Link>
+            </div>
+            <div className="imgAboutUs">
+              <img id='"imgAboutUs"' src="https://i.imgur.com/7lOAUrM.png" alt="logo-acua" style={{ width: '300px', marginTop: '20px' }} />
+            </div>
+          </div>
+        </section>
       </div>
       <div id="contacto">
-      <section className="contactSection">
-        <div className="contactBox container-fluid" style={{ padding: '20px 20px' }}>
-          <div className="textContact" style={{ marginTop: "30px", marginBottom: "50px" }}>
-            <h2 className='bigWeight fs-1 text-center text-white'>Contacta con nosotros!</h2>
-            <p className='text-light mt-0 text-center'>Envia un mensaje y nuestro equipo se pondrá en contacto contigo</p>
-          </div>
-          <div className="container" style={{ padding: '50px' }}>
-            <div className="row justify-content-center">
-              <div className="col-xl-5 col-sm-11">
-                <div className="topInfo d-flex flex-column mt-2 gap-2">
-                  <ContactCardInfo
-                    icon="fa-location-dot"
-                    title="Direccion"
-                    description="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Asperiores, aliquid perspiciatis non obcaecati " />
-                  <ContactCardInfo
-                    icon="fa-phone-volume"
-                    title="Teléfono"
-                    description="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Asperiores, aliquid perspiciatis non obcaecati " />
-                  <ContactCardInfo
-                    icon="fa-envelope"
-                    title="E-mail"
-                    description="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Asperiores, aliquid perspiciatis non obcaecati " />
+        <section className="contactSection">
+          <div className="contactBox container-fluid" style={{ padding: '20px 20px' }}>
+            <div className="textContact" style={{ marginTop: "30px", marginBottom: "50px" }}>
+              <h2 className='bigWeight fs-1 text-center text-white'>Contacta con nosotros!</h2>
+              <p className='text-light mt-0 text-center'>Envia un mensaje y nuestro equipo se pondrá en contacto contigo</p>
+            </div>
+            <div className="container" style={{ padding: '30px' }}>
+              <div className="row justify-content-center">
+                <div className="col-xl-5 col-sm-11">
+                  <div className="topInfo d-flex flex-column mt-2 gap-2">
+                    <ContactCardInfo
+                      icon="fa-location-dot"
+                      title="Direccion"
+                      description="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Asperiores " />
+                    <ContactCardInfo
+                      icon="fa-phone-volume"
+                      title="Teléfono"
+                      description="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Asperiores " />
+                    <ContactCardInfo
+                      icon="fa-envelope"
+                      title="E-mail"
+                      description="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Asperiores " />
+                  </div>
                 </div>
-              </div>
-              <div className="rightInfo col-xl-7 col-sm-11 mt-2">
-                <ContactForm />
+                <div className="rightInfo col-xl-7 col-sm-11 mt-2">
+                  <ContactForm />
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
       </div>
     </React.Fragment >
   )
