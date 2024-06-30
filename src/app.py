@@ -6,7 +6,7 @@ from flask import Flask, request, jsonify, url_for, send_from_directory
 from flask_migrate import Migrate
 from flask_swagger import swagger
 from api.utils import APIException, generate_sitemap
-from api.models import db, Student
+from api.models import db, Student, Professor, Administrator
 from api.routes import api
 from api.admin import setup_admin
 from api.commands import setup_commands
@@ -25,6 +25,9 @@ from flask_jwt_extended import create_access_token
 from flask_jwt_extended import get_jwt_identity
 from flask_jwt_extended import jwt_required
 from flask_jwt_extended import JWTManager
+from werkzeug.security import check_password_hash
+
+from flask_bcrypt import Bcrypt
 
 # from models import Person
 
@@ -35,9 +38,10 @@ app = Flask(__name__)
 CORS(app)
 app.url_map.strict_slashes = False
 
-app.config["JWT_SECRET_KEY"] = os.getenv("JWT-KEY")
+app.config["JWT_SECRET_KEY"] = os.getenv("JWT-KEY") #super secret
 jwt = JWTManager(app)
 
+bcrypt = Bcrypt(app)
 # database condiguration
 db_url = os.getenv("DATABASE_URL")
 if db_url is not None:
@@ -278,6 +282,7 @@ def new_admin():
     # new_admin.canton = body["canton"]
     # new_admin.distric = body["distric"]
     new_admin.password = body["password"]
+    new_admin.user_type = "admin"
 
     try:
         db.session.add(new_admin)
@@ -340,6 +345,7 @@ def new_profe():
     # new_profe.canton = body["canton"]
     # new_profe.distric = body["distric"]
     new_profe.password = body["password"]
+    new_profe.user_type = "professor"
     
     try:
         db.session.add(new_profe)
@@ -351,7 +357,7 @@ def new_profe():
 
     return jsonify({"new_professor": new_profe.serialize()}), 201
 
-@app.route('/api/createstudent', methods=['POST'])
+@app.route('/api/student', methods=['POST'])
 def new_stud():
     body = request.get_json(silent=True)
     if body is None:
@@ -365,20 +371,19 @@ def new_stud():
     if "cardID_type" not in body:
         return jsonify({"msg": "Debes seleccionar un tipo de identificacion"}), 400
     if "number_cardID" not in body:
-        return jsonify({"msg": "Debes escribir un numero de identificacion"}), 400
-    # if "birthday" not in body:
-    #     return jsonify({"msg": "Debes registrar su nacimiento"}), 400
-
+       return jsonify({"msg": "Debes escribir un numero de identificacion"}), 400
+    if "birthday" not in body:
+        return jsonify({"msg": "Debes registrar su nacimiento"}), 400
     if "email" not in body:
         return jsonify({"msg": "El campo email es obligatorio"}), 400
     if "phone_number" not in body:
         return jsonify({"msg": "Debes registrar un telefono"}), 400
-    # if "province" not in body:
-    #     return jsonify({"msg": "Debes escribir una provincia"}), 400
-    # if "canton" not in body:
-    #     return jsonify({"msg": "Debes escribir un canton"}), 400
-    # if "distric" not in body:
-    #     return jsonify({"msg": "Debes escribir un distrito"}), 400
+    if "province" not in body:
+        return jsonify({"msg": "Debes escribir una provincia"}), 400
+    if "canton" not in body:
+        return jsonify({"msg": "Debes escribir un canton"}), 400
+    if "distric" not in body:
+        return jsonify({"msg": "Debes escribir un distrito"}), 400
     if "password" not in body:
         return jsonify({"msg": "Debes escribir una contraseña"}), 400
     # if "student_payment" not in body:
@@ -394,27 +399,24 @@ def new_stud():
     # new_stud.photo = body["photo"]
     new_stud.cardID_type = body["cardID_type"]
     new_stud.number_cardID = body["number_cardID"]
-    # new_stud.birthday = body["birthday"]
+    new_stud.birthday = body["birthday"]
     new_stud.email = body["email"]
     new_stud.phone_number = body["phone_number"]
-    # new_stud.province = body["province"]
-    # new_stud.canton = body["canton"]
-    # new_stud.distric = body["distric"]
+    new_stud.province = body["province"]
+    new_stud.canton = body["canton"]
+    new_stud.distric = body["distric"]
     new_stud.password = body["password"]
+    new_stud.user_type = "student"
     # new_stud.student_payment = body["student_payment"]
     # new_stud.electronic_invoice = body["electronic_invoice"]
     # new_stud.new_course_student = body["new_course_student"]
-
     try:
         db.session.add(new_stud)
         db.session.commit()
     except Exception as error:
-        db.session.rollback()
-        print(error)
-        return jsonify({"msg": "Ocurrió un error al crear un nuevo estudiante"}), 500
+        return jsonify({"msg": error.args[0]}), 500
 
-    return jsonify({"new_student": new_stud.serialize()}), 201
-
+    return jsonify({"msg": "OK"}), 200
     # try:
     #     db.session.add(new_stud)
     #     db.session.commit()
@@ -659,15 +661,32 @@ def login():
     if "password" not in body or not body["password"]:
         return jsonify({"msg": "Debes completar el campo contraseña"}), 400
     
+    # Verificar estudiante
     student = Student.query.filter_by(email=body["email"]).first()
-    if student is None or not check_password_hash(student.password, body['password']):
-        return jsonify({"msg": "Email o contraseña inválidos"}), 400
+    if student and student.password == body['password']:
+        access_token = create_access_token(identity={"email": student.email, "user_type": "student"})
+        return jsonify({"msg": "ok", "access_token": access_token, "user_type": "student"}), 200
+    
+    # Verificar profesor
+    professor = Professor.query.filter_by(email=body["email"]).first()
+    if professor and professor.password == body['password']:
+        access_token = create_access_token(identity={"email": professor.email, "user_type": "professor"})
+        return jsonify({"msg": "ok", "access_token": access_token, "user_type": "professor"}), 200
+    
+    # Verificar admin
+    administrator = Administrator.query.filter_by(email=body["email"]).first()
+    if administrator and administrator.password == body['password']:
+        access_token = create_access_token(identity={"email": administrator.email, "user_type": "admin"})
+        return jsonify({"msg": "ok", "access_token": access_token, "user_type": "admin"}), 200
 
-    access_token = create_access_token(identity=student.email)
-    return jsonify({"msg": "ok", "access_token": access_token}), 200
+
+    return jsonify({"msg": "Email o contraseña inválidos"}), 400
+    
 
 if __name__ == "__main__":
     app.run(debug=True)
+
+
     
 
 #------------------------------------------------------#

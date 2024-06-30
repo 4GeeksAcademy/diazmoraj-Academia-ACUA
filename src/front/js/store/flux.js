@@ -262,6 +262,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 						console.log(data)
 						// setStore({ isProfessorCreated: true })
 						actions.getProfessors()
+						localStorage.setItem("userType", "profesor"); // Guardar el tipo de usuario en localStorage
+                        console.log("Tipo de usuario guardado en localStorage");
 						return true
 					})
 					.catch(error => {
@@ -271,32 +273,56 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			// Agregar estudiante
-			newStudent: (data) => {
-				const actions = getActions()
-				return fetch(process.env.BACKEND_URL + "/api/createstudent", {
-					method: "POST",
-					body: JSON.stringify(data),
-					headers: { "Content-Type": "application/json" }
-				})
-					.then(response => {
-						console.log(response)
-						if (response.ok) {
-							return response.json()
-						}
-						throw new Error("Ocurrió un error creando un nuevo estudiante")
-					})
-					.then(data => {
-						console.log(data)
-						// setStore({ isProfessorCreated: true })
-						actions.getStudents()
-						return true
-					})
-					.catch(error => {
-						console.log(error)
-						return false
-					})
+			// actions.js
+			newStudent: async (formData) => {
+				try {
+					const response = await fetch(process.env.BACKEND_URL + "/api/student", {
+						method: "POST",
+						body: JSON.stringify(formData),
+						headers: { "Content-Type": "application/json" }
+					});
+					const data = await response.json();
+					
+					if (response.ok) {
+						setStore({ student: data.student });
+						localStorage.setItem("userType", "estudiante"); // Guarda el tipo de usuario en localStorage
+						console.log("Tipo de usuario guardado en localStorage");
+						return true;
+					} else {
+						console.error("Error:", data.msg);
+						return false;
+					}
+				} catch (error) {
+					console.error("Error:", error);
+					return false;
+				}
 			},
 
+			
+			
+			login: async (email, password) => {
+				try {
+					const response = await fetch(process.env.BACKEND_URL + "/api/login", {
+						method: "POST",
+						headers: { "Content-Type": "application/json" },
+						body: JSON.stringify({ email, password })
+					});
+			
+					if (!response.ok) {
+						const errorData = await response.json();
+						throw new Error(errorData.msg);
+					}
+			
+					const data = await response.json();
+					localStorage.setItem("access_token", data.access_token);
+					localStorage.setItem("user_type", data.user_type);  // Guarda el tipo de usuario en el localStorage
+					return { success: true };
+				} catch (error) {
+					console.error("Error:", error);
+					return { success: false, message: error.message };
+				}
+			},
+			
 
 			// Agregar curso
 			newCourse: (data) => {
