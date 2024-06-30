@@ -15,6 +15,7 @@ import HomeACUA from "./pages/HomeACUA";
 import { HomeAdmin } from "./pages/HomeAdmin";
 import { HomeProfessor } from "./pages/HomeProfessor";
 import { HomeStudent } from "./pages/HomeStudent";
+import HomeGeneral from "./pages/HomeGeneral";
 
 import InfoAdmin from "./pages/InfoAdmin";
 import InfoProfessor from "./pages/InfoProfessor";
@@ -59,6 +60,7 @@ const Layout = () => {
                         <Route path="/homestudent" element={<HomeStudent />} />
                         <Route path="/homeprofessor" element={<HomeProfessor />} />
                         <Route path="/homeadmin" element={<HomeAdmin />} />
+                        <Route path="/homegeneral" element={<HomeGeneral />} />
                         <Route path="/signup" element={<SignUp />} />
                         <Route path="/login" element={<Login />} />
                         <Route path="/" element={<HomeACUA />} />

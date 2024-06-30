@@ -1,8 +1,12 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { NavbarACUA } from '../component/NavbarACUA';
+import { showNotification } from "../utils/ShowNotification";
+import { Context } from "../store/appContext"; 
 
 export const SignUp = () => {
+  const { actions } = useContext(Context);
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
     last_name: "",
@@ -24,17 +28,12 @@ export const SignUp = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    try {
-      const response = await fetch(process.env.BACKEND_URL + "/api/student", {
-        method: "POST",
-        body: JSON.stringify(formData),
-        headers: { "Content-Type": "application/json" },
-      });
-      const data = await response.json();
-      console.log(data); 
-    } catch (error) {
-      console.error("Error:", error);
-
+    const isCreated = await actions.newStudent(formData);
+    if (isCreated) {
+      showNotification("Estudiante registrado con éxito");
+      navigate("/Login"); 
+    } else {
+      showNotification("Ocurrió un error al registrarse", "error");
     }
   };
 
@@ -156,7 +155,7 @@ export const SignUp = () => {
             />
           </div>
           <div className="mb-4">
-            <button type="submit" className="btn btn-primary" Link to="/HomeStudent">Registrarse →</button>
+            <button type="submit" className="btn btn-primary">Registrarse →</button>
           </div>
           <Link to={`/Login`} className="mt-3">
             ¿Ya tienes un usuario? Inicia sesión aquí

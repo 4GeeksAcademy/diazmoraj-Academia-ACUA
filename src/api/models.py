@@ -21,6 +21,7 @@ class Administrator(db.Model):
     distric = db.Column(db.String(50))
     password = db.Column(db.String(80))
     is_active = db.Column(db.Boolean())
+    user_type = db.Column(db.String(20), nullable=False, default='admin')
 
     def __repr__(self):
         return 'Administrador: {}'.format(self.name)
@@ -38,7 +39,8 @@ class Administrator(db.Model):
             "phone_number": self.phone_number,
             "province": self.province,
             "canton": self.canton,
-            "distric": self.distric
+            "distric": self.distric,
+            "user_type": self.user_type 
             # do not serialize the password, its a security breach
         }
 
@@ -59,6 +61,7 @@ class Professor(db.Model):
     distric = db.Column(db.String(50))
     password = db.Column(db.String(80))
     is_active = db.Column(db.Boolean())
+    user_type = db.Column(db.String(20), nullable=False, default='professor')
     professor_payment = db.relationship("ProfessorPayment", back_populates="professor_id_relationship")
     new_course_professor = db.relationship("NewCourse", back_populates="professor_id_relationship")
 
@@ -78,7 +81,8 @@ class Professor(db.Model):
             "phone_number": self.phone_number,
             "province": self.province,
             "canton": self.canton,
-            "distric":self.distric
+            "distric":self.distric,
+            "user_type": self.user_type 
             # do not serialize the password, its a security breach
         }
     
@@ -99,6 +103,7 @@ class Student(db.Model):
     distric = db.Column(db.String(50))
     password = db.Column(db.String(80))
     is_active = db.Column(db.Boolean())
+    user_type = db.Column(db.String(20), nullable=False, default='student')
     student_payment = db.relationship("StudentPayment", back_populates="student_id_relationship")
     electronic_invoice = db.relationship("ElectronicInvoice", back_populates="student_id_relationship")
     new_course_student = db.relationship("NewCourse", back_populates="student_id_relationship")
@@ -119,7 +124,8 @@ class Student(db.Model):
             "phone_number": self.phone_number,
             "province": self.province,
             "canton": self.canton,
-            "distric":self.distric
+            "distric":self.distric,
+            "user_type": self.user_type 
             # do not serialize the password, its a security breach
         }
     
