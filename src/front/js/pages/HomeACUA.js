@@ -153,22 +153,22 @@ const HomeACUA = () => {
               <h2 className='bigWeight fs-1 text-center text-white'>Contacta con nosotros!</h2>
               <p className='text-light mt-0 text-center'>Envia un mensaje y nuestro equipo se pondrá en contacto contigo</p>
             </div>
-            <div className="container" style={{ padding: '50px' }}>
+            <div className="container" style={{ padding: '30px' }}>
               <div className="row justify-content-center">
                 <div className="col-xl-5 col-sm-11">
                   <div className="topInfo d-flex flex-column mt-2 gap-2">
                     <ContactCardInfo
                       icon="fa-location-dot"
                       title="Direccion"
-                      description="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Asperiores, aliquid perspiciatis non obcaecati " />
+                      description="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Asperiores " />
                     <ContactCardInfo
                       icon="fa-phone-volume"
                       title="Teléfono"
-                      description="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Asperiores, aliquid perspiciatis non obcaecati " />
+                      description="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Asperiores " />
                     <ContactCardInfo
                       icon="fa-envelope"
                       title="E-mail"
-                      description="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Asperiores, aliquid perspiciatis non obcaecati " />
+                      description="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Asperiores " />
                   </div>
                 </div>
                 <div className="rightInfo col-xl-7 col-sm-11 mt-2">
