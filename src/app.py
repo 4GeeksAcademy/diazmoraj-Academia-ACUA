@@ -17,7 +17,7 @@ from api.models import ProfessorPayment
 from api.models import StudentPayment
 from api.models import ElectronicInvoice
 from api.models import Course
-from api.models import Modality
+# from api.models import Modality
 from api.models import NewCourse
 from flask_cors import CORS
 
