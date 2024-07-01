@@ -9,6 +9,8 @@ import '../../styles/index.css'
 
 export const NewCarrousel = ({ array }) => {
 
+    console.log(array)
+
     const randomNumber = () => {
         let random = 0
         let lastRandom = null;
@@ -24,10 +26,25 @@ export const NewCarrousel = ({ array }) => {
             <div className="container">
                 <Swiper
                     loop='true'
-                    slidesPerView={4}
+                    slidesPerView={1}
                     spaceBetween={10}
                     pagination={{
                         clickable: true,
+                    }}
+                    slidesPerGroup={1}
+                    breakpoints={{
+                        700: {
+                            slidesPerView: 2,
+                            slidesPerGroup: 1,
+                        },
+                        900: {
+                            slidesPerView: 3,
+                            slidesPerGroup: 1,
+                        },
+                        1080: {
+                            slidesPerView: 4,
+                            slidesPerGroup: 1,
+                        }
                     }}
                     modules={[Pagination, Navigation]}
                     navigation={{
@@ -38,14 +55,12 @@ export const NewCarrousel = ({ array }) => {
                 >
                     {array?.map((professor) => {
                         return (
-                            <SwiperSlide>
+                            <SwiperSlide style={{ display: 'flex', justifyContent: 'center' }}>
                                 <CardProfessorHome
                                     number={randomNumber()}
                                     key={professor.id}
                                     name={professor.name}
                                     lastName={professor.last_name}
-                                    disctrict={professor.disctrict}
-                                    province={professor.province}
                                 /></SwiperSlide>
                         )
                     })}

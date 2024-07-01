@@ -11,10 +11,6 @@ export const CardProfessorHome = ({ number, name, lastName, district, province }
                     <img src={`https://xsgames.co/randomusers/assets/avatars/male/${number}.jpg`} className="card-img-top" alt="..." style={{ height: 'auto', padding: '30px', borderRadius: '70%' }} />
                     <div className="card-body">
                         <p className="card-title fs-5 mediumWeight">{name} {lastName}</p>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item text-secondary" style={{ fontSize: '15px' }}>Provincia: {province}</li>
-                            <li class="list-group-item text-secondary" style={{ fontSize: '15px' }}>Distrito: {district}</li>
-                        </ul>
                     </div>
                 </div>
             </div>
