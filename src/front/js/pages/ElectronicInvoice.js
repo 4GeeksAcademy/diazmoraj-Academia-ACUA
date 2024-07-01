@@ -68,8 +68,14 @@ export const ElectronicInvoice = () => {
         </div>
         <div className="d-flex mb-3">
           <div className="me-2 flex-fill">
-            <label className="form-label">Tipo de identificación</label>
-            <input className="form-control" placeholder="Tipo de identificación" onChange={handleInputChange} />
+            <label className="form-label">Tipo de identificación</label><br></br>
+            <select name="select">
+              <option value="value1" selected>-----------</option>
+              <option value="value2">Cedula Nacional</option>
+              <option value="value3">Cedula Juridica</option>
+              <option value="value3">DIMEX</option>
+            </select>
+            {/* <input className="form-control" placeholder="Tipo de identificación" onChange={handleInputChange} /> */}
           </div>
           <div className="ms-2 flex-fill">
             <label className="form-label">Número de identificación</label>
