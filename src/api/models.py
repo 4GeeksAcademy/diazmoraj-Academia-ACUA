@@ -211,21 +211,21 @@ class Course(db.Model):
             "name": self.name
         }
 
-class Modality(db.Model):
-    __tablename__ = 'modality'
+# class Modality(db.Model):
+#     __tablename__ = 'modality'
 
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(50))
-    new_course_modality = db.relationship("NewCourse", back_populates="modality_id_relationship")
+#     id = db.Column(db.Integer, primary_key=True)
+#     name = db.Column(db.String(50))
+#     new_course_modality = db.relationship("NewCourse", back_populates="modality_id_relationship")
 
-    def __repr__(self):
-        return 'Modalidad: {}'.format(self.name)
+#     def __repr__(self):
+#         return 'Modalidad: {}'.format(self.name)
 
-    def serialize(self):
-        return {
-            "id": self.id,
-            "name": self.name
-        }
+#     def serialize(self):
+#         return {
+#             "id": self.id,
+#             "name": self.name
+#         }
     
 class NewCourse(db.Model):
     __tablename__ = 'new_course'
@@ -235,8 +235,8 @@ class NewCourse(db.Model):
     professor_id_relationship = db.relationship("Professor", back_populates="new_course_professor")
     student_id = db.Column(db.Integer, db.ForeignKey('student.id'))
     student_id_relationship = db.relationship("Student", back_populates="new_course_student")
-    modality_id = db.Column(db.Integer, db.ForeignKey('modality.id'))
-    modality_id_relationship = db.relationship("Modality", back_populates="new_course_modality")
+    # modality_id = db.Column(db.Integer, db.ForeignKey('modality.id'))
+    # modality_id_relationship = db.relationship("Modality", back_populates="new_course_modality")
     course_id = db.Column(db.Integer, db.ForeignKey('course.id'))
     course_id_relationship = db.relationship("Course", back_populates="new_course")
 
