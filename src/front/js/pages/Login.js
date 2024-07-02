@@ -1,22 +1,39 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext";
 import "../../styles/login.css";
 import { NavbarACUA } from '../component/NavbarACUA';
 import { showNotification } from "../utils/ShowNotification";
+import useAuth from "../component/frontAuth/useAuth";
 
 const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const { actions } = useContext(Context);
     const navigate = useNavigate();
+    const { login, isLoggedIn, role } = useAuth();
 
     const handleLogin = async (e) => {
         e.preventDefault();
-        const result = await actions.login(email, password);
+        const result = await login(email, password);
         if (result.success) {
+            console.log(role)
             showNotification("Inicio de sesión exitoso");
-            navigate("/homegeneral");
+            const role = localStorage.getItem('user_type')
+            // if (isLoggedIn) {
+            if (role === 'student') {
+                navigate('/homestudent')
+            }
+            else if (role === 'admin') {
+                navigate('/homeadmin')
+            }
+            else if (role === 'professor') {
+                navigate('/homeprofessor')
+            }
+            else {
+                console.error('No se pudo determinar el rol del usuario')
+            }
+            // }
         } else {
             showNotification("Correo o contraseña inválido", "error");
         }
@@ -38,21 +55,21 @@ const Login = () => {
                         <h3 className="mb-3">Inicia sesión</h3>
                         <div className="mb-3">
                             <label className="form-label">Email</label>
-                            <input 
-                                className="form-control" 
-                                placeholder="Email" 
+                            <input
+                                className="form-control"
+                                placeholder="Email"
                                 value={email}
-                                onChange={(e) => setEmail(e.target.value)} 
+                                onChange={(e) => setEmail(e.target.value)}
                             />
                         </div>
                         <div className="mb-3">
                             <label className="form-label">Contraseña</label>
-                            <input 
-                                type="password" 
-                                className="form-control" 
-                                placeholder="Contraseña" 
+                            <input
+                                type="password"
+                                className="form-control"
+                                placeholder="Contraseña"
                                 value={password}
-                                onChange={(e) => setPassword(e.target.value)} 
+                                onChange={(e) => setPassword(e.target.value)}
                             />
                         </div>
                         <div className="mb-3">

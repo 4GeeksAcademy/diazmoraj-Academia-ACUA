@@ -6,7 +6,6 @@ const HomeGeneral = () => {
 
   useEffect(() => {
     const userType = localStorage.getItem("user_type");
-
     if (userType === "student") {
       navigate("/HomeStudent");
     } else if (userType === "professor") {
