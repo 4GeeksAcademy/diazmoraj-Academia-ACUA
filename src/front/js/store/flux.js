@@ -19,6 +19,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			newcourses: [],
 
+			administrator: []
+
 			// isAdministratorCreated: false,
 			// isProfessorCreated: false,
 			// isStudentCreated: false,
@@ -91,6 +93,24 @@ const getState = ({ getStore, getActions, setStore }) => {
 						console.log("Data:", data)
 						console.log(data.professors)
 						setStore({ professors: data.professors })
+					})
+					.catch((error) => {
+						console.log(error)
+					})
+			},
+
+			getSingleAdmin: () => {
+				const token = localStorage.getItem('access_token')
+				fetch(process.env.BACKEND_URL + "/api/administrator/<int:number_cardID>", {
+					method: "GET",
+					headers: {
+						"Content-Type": "application/json",
+						'Authorization': 'Bearer ' + token
+					}
+				})
+					.then((data) => {
+						console.log("Data:", data)
+						console.log(data)
 					})
 					.catch((error) => {
 						console.log(error)
@@ -317,6 +337,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 					const data = await response.json();
 					localStorage.setItem("access_token", data.access_token);
+					console.log(data.access_token)
 					localStorage.setItem("user_type", data.user_type);  // Guarda el tipo de usuario en el localStorage
 					return { success: true };
 				} catch (error) {
