@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { NavbarACUA } from '../component/NavbarACUA';
 import { showNotification } from "../utils/ShowNotification";
-import { Context } from "../store/appContext"; 
+import { Context } from "../store/appContext";
 
 export const SignUp = () => {
   const { actions } = useContext(Context);
@@ -31,7 +31,7 @@ export const SignUp = () => {
     const isCreated = await actions.newStudent(formData);
     if (isCreated) {
       showNotification("Estudiante registrado con éxito");
-      navigate("/Login"); 
+      navigate("/Login");
     } else {
       showNotification("Ocurrió un error al registrarse", "error");
     }
@@ -111,15 +111,21 @@ export const SignUp = () => {
           </div>
           <div className="d-flex mb-3">
             <div className="me-2 flex-fill">
-              <label className="form-label">Tipo de Identificación</label>
-              <input
+              <label className="form-label">Tipo de Identificación</label><br></br>
+              <select name="select">
+                <option value="value1" selected>-----------</option>
+                <option value="value2">Cedula Nacional</option>
+                <option value="value3">DIMEX</option>
+                <option value="value3">Pasaporte</option>
+              </select>
+              {/* <input
                 className="form-control"
                 placeholder="Tipo de Identificación"
                 name="cardID_type"
                 value={formData.cardID_type}
                 onChange={handleInputChange}
                 required
-              />
+              /> */}
             </div>
             <div className="ms-2 flex-fill">
               <label className="form-label">Número de Identificación</label>

@@ -12,10 +12,10 @@ class Administrator(db.Model):
     last_name = db.Column(db.String(50))
     # photo = db.Column(db.String(150))
     cardID_type = db.Column(db.String(50))
-    number_cardID = db.Column(db.BigInteger, unique=True)
+    number_cardID = db.Column(db.String(20), unique=True)
     birthday = db.Column(db.Date)
     email = db.Column(db.String(50), unique=True)
-    phone_number = db.Column(db.Integer)
+    phone_number = db.Column(db.BigInteger)
     province = db.Column(db.String(50))
     canton = db.Column(db.String(50))
     distric = db.Column(db.String(50))
@@ -52,10 +52,10 @@ class Professor(db.Model):
     last_name = db.Column(db.String(50))
     # photo = db.Column(db.String(150))
     cardID_type = db.Column(db.String(50))
-    number_cardID = db.Column(db.BigInteger, unique=True)
+    number_cardID = db.Column(db.String(20), unique=True)
     birthday = db.Column(db.Date)
     email = db.Column(db.String(50), unique=True)
-    phone_number = db.Column(db.Integer)
+    phone_number = db.Column(db.BigInteger)
     province = db.Column(db.String(50))
     canton = db.Column(db.String(50))
     distric = db.Column(db.String(50))
@@ -94,10 +94,10 @@ class Student(db.Model):
     last_name = db.Column(db.String(50))
     # photo = db.Column(db.String(150))
     cardID_type = db.Column(db.String(50))
-    number_cardID = db.Column(db.BigInteger, unique=True)
+    number_cardID = db.Column(db.String(20), unique=True)
     birthday = db.Column(db.Date)
     email = db.Column(db.String(50), unique=True)
-    phone_number = db.Column(db.Integer)
+    phone_number = db.Column(db.BigInteger)
     province = db.Column(db.String(50))
     canton = db.Column(db.String(50))
     distric = db.Column(db.String(50))
@@ -134,7 +134,7 @@ class ProfessorPayment(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     payment_method = db.Column(db.String(50))
-    phone_number = db.Column(db.Integer)
+    phone_number = db.Column(db.BigInteger)
     iban_account = db.Column(db.String(50), unique=True)
     professor_id = db.Column(db.Integer, db.ForeignKey('professor.id'))
     professor_id_relationship = db.relationship("Professor", back_populates="professor_payment")
@@ -174,7 +174,7 @@ class ElectronicInvoice(db.Model):
     cardID_type = db.Column(db.String(50), unique=False)
     number_cardID = db.Column(db.BigInteger, unique=True)
     email = db.Column(db.String(50), unique=True)
-    phone_number = db.Column(db.Integer)
+    phone_number = db.Column(db.BigInteger)
     province = db.Column(db.String(50))
     canton = db.Column(db.String(50))
     distric = db.Column(db.String(50))
@@ -211,21 +211,21 @@ class Course(db.Model):
             "name": self.name
         }
 
-class Modality(db.Model):
-    __tablename__ = 'modality'
+# class Modality(db.Model):
+#     __tablename__ = 'modality'
 
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(50))
-    new_course_modality = db.relationship("NewCourse", back_populates="modality_id_relationship")
+#     id = db.Column(db.Integer, primary_key=True)
+#     name = db.Column(db.String(50))
+#     new_course_modality = db.relationship("NewCourse", back_populates="modality_id_relationship")
 
-    def __repr__(self):
-        return 'Modalidad: {}'.format(self.name)
+#     def __repr__(self):
+#         return 'Modalidad: {}'.format(self.name)
 
-    def serialize(self):
-        return {
-            "id": self.id,
-            "name": self.name
-        }
+#     def serialize(self):
+#         return {
+#             "id": self.id,
+#             "name": self.name
+#         }
     
 class NewCourse(db.Model):
     __tablename__ = 'new_course'
@@ -235,8 +235,8 @@ class NewCourse(db.Model):
     professor_id_relationship = db.relationship("Professor", back_populates="new_course_professor")
     student_id = db.Column(db.Integer, db.ForeignKey('student.id'))
     student_id_relationship = db.relationship("Student", back_populates="new_course_student")
-    modality_id = db.Column(db.Integer, db.ForeignKey('modality.id'))
-    modality_id_relationship = db.relationship("Modality", back_populates="new_course_modality")
+    # modality_id = db.Column(db.Integer, db.ForeignKey('modality.id'))
+    # modality_id_relationship = db.relationship("Modality", back_populates="new_course_modality")
     course_id = db.Column(db.Integer, db.ForeignKey('course.id'))
     course_id_relationship = db.relationship("Course", back_populates="new_course")
 

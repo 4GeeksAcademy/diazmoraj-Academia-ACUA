@@ -17,7 +17,7 @@ from api.models import ProfessorPayment
 from api.models import StudentPayment
 from api.models import ElectronicInvoice
 from api.models import Course
-from api.models import Modality
+# from api.models import Modality
 from api.models import NewCourse
 from flask_cors import CORS
 
@@ -186,14 +186,14 @@ def get_all_course():
         print(courses_serialized)
     return jsonify({"courses": courses_serialized}), 200
 
-@app.route('/api/modalities', methods=['GET'])
-def get_all_modality():
-    all_modalities = Modality.query.all()
-    modalities_serialized = []
-    for modality in all_modalities:
-        modalities_serialized.append(modality.serialize())
-        print(modalities_serialized)
-    return jsonify({"modalities": modalities_serialized}), 200
+# @app.route('/api/modalities', methods=['GET'])
+# def get_all_modality():
+#     all_modalities = Modality.query.all()
+#     modalities_serialized = []
+#     for modality in all_modalities:
+#         modalities_serialized.append(modality.serialize())
+#         print(modalities_serialized)
+#     return jsonify({"modalities": modalities_serialized}), 200
 
 @app.route('/api/allregisteredcourses', methods=['GET'])
 def get_all_registered_courses():
@@ -262,12 +262,12 @@ def get_single_course(name):
         return jsonify({"msg": "No existe un curso con el nombre: {}".format(name)}), 400
     return jsonify({"course": single_course.serialize()}), 200
 
-@app.route('/api/modality/<modality>', methods=['GET'])
-def get_single_modality(modality):
-    single_modality = Modality.query.get(modality = modality).first()
-    if setup_commands is None:
-        return jsonify({"msg": "La modalidad con el ID: {} no existe".format(modality)}), 400
-    return jsonify({"modality": single_modality.serialize()}), 200
+# @app.route('/api/modality/<modality>', methods=['GET'])
+# def get_single_modality(modality):
+#     single_modality = Modality.query.get(modality = modality).first()
+#     if setup_commands is None:
+#         return jsonify({"msg": "La modalidad con el ID: {} no existe".format(modality)}), 400
+#     return jsonify({"modality": single_modality.serialize()}), 200
 
 # @app.route('/api/professorregisteredcourses/<int:professor_id>', methods=['GET'])
 # def get_professor_registered_courses(professor_id):
@@ -609,26 +609,26 @@ def add_course():
     return jsonify({"new_course_added": add_course.serialize()}), 201
 
 
-@app.route('/api/addmodality', methods=['POST'])
-def new_modality():
-    body = request.get_json(silent=True)
-    if body is None:
-        return jsonify({"msg": "Debes escribir un tipo de modalida"}), 400
-    if "name" not in body:
-        return jsonify({"msg": "Debes escribir un tipo de modalidad"}), 400
+# @app.route('/api/addmodality', methods=['POST'])
+# def new_modality():
+#     body = request.get_json(silent=True)
+#     if body is None:
+#         return jsonify({"msg": "Debes escribir un tipo de modalida"}), 400
+#     if "name" not in body:
+#         return jsonify({"msg": "Debes escribir un tipo de modalidad"}), 400
     
-    new_modality = Modality()
-    new_modality.name = body["name"]
+#     new_modality = Modality()
+#     new_modality.name = body["name"]
 
-    try:
-        db.session.add(new_modality)
-        db.session.commit()
-    except Exception as error:
-        db.session.rollback()
-        print(error)
-        return jsonify({"msg": "Ocurrió un error al crear una nueva modalidad"}), 500
+#     try:
+#         db.session.add(new_modality)
+#         db.session.commit()
+#     except Exception as error:
+#         db.session.rollback()
+#         print(error)
+#         return jsonify({"msg": "Ocurrió un error al crear una nueva modalidad"}), 500
 
-    return jsonify({"new_modality_added": new_modality.serialize()}), 201
+#     return jsonify({"new_modality_added": new_modality.serialize()}), 201
 
     # try:
     #     db.session.add(new_modality)
@@ -852,15 +852,15 @@ def update_modality(id):
     if "name" in body:
         modality_to_update.name = body["name"]
 
-    try:
-        db.session.add(modality_to_update)
-        db.session.commit()
-    except Exception as error:
-        db.session.rollback()
-        print(error)
-        return jsonify({"msg": "Ocurrió un error al tratar de actualizar la información"}), 500
+#     try:
+#         db.session.add(modality_to_update)
+#         db.session.commit()
+#     except Exception as error:
+#         db.session.rollback()
+#         print(error)
+#         return jsonify({"msg": "Ocurrió un error al tratar de actualizar la información"}), 500
 
-    return jsonify({"updated_modality": modality_to_update.serialize()}), 201
+#     return jsonify({"updated_modality": modality_to_update.serialize()}), 201
 
 @app.route('/api/editregisteredcourse/<int:id>', methods=['PUT'])
 def update_registered_course(id):
