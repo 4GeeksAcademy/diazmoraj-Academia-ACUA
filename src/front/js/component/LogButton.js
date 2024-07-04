@@ -1,11 +1,12 @@
 import React from 'react'
+import useAuth from './frontAuth/useAuth'
 
-const LogButton = (props) => {
+const LogButton = ({ text, action }) => {
 
-    let text = props.text
+    console.log(action)
     return (
         <React.Fragment>
-            <div id='loginButton'>
+            <div id='loginButton' onClick={action}>
                 {text}
             </div>
         </React.Fragment>

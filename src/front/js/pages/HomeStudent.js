@@ -32,11 +32,6 @@ export const HomeStudent = () => {
 							</div>
 						</div>
 					</div>
-					<div className="mt-auto ms-3">
-						<Link to="/newcourse" className="text-decoration-none">
-							<MultiButton color='purple' text='Solicitar inscribir nuevo curso' width='240' />
-						</Link>
-					</div>
 				</div>
 				<div className="d-flex align-content-center justify-content-center mb-3 mt-3 py-4 jumbo rounded-3">
 					<div className="container-fluid align-content-center">

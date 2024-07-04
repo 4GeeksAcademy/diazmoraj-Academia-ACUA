@@ -15,23 +15,35 @@ import HomeACUA from "./pages/HomeACUA";
 import { HomeAdmin } from "./pages/HomeAdmin";
 import { HomeProfessor } from "./pages/HomeProfessor";
 import { HomeStudent } from "./pages/HomeStudent";
+import HomeGeneral from "./pages/HomeGeneral";
 
-import { InfoAdmin } from "./pages/InfoAdmin";
+import InfoAdmin from "./pages/InfoAdmin";
 import InfoProfessor from "./pages/InfoProfessor";
-import { InfoStudent } from "./pages/InfoStudent";
+import InfoStudent from "./pages/InfoStudent";
 
 import { ProfessorPayment } from "./pages/ProfessorPayment";
 import { StudentPayment } from "./pages/StudentPayment";
 
 import { Course } from "./pages/Course";
 import { ElectronicInvoice } from "./pages/ElectronicInvoice";
-import { Modality, NewModality } from "./pages/NewModality";
 import { NewCourse } from "./pages/NewCourse";
+import { NewModality } from "./pages/NewModality";
 import injectContext from "./store/appContext";
 import FormProfessor from "./pages/FormProfessor";
 import FormStudent from "./pages/FormStudent";
 
+import Undefined from "./pages/Undefined";
+
 import { Footer } from "./component/Footer";
+
+import AdminProfReg from "./pages/AdminProfReg";
+import { Toaster } from "react-hot-toast";
+import AdminStudReg from "./pages/AdminStudReg";
+import ProtectedRoute from "./component/frontAuth/ProtectedRoute";
+import Private from "./component/frontAuth/Private";
+
+
+
 
 //create your first component
 const Layout = () => {
@@ -45,58 +57,51 @@ const Layout = () => {
         <div>
             <BrowserRouter basename={basename}>
                 <ScrollToTop>
-
                     <Routes>
+                        {/* <ProtectedRoute path="/homestudent" requiredRole='student' element={<HomeStudent />} />
+                        <ProtectedRoute path="/homeprofessor" requiredRole='professor' element={<HomeProfessor />} />
+                        <ProtectedRoute path="/homeadmin" requiredRole='admin' element={<HomeAdmin />} /> */}
+                        {/* <Route path="/homestudent" element={<ProtectedRoute requiredRole='student' children={<HomeStudent />} />} /> */}
 
-                        <Route path="/homestudent" element={<HomeStudent />} />
-                        <Route path="/homeprofessor" element={<HomeProfessor />} />
-                        <Route path="/homeadmin" element={<HomeAdmin />} />
-                        <Route element={<Login />} path="/Login" />
-                        <Route element={<SignUp />} path="/signup" />
-                        <Route path="*" element={<h1>Not found!</h1>} />
-                        <Route element={<FormProfessor />} path="/formprofessor" />
-                        <Route element={<Login />} path="/login" />
-                        <Route path="/homeacua" element={<HomeACUA />} />
-                        <Route element={<FormStudent />} path="/formstudent" />
-                        <Route element={<InfoProfessor />} path="/infoprofessor" />
-                        <Route path="/newcourse" element={<NewCourse />} />
+                        {/* <Route path="/homestudent" requiredRole='student' element={<ProtectedRoute requiredRole='student' children={<HomeStudent />} />} />
+                        <Route path="/homeprofessor" requiredRole='professor' element={<ProtectedRoute requiredRole='professor' children={<HomeProfessor />} />} />
+                        <Route path="/homeadmin" requiredRole='admin' element={<ProtectedRoute requiredRole='admin' children={<HomeAdmin />} />} /> */}
+                        <Route path="/homeprofessor" requiredRole='professor' element={<HomeProfessor />} />
+                        <Route element={<Private role='admin' />} >
+                            <Route path="/homeadmin" element={<HomeAdmin />} />
+                            <Route path="/adminprofreg" element={<AdminProfReg />} />
+                            <Route path="/adminstudreg" element={<AdminStudReg />} />
+                            <Route path="/newcourse" element={<NewCourse />} />
+                        </Route>
+                        <Route element={<Private role='student' />} >
+                            <Route path="/homestudent" element={<HomeStudent />} />
+                            <Route path="/newcourse" element={<NewCourse />} />
+                        </Route>
+                        <Route element={<Private role='professor' />} >
+                            <Route path="/homeprofessor" element={<HomeProfessor />} />
+                        </Route>
+
+                        <Route path="/homegeneral" element={<HomeGeneral />} />
+                        <Route path="/signup" element={<SignUp />} />
+                        <Route path="/login" element={<Login />} />
+                        <Route path="/" element={<HomeACUA />} />
+                        <Route path="/formstudent" element={<FormStudent />} />
+                        <Route path="/infoprofessor" element={<InfoProfessor />} />
+                        <Route path="/infoadmin" element={<InfoAdmin />} />
+                        <Route path="/infostudent" element={<InfoStudent />} />
                         <Route path="/newmodality" element={<NewModality />} />
-                        <Route element={<ElectronicInvoice />} path="/electronicinvoice" />
-                        <Route element={<HomeACUA />} path="/homeacua" />
+                        <Route path="/electronicinvoice" element={<ElectronicInvoice />} />
+                        <Route path="/formprofessor" element={<FormProfessor />} />
 
-
-                        {/* <Route element={<NavbarACUA />} path="/NavbarACUA"/>
-                        <Route element={<NavbarAdmin />} path="/NavbarAdmin"/>
-                        <Route element={<NavbarProfessor />} path="/NavbarProfessor"/>
-                        <Route element={<NavbarStudent />} path="/NavbarStudent"/>
-
-                        <Route element={<SignUp />} path="/SigUp"/>
-
-                        <Route element={<HomeACUA />} path="/"/>
-                        <Route element={<HomeAdmin />} path="/"/>
-                        <Route element={<HomeProfessor />} path="/"/>
-                        <Route element={<HomeStudent />} path="/"/>
-
-                        <Route element={<InfoAdmin />} path="/InfoAdmin"/>
-                        <Route element={<InfoStudent />} path="/InfoStudent"/>
-
-                        <Route element={<ProfessorPayment />} path="/ProfessorPayment"/>
-                        <Route element={<StudentPayment />} path="/StudentPayment"/>
-
-                        <Route element={<Course />} path="/Course" />
-                        <Route element={<ElectronicInvoice />} path="/ElectronicInvoice" />
-                        <Route element={<Modality />} path="/Modality" />
-                        <Route element={<NewCourse />} path="/NewCourse" />
-
-                        <Route element={<h1>Not found!</h1>} />
-                         */}
+                        <Route path="/undefined" element={<Undefined />} />
+                        <Route path="*" element={<Undefined />} />
                     </Routes>
-
                     <Footer />
 
                 </ScrollToTop>
             </BrowserRouter>
-        </div>
+            <Toaster />
+        </div >
     );
 };
 

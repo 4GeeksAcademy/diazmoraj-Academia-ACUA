@@ -1,8 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import LogButton from "../component/LogButton";
+import { useContext } from "react";
+import { Context } from "../store/appContext";
+import { useNavigate } from "react-router-dom";
 import { NavbarProfessor } from "./NavbarProfessor";
 import "../../styles/home.css";
 
 export const HomeProfessor = () => {
+    const { store, actions } = useContext(Context)
+
+    const [professorCourseData, setProfessorCourseData] = useState({})
+
+    useEffect(() => {
+        actions.getProfessorCourses()
+    }, [])
+
+    console.log(store.singleProfessor)
+    console.log(store.singleProfessor.professor?.name)
+
     return (
         <React.Fragment>
             <NavbarProfessor />

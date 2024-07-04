@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const CardGoals = ({ color, text, iconName, iconColor, iconBackgroundColor }) => {
+export const CardGoals = ({ color, text, iconName, iconColor, iconBackgroundColor, textBody }) => {
 
 
     let blue = {
@@ -43,8 +43,8 @@ export const CardGoals = ({ color, text, iconName, iconColor, iconBackgroundColo
         <React.Fragment>
             <div className="cardGoal p-2" style={colorComparator(color)}>
                 <div className="title d-flex flex-row justify-content-center gap-3 pt-4 pe-3">
-                    <i class={iconName} style={{ fontSize: '25px', color: `${iconColor}`, backgroundColor: `${iconBackgroundColor}`, width: '51px', textAlign: 'center', padding: '10px', borderRadius: '60%' }}></i>
-                    <p className="mediumWeight fs-5">Profesores Expertos</p>
+                    <i class={iconName} style={{ fontSize: '23px', color: `${iconColor}`, backgroundColor: `${iconBackgroundColor}`, width: '51px', textAlign: 'center', padding: '12px', borderRadius: '60%' }}></i>
+                    <p className="mediumWeight fs-5">{text}</p>
                 </div>
                 <div className="goalBody">
                     <p className='text-dark p-4 text-center' style={{ fontSize: '15px' }}> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Assumenda repudiandae, eligendi!</p>
